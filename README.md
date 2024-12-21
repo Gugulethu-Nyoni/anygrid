@@ -1,4 +1,4 @@
-  # AnyGrid
+  # AnyGridJS
 
 
 <img src="https://github.com/thincmedia/anyGridJs/blob/main/images/anyGridJs_Example.png" alt="anyGridJs Example">
