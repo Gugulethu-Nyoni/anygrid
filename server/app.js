@@ -81,7 +81,7 @@ const features = {
   actions: false,
   pagination: false,
   itemsPerPage: false,
-  dynamicHeaders: false,
+  //dynamicHeaders: false,
   renderActionsInRows: true,
   initialItemsPerPage: 10,
   gridContainerId: 'anygrid'
