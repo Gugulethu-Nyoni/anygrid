@@ -219,35 +219,58 @@ if (this.features.pagination) {
 
 
 
-  // Update the pagination buttons (only if pagination is enabled)
   updatePagination() {
-    if (this.features.pagination) {
-      const itemsPerPage = this.itemsPerPage;
+  if (this.features.pagination) {
+    const itemsPerPage = this.itemsPerPage;
+    const totalPages = Math.ceil(this.filteredData.length / itemsPerPage);
+    const startPage = Math.max(1, this.currentPage - 5);
+    const endPage = Math.min(startPage + 9, totalPages);
 
-      const totalPages = Math.ceil(this.filteredData.length / itemsPerPage);
-      const startPage = Math.max(1, this.currentPage - 5);
-      const endPage = Math.min(startPage + 9, totalPages);
+    // Clear the pagination container
+    this.paginationContainer.innerHTML = '';
 
-      this.paginationContainer.innerHTML = '';
+    // Create a container for pagination info and buttons
+    const paginationWrapper = document.createElement('div');
+    paginationWrapper.classList.add('pagination-wrapper');
 
-      for (let i = startPage; i <= endPage; i++) {
-        const button = document.createElement('button');
-        button.textContent = i;
-        button.classList.add('pagination-button');
+    // Add the "Showing X to Y of Z records" text
+    const startIndex = (this.currentPage - 1) * itemsPerPage + 1;
+    const endIndex = Math.min(this.currentPage * itemsPerPage, this.totalRecords);
+    const totalRecords = this.totalRecords;
 
-        if (i === this.currentPage) {
-          button.classList.add('active');
-        }
+    const paginationInfo = document.createElement('div');
+    paginationInfo.classList.add('pagination-info');
+    paginationInfo.textContent = `Showing ${startIndex} to ${endIndex} of ${totalRecords} records`;
 
-        button.onclick = () => {
-          this.currentPage = i;
-          this.renderData();
-        };
+    // Create a container for the buttons
+    const buttonsContainer = document.createElement('div');
+    buttonsContainer.classList.add('pagination-buttons');
 
-        this.paginationContainer.appendChild(button);
+    for (let i = startPage; i <= endPage; i++) {
+      const button = document.createElement('button');
+      button.textContent = i;
+      button.classList.add('pagination-button');
+
+      if (i === this.currentPage) {
+        button.classList.add('active');
       }
+
+      button.onclick = () => {
+        this.currentPage = i;
+        this.renderData();
+      };
+
+      buttonsContainer.appendChild(button);
     }
+
+    // Append info and buttons to the wrapper
+    paginationWrapper.appendChild(paginationInfo);
+    paginationWrapper.appendChild(buttonsContainer);
+
+    // Append the wrapper to the pagination container
+    this.paginationContainer.appendChild(paginationWrapper);
   }
+}
 
   // Implement sorting functionality (only if sorting is enabled)
   sortTable(index) {

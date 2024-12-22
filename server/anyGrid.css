@@ -225,35 +225,56 @@ select.items-per-page {
     }
 }
 
-.anygrid-pagination {
-    margin-top: 0.5em;
-    text-align: center;
+/* Pagination Wrapper */
+.pagination-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.5em;
+  text-align: center;
+}
+
+/* Pagination Info */
+.pagination-info {
+  margin-right: 20px;
+  font-size: 14px;
+  color: var(--text-light);
+  font-family: 'Montserrat', sans-serif;
+
+}
+
+/* Pagination Buttons */
+.pagination-buttons {
+  display: flex;
+  gap: 5px;
 }
 
 .pagination-button {
-    background-color: var(--button-background);
-    border: 1px solid var(--border-color);
-    border-radius: 5px;
-    color: var(--text-light);
-    cursor: pointer;
-    display: inline-block;
-    font-size: 14px;
-    margin: 0 2px;
-    padding: 8px 12px;
-    text-decoration: none;
-    transition: background-color 0.3s, color 0.3s;
+  background-color: var(--button-background, #f9f9f9);
+  border: 1px solid var(--border-color, #ccc);
+  border-radius: 5px;
+  color: var(--text-light, #000);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  margin: 0 2px;
+  padding: 8px 12px;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
 }
 
+/* Active and Hover States */
 .pagination-button.active,
 .pagination-button:hover {
-    background-color: var(--button-background-hover);
-    color: #ffffff;
-    border-color: var(--button-background-hover);
+  background-color: var(--button-background-hover, #007bff);
+  color: #fff;
+  border-color: var(--button-background-hover, #007bff);
 }
 
+/* Focus State */
 .pagination-button:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
 }
 
 .edit {
