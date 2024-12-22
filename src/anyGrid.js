@@ -1,5 +1,5 @@
 class AnyGrid {
-  constructor(data, columns,options = {}) {
+  constructor(data, columns, options = {}) {
     this.data = data;
     this.totalRecords = data.length;
     this.columns = columns;
@@ -187,7 +187,7 @@ if (this.features.pagination) {
     // Render actions for the last column (only if actions are enabled)
     if (this.features.actions) {
       const actionColumn = this.columns.find(col => col.actions);
-      if (actionColumn && this.features.renderActionsInRows) {
+      if (actionColumn) {
         actionColumn.actions.forEach((action) => {
           const actionCell = document.createElement('td');
           const actionLink = document.createElement('a');

@@ -80,11 +80,10 @@ const features = {
   //sort: false,
   //actions: false,
   //pagination: false,
-  itemsPerPage: false,
+  //itemsPerPage: false,
   //dynamicHeaders: false,
-  renderActionsInRows: true,
-  initialItemsPerPage: 10,
-  gridContainerId: 'anygrid'
+  initialItemsPerPage: 30,
+  //gridContainerId: 'anygrid'
 }
 
 const dataGrid = new AnyGrid(data, columns, features);
