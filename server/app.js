@@ -75,7 +75,19 @@ const data = [
 ];
 
 
-const dataGrid = new AnyGrid(data, columns, 5);
+const features = {
+  search: false,
+  sort: false,
+  actions: false,
+  pagination: false,
+  itemsPerPage: false,
+  dynamicHeaders: false,
+  renderActionsInRows: true,
+  initialItemsPerPage: 10,
+  gridContainerId: 'anygrid'
+}
+
+const dataGrid = new AnyGrid(data, columns, features);
 
 
 /// SECOND DATA GRID
@@ -124,5 +136,5 @@ const carsColumns = [
   ];
 
 
-const carsGrid = new AnyGrid(carsData, carsColumns, 5, 'carsTable'); 
+//const carsGrid = new AnyGrid(carsData, carsColumns, 5, 'carsTable'); 
 

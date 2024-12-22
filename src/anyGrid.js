@@ -1,8 +1,8 @@
 class AnyGrid {
-  constructor(data, columns, initialItemsPerPage, gridcontainerid, options = {}) {
+  constructor(data, columns,options = {}) {
     this.data = data;
     this.columns = columns;
-    this.itemsPerPage = initialItemsPerPage;
+    this.itemsPerPage = options.initialItemsPerPage || 10;
     this.currentPage = 1;
     this.tbody = null;
     this.searchInput = null;
@@ -13,17 +13,20 @@ class AnyGrid {
     this.paginationContainerId = this.generateUniqueId('anygrid-pagination');
     this.searchInputId = this.generateUniqueId('search-input');
     this.itemsPerPageId = this.generateUniqueId('items-per-page');
-    this.gridContainerId = gridcontainerid || 'anygrid';
+    this.gridContainerId = options.gridContainerId || 'anygrid';
+
+
+    
 
     // Feature Flags (defaulting to true for all)
     this.features = {
-      search: options.search || false,
-      sort: options.sort || false,
-      actions: options.actions || false,
-      pagination: options.pagination || false,
-      itemsPerPage: options.itemsPerPage || false,
-      dynamicHeaders: options.dynamicHeaders || false,
-      renderActionsInRows: options.renderActionsInRows || false
+      search: options.search || true,
+      sort: options.sort || true,
+      actions: options.actions || true,
+      pagination: options.pagination || true,
+      itemsPerPage: options.itemsPerPage || true,
+      dynamicHeaders: options.dynamicHeaders || true,
+      renderActionsInRows: options.renderActionsInRows || true
     };
 
     // Initialize the data grid
