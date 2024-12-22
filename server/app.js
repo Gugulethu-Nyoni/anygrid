@@ -74,10 +74,10 @@ const data = [
   },
 ];
 
-
+// diable default features and add options 
 const features = {
   //search: false,
-  sort: false,
+  //sort: false,
   actions: false,
   pagination: false,
   itemsPerPage: false,
