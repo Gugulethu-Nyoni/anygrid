@@ -1,0 +1,5 @@
+{
+  "imports": {
+    "anygridjs": "https://unpkg.com/anygridjs@1.0.8/anyGrid.umd.js"
+  }
+}

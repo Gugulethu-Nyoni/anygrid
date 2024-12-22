@@ -1,0 +1,20 @@
+{
+  "name": "anygridjs",
+  "version": "1.0.8",
+  "description": "Lightweight, headless, framework agnostic, feature rich, paginated, sortable, searchable data tables in plain js. Open-source & MIT licensed.",
+  "type": "module",
+  "exports": {
+    ".": "./anyGrid.mjs"
+  },
+  "module": "./anyGrid.mjs",
+  "unpkg": "./anyGrid.umd.js",
+  "main": "./anyGrid.cjs.js",
+  "browser": "./anyGrid.global.js",
+  "author": "Gugulethu Nyoni",
+  "files": [
+    "anyGrid.cjs.js",
+    "anyGrid.mjs",
+    "anyGrid.umd.js",
+    "anyGrid.global.js"
+  ]
+}
