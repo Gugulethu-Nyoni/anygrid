@@ -79,7 +79,7 @@ const features = {
   //search: false,
   //sort: false,
   //actions: false,
-  pagination: false,
+  //pagination: false,
   itemsPerPage: false,
   //dynamicHeaders: false,
   renderActionsInRows: true,

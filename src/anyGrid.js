@@ -1,6 +1,7 @@
 class AnyGrid {
   constructor(data, columns,options = {}) {
     this.data = data;
+    this.totalRecords = data.length;
     this.columns = columns;
     this.itemsPerPage = options.initialItemsPerPage || 10;
     this.currentPage = 1;
@@ -136,8 +137,27 @@ renderData() {
   }
 
   // Render rows of data
+
+  /*
   const startIndex = (this.currentPage - 1) * this.itemsPerPage;
   const endIndex = Math.min(this.currentPage * this.itemsPerPage, this.filteredData.length);
+  */
+
+// UPDATE THIS TO ONLY DISPLAY items per page only if pagination is set - else we display all records in one page
+
+  // Render rows of data
+let startIndex, endIndex;
+
+if (this.features.pagination) {
+    // Calculate indices for paginated view
+    startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    endIndex = Math.min(this.currentPage * this.itemsPerPage, this.filteredData.length);
+} else {
+    // Show all records if pagination is disabled
+    startIndex = 0;
+    endIndex = this.totalRecords;
+}
+
 
   this.filteredData.slice(startIndex, endIndex).forEach((row) => {
     const tr = document.createElement('tr');
