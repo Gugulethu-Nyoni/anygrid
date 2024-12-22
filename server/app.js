@@ -76,7 +76,7 @@ const data = [
 
 
 const features = {
-  search: false,
+  //search: false,
   sort: false,
   actions: false,
   pagination: false,

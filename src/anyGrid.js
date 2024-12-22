@@ -16,18 +16,19 @@ class AnyGrid {
     this.gridContainerId = options.gridContainerId || 'anygrid';
 
 
-    
-
-    // Feature Flags (defaulting to true for all)
-    this.features = {
-      search: options.search || true,
-      sort: options.sort || true,
-      actions: options.actions || true,
-      pagination: options.pagination || true,
-      itemsPerPage: options.itemsPerPage || true,
-      dynamicHeaders: options.dynamicHeaders || true,
-      renderActionsInRows: options.renderActionsInRows || true
+    // AnyGrid Default Settings
+    const defaultFeatures = {
+      search: true,
+      sort: true,
+      actions: true,
+      pagination: true,
+      itemsPerPage: true,
+      dynamicHeaders: true,
+      renderActionsInRows: true
     };
+
+   // Merging user defined features with defaults
+    this.features = { ...defaultFeatures, ...options }; 
 
     // Initialize the data grid
     this.initializeDataGrid();
