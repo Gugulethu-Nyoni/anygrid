@@ -74,21 +74,26 @@ const data = [
   },
 ];
 
-// diable default features and add options 
+
+
+// disable default features and add available options 
+
+
 const features = {
-  //search: false,
-  //sort: false,
-  //actions: false,
-  //pagination: false,
-  //itemsPerPage: false,
-  //dynamicHeaders: false,
-  initialItemsPerPage: 30,
-  //csvExport: true,
-  //excelExport: true,
-  //gridContainerId: 'anygrid'
-}
+  /*search: false,
+  sort: false,
+  actions: false,
+  pagination: false,
+  itemsPerPage: false,
+  dynamicHeaders: false,
+  initialItemsPerPage: 30,*/
+  csvExport: true,
+  excelExport: true,
+  }
 
 const dataGrid = new AnyGrid(data, columns, features);
+
+
 
 
 /// SECOND DATA GRID
@@ -139,8 +144,8 @@ const carsColumns = [
 const carTableFeatures = {
 
 gridContainerId: 'carsTable',
-//csvExport: true,
-//excelExport: true
+csvExport: true,
+excelExport: true
 
 
 }

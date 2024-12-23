@@ -237,6 +237,7 @@ select.items-per-page {
 @media only screen and (max-width: 700px) {
     .anygrid-table {
         border: 0;
+        display: block; /* Allows the table to behave more flexibly on smaller screens */
     }
 
     .anygrid-table th,
@@ -244,21 +245,35 @@ select.items-per-page {
         border: 0;
         border-bottom: 1px solid var(--border-color);
         padding: 5px;
+        display: block;
+        width: 100%;
     }
 
     .anygrid-table th {
-        display: none;
+        display: block;
+        background-color: var(--input-background);
+    }
+
+    .anygrid-table tr {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
     }
 
     .anygrid-table tr td:first-child {
-        width: 40%;
         font-weight: bold;
     }
 
     .anygrid-table tr td:last-child {
-        width: 60%;
+        margin-top: 5px;
+    }
+
+    .anygrid-table tr td {
+        text-align: left;
+        padding-left: 30px; /* Indentation for better structure */
     }
 }
+
 
 /* Pagination Wrapper */
 .pagination-wrapper {
