@@ -83,6 +83,7 @@ const features = {
   //itemsPerPage: false,
   //dynamicHeaders: false,
   initialItemsPerPage: 30,
+  csvExport: true
   //gridContainerId: 'anygrid'
 }
 
@@ -134,6 +135,12 @@ const carsColumns = [
 
   ];
 
+const carTableFeatures = {
 
-//const carsGrid = new AnyGrid(carsData, carsColumns, 5, 'carsTable'); 
+gridContainerId: 'carsTable'
+
+
+}
+
+const carsGrid = new AnyGrid(carsData, carsColumns, carTableFeatures); 
 

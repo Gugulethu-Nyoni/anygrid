@@ -174,6 +174,41 @@ input.anygrid-search-input::placeholder {
     opacity: 1;
 }
 
+
+
+/* CSV Export Button */
+.csv-export-button {
+    background-color: var(--button-background);
+    color: var(--text-light);
+    border: 1px solid var(--border-color);
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.csv-export-button:hover {
+    background-color: var(--button-background-hover);
+    border-color: var(--text-light);
+}
+
+.csv-export-button:disabled {
+    background-color: var(--input-background-disabled);
+    color: var(--label-color);
+    cursor: not-allowed;
+    border-color: var(--border-color);
+}
+
+.csv-export-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Example for focus effect */
+}
+
+
+
+
 select.items-per-page {
     max-width: 150px;
 }

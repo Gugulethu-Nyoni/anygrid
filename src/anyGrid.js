@@ -34,7 +34,7 @@ class AnyGrid {
     // Initialize the data grid
     this.initializeDataGrid();
     
-    alert(this.features.search);
+    //console.log(this.features.search);
 
     // Set up search input (only if search is enabled)
     if (this.features.search) {
@@ -60,10 +60,16 @@ class AnyGrid {
         <option value="${option}" ${option === this.itemsPerPage ? 'selected' : ''}>${option}</option>
       `).join('') : '';
 
+      // Add a CSV export button if csvExport is enabled
+    const exportButtonHTML = this.features.csvExport ? `
+      <button id="export-csv" class="anygrid-export-csv">Export CSV</button>
+    ` : '';
+
       const htmlContent = `
         <div class="search-container"> 
           ${this.features.search ? `<input type="text" id="${this.searchInputId}" class="anygrid-search-input" placeholder="Search...">` : ''}
           ${this.features.itemsPerPage ? `<select id="${this.itemsPerPageId}" class="items-per-page">${selectOptions}</select>` : ''}
+          ${exportButtonHTML}
         </div>
         
         <table class="anygrid-table" id="${this.dataTableId}">
@@ -76,6 +82,13 @@ class AnyGrid {
       `;
 
       dataGrid.insertAdjacentHTML('afterbegin', htmlContent);
+
+      // Bind the CSV export button click event
+    if (this.features.csvExport) {
+      const exportButton = document.getElementById('export-csv');
+      exportButton.addEventListener('click', this.exportToCSV.bind(this));
+    }
+
 
       // Set up event listeners for items per page and search input (only if those features are enabled)
       if (this.features.itemsPerPage) {
@@ -320,6 +333,34 @@ searchTable() {
   this.renderData();
 }
 
+
+
+/* PREMIUM FEATURES BLOCK */
+
+exportToCSV() {
+  if (this.features.csvExport) {
+    const headers = this.columns.map(col => col.label || col.header).join(',');
+    const rows = this.filteredData.map(row => {
+      return this.columns.map(col => {
+        let value = col.joinedColumns ? col.joinedColumns.map(c => row[c]).join(' ') : row[col.name];
+        return `"${String(value).replace(/"/g, '""')}"`; // Escape quotes
+      }).join(',');
+    }).join('\n');
+
+    const csvContent = `data:text/csv;charset=utf-8,${headers}\n${rows}`;
+
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement('a');
+    link.setAttribute('href', encodedUri);
+    link.setAttribute('download', 'data.csv');
+    link.click();
+  }
+}
+
+
+
+
+/* END PREMIUM FEATURES BLOCK */
   
 }
 
