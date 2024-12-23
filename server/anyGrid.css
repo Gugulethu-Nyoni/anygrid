@@ -137,13 +137,36 @@ a {
 }
 
 
+
+/* TOP ACTIONS CSS SEARCH, ITEMS PER PAGE, CSV AND EXCEL EXPORT */
+
 .search-container {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 0.5em; 
+    margin-bottom: 0.5em;
+    flex-wrap: wrap; /* Allow wrapping for mobile responsiveness */
 }
 
+/* For mobile screens */
+@media (max-width: 700px) {
+    .search-container {
+        flex-direction: column; /* Stack elements vertically on mobile */
+        gap: 15px; /* Increased gap for better spacing */
+    }
+
+    input.anygrid-search-input, 
+    select.items-per-page,
+    .csv-export-button,
+    .excel-export-button {
+        width: 100%; /* Make elements take full width */
+    }
+
+    .csv-export-button,
+    .excel-export-button {
+        padding: 10px 0; /* Adjust button padding for full width */
+    }
+}
 
 input.anygrid-search-input, 
 select.items-per-page {
@@ -174,6 +197,24 @@ input.anygrid-search-input::placeholder {
     opacity: 1;
 }
 
+input.anygrid-search-input {
+    color: var(--text-color);
+}
+
+input.anygrid-search-input::placeholder {
+    color: var(--label-color);
+}
+
+select.items-per-page {
+    color: var(--text-color);
+    max-width: 150px;
+}
+
+select.items-per-page:focus {
+    border-color: var(--button-background);
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
 
 
 /* CSV Export Button */
@@ -207,30 +248,49 @@ input.anygrid-search-input::placeholder {
 }
 
 
-
-
-select.items-per-page {
-    max-width: 150px;
+/* EXCEL Export Button */
+.excel-export-button {
+    background-color: var(--button-background);
+    color: var(--text-light);
+    border: 1px solid var(--border-color);
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-select.items-per-page:focus {
-    border-color: var(--button-background);
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+.excel-export-button:hover {
+    background-color: var(--button-background-hover);
+    border-color: var(--text-light);
 }
 
-/* Ensure good contrast in dark theme */
-input.anygrid-search-input {
-    color: var(--text-color);
-}
-
-input.anygrid-search-input::placeholder {
+.excel-export-button:disabled {
+    background-color: var(--input-background-disabled);
     color: var(--label-color);
+    cursor: not-allowed;
+    border-color: var(--border-color);
 }
 
-select.items-per-page {
-    color: var(--text-color);
+.excel-export-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Example for focus effect */
 }
+
+
+/* Full Width for Table Rows on Mobile */
+@media (max-width: 700px) {
+    .anygrid-table {
+        width: 100% !important; /* Ensure table takes full width */
+    }
+
+    .anygrid-table td, .anygrid-table th {
+        display: block; /* Ensure table cells behave as blocks */
+        width: 100%; /* Table cells take up full width */
+    }
+}
+
 
 
 

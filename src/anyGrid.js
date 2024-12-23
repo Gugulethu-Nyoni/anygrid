@@ -68,7 +68,7 @@ class AnyGrid {
 
      // Add a CSV export button if csvExport is enabled
     const exportExcelButtonHTML = this.features.excelExport ? `
-      <button id="export-excel-${this.gridContainerId}" class="anygrid-export-csv">Export EXCEL</button>
+      <button id="export-excel-${this.gridContainerId}" class="anygrid-export-excel">Export EXCEL</button>
     ` : '';
 
       const htmlContent = `
