@@ -337,7 +337,10 @@ searchTable() {
 
 /* PREMIUM FEATURES BLOCK */
 
-exportToCSV() {
+exportToCSV(event) {
+  const tableId = event.target.id.replace('export-csv-', ''); // Extract the dataTableId
+  const tableInstance = this;  // `this` refers to the instance calling the method
+  
   if (this.features.csvExport) {
     const headers = this.columns.map(col => col.label || col.header).join(',');
     const rows = this.filteredData.map(row => {
@@ -348,14 +351,14 @@ exportToCSV() {
     }).join('\n');
 
     const csvContent = `data:text/csv;charset=utf-8,${headers}\n${rows}`;
-
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement('a');
     link.setAttribute('href', encodedUri);
-    link.setAttribute('download', 'data.csv');
+    link.setAttribute('download', `data-${tableId}.csv`);
     link.click();
   }
 }
+
 
 
 
