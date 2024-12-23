@@ -83,7 +83,8 @@ const features = {
   //itemsPerPage: false,
   //dynamicHeaders: false,
   initialItemsPerPage: 30,
-  csvExport: true
+  //csvExport: true,
+  //excelExport: true,
   //gridContainerId: 'anygrid'
 }
 
@@ -138,7 +139,8 @@ const carsColumns = [
 const carTableFeatures = {
 
 gridContainerId: 'carsTable',
-csvExport: true
+//csvExport: true,
+//excelExport: true
 
 
 }
