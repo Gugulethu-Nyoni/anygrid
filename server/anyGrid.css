@@ -153,6 +153,7 @@ a {
     .search-container {
         flex-direction: column; /* Stack elements vertically on mobile */
         gap: 15px; /* Increased gap for better spacing */
+        align-items: stretch; /* Ensure elements take full width */
     }
 
     input.anygrid-search-input, 
@@ -160,14 +161,21 @@ a {
     .csv-export-button,
     .excel-export-button {
         width: 100%; /* Make elements take full width */
+        padding: 10px; /* Adjust padding for better spacing */
     }
 
-    .csv-export-button,
+    .csv-export-button, 
     .excel-export-button {
-        padding: 10px 0; /* Adjust button padding for full width */
+        font-size: 16px; /* Increase font size slightly for readability */
+    }
+
+    input.anygrid-search-input,
+    select.items-per-page {
+        max-width: 100% !important; /* Remove any max-width limits */
     }
 }
 
+/* Standard input and select styles */
 input.anygrid-search-input, 
 select.items-per-page {
     background-color: var(--input-background);
@@ -290,6 +298,9 @@ select.items-per-page:focus {
         width: 100%; /* Table cells take up full width */
     }
 }
+
+/* END OF MOBILE SCREENS CSS */
+
 
 
 
