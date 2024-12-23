@@ -62,7 +62,7 @@ class AnyGrid {
 
       // Add a CSV export button if csvExport is enabled
     const exportButtonHTML = this.features.csvExport ? `
-      <button id="export-csv" class="anygrid-export-csv">Export CSV</button>
+      <button id="export-csv-${this.gridContainerId}" class="anygrid-export-csv">Export CSV</button>
     ` : '';
 
       const htmlContent = `
@@ -85,7 +85,7 @@ class AnyGrid {
 
       // Bind the CSV export button click event
     if (this.features.csvExport) {
-      const exportButton = document.getElementById('export-csv');
+      const exportButton = document.getElementById(`export-csv-${this.gridContainerId}`);
       exportButton.addEventListener('click', this.exportToCSV.bind(this));
     }
 

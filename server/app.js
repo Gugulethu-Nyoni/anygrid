@@ -137,7 +137,8 @@ const carsColumns = [
 
 const carTableFeatures = {
 
-gridContainerId: 'carsTable'
+gridContainerId: 'carsTable',
+csvExport: true
 
 
 }
