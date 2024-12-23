@@ -65,11 +65,17 @@ class AnyGrid {
       <button id="export-csv-${this.gridContainerId}" class="anygrid-export-csv">Export CSV</button>
     ` : '';
 
+
+     // Add a CSV export button if csvExport is enabled
+    const exportExcelButtonHTML = this.features.excelExport ? `
+      <button id="export-excel-${this.gridContainerId}" class="anygrid-export-csv">Export EXCEL</button>
+    ` : '';
+
       const htmlContent = `
         <div class="search-container"> 
           ${this.features.search ? `<input type="text" id="${this.searchInputId}" class="anygrid-search-input" placeholder="Search...">` : ''}
           ${this.features.itemsPerPage ? `<select id="${this.itemsPerPageId}" class="items-per-page">${selectOptions}</select>` : ''}
-          ${exportButtonHTML}
+          ${exportButtonHTML} ${exportExcelButtonHTML}
         </div>
         
         <table class="anygrid-table" id="${this.dataTableId}">
@@ -89,6 +95,11 @@ class AnyGrid {
       exportButton.addEventListener('click', this.exportToCSV.bind(this));
     }
 
+
+ if (this.features.excelExport) {
+      const exportExcelButton = document.getElementById(`export-excel-${this.gridContainerId}`);
+      exportExcelButton.addEventListener('click', this.exportToExcel.bind(this));
+    }
 
       // Set up event listeners for items per page and search input (only if those features are enabled)
       if (this.features.itemsPerPage) {
@@ -360,6 +371,56 @@ exportToCSV(event) {
 }
 
 
+exportToExcel(event) {
+  const tableId = event.target.id.replace('export-excel-', ''); // Extract the dataTableId
+  const tableInstance = this; // `this` refers to the instance calling the method
+
+  if (this.features.excelExport) {
+    // Create Excel XML content
+    let xml = `
+      <xml version="1.0" encoding="UTF-8"?>
+      <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+                xmlns:o="urn:schemas-microsoft-com:office:office"
+                xmlns:x="urn:schemas-microsoft-com:office:excel"
+                xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+                xmlns:html="http://www.w3.org/TR/REC-html40">
+        <Worksheet ss:Name="Sheet1">
+          <Table>
+    `;
+
+    // Add headers
+    xml += '<Row>';
+    this.columns.forEach(col => {
+      xml += `<Cell><Data ss:Type="String">${col.label || col.header}</Data></Cell>`;
+    });
+    xml += '</Row>';
+
+    // Add data rows
+    this.filteredData.forEach(row => {
+      xml += '<Row>';
+      this.columns.forEach(col => {
+        let value = col.joinedColumns ? col.joinedColumns.map(c => row[c]).join(' ') : row[col.name];
+        const cellType = isNaN(value) ? 'String' : 'Number';
+        xml += `<Cell><Data ss:Type="${cellType}">${value}</Data></Cell>`;
+      });
+      xml += '</Row>';
+    });
+
+    xml += `
+          </Table>
+        </Worksheet>
+      </Workbook>
+    `;
+
+    // Create Blob and download
+    const blob = new Blob([xml], { type: 'application/vnd.ms-excel' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', `data-${tableId}.xls`);
+    link.click();
+  }
+}
 
 
 
