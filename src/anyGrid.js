@@ -356,6 +356,104 @@ searchTable() {
 
 
 
+
+applyTheme() {
+
+const themes = {
+  light: {
+    '--background-dark': '#ffffff',
+    '--background-light': '#f9f9f9',
+    '--text-light': '#333333',
+    '--border-color': '#cccccc',
+    '--input-background': '#ffffff',
+    '--input-background-disabled': '#e0e0e0',
+    '--label-color': '#5a2d81',
+    '--radio-checkbox-accent': '#5a2d81',
+    '--button-background': '#fff',
+    '--button-background-hover': '#003d7a',
+    '--edit-background': '#e91e63',
+    '--delete-background': '#dc3545',
+  },
+  dark: {
+    '--background-dark': '#1e1e1e',
+    '--background-light': '#2e2e2e',
+    '--text-light': '#e0e0e0',
+    '--border-color': '#444',
+    '--input-background': '#333',
+    '--input-background-disabled': '#444',
+    '--label-color': '#b0b0b0',
+    '--radio-checkbox-accent': '#b0b0b0',
+    '--button-background': '#b0b0b0',
+    '--button-background-hover': '#9e9e9e',
+    '--edit-background': '#0d6efd',
+    '--delete-background': '#dc3545',
+  },
+  pink: {
+    '--background-dark': '#2c2c2c',
+    '--background-light': '#3d3d3d',
+    '--text-light': '#f1f1f1',
+    '--border-color': '#555',
+    '--input-background': '#444',
+    '--input-background-disabled': '#666',
+    '--label-color': '#ff4081',
+    '--radio-checkbox-accent': '#ff4081',
+    '--button-background': '#ff4081',
+    '--button-background-hover': '#e91e63',
+    '--edit-background': '#e91e63',
+    '--delete-background': '#f44336',
+  },
+  indigo: {
+    '--background-dark': '#2c2c2c',
+    '--background-light': '#3d3d3d',
+    '--text-light': '#e0e0e0',
+    '--border-color': '#444',
+    '--input-background': '#333',
+    '--input-background-disabled': '#555',
+    '--label-color': '#3f51b5',
+    '--radio-checkbox-accent': '#3f51b5',
+    '--button-background': '#3f51b5',
+    '--button-background-hover': '#303f9f',
+    '--edit-background': '#3f51b5',
+    '--delete-background': '#f44336',
+  },
+  blue: {
+    '--background-dark': '#0a0a0a',
+    '--background-light': '#1a1a1a',
+    '--text-light': '#e0e0e0',
+    '--border-color': '#333',
+    '--input-background': '#222',
+    '--input-background-disabled': '#444',
+    '--label-color': '#2196f3',
+    '--radio-checkbox-accent': '#2196f3',
+    '--button-background': '#2196f3',
+    '--button-background-hover': '#1976d2',
+    '--edit-background': '#2196f3',
+    '--delete-background': '#f44336',
+  },
+  darkOrange: {
+    '--background-dark': '#121212',
+    '--background-light': '#1e1e1e',
+    '--text-light': '#e0e0e0',
+    '--border-color': '#333',
+    '--input-background': '#333',
+    '--input-background-disabled': '#444',
+    '--label-color': '#ff9800',
+    '--radio-checkbox-accent': '#ff9800',
+    '--button-background': '#ff9800',
+    '--button-background-hover': '#e68900',
+    '--edit-background': '#ff9800',
+    '--delete-background': '#f44336',
+  }
+};
+
+
+
+
+
+  
+}
+
+
 /* PREMIUM FEATURES BLOCK */
 
 exportToCSV(event) {
