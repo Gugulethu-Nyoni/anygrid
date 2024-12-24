@@ -18,6 +18,83 @@
 }
 
 
+
+.light-theme {
+    --light-background-dark: #ffffff;
+    --light-background-light: #f9f9f9;
+    --light-text-light: #333333;
+    --light-border-color: #cccccc;
+    --light-input-background: #ffffff;
+    --light-input-background-disabled: #e0e0e0;
+    --light-label-color: #5a2d81; 
+    --light-radio-checkbox-accent: #5a2d81; 
+    --light-button-background: #fff; 
+    --light-button-background-hover: #003d7a; 
+    --light-edit-background: #e91e63; 
+    --light-delete-background: #dc3545; 
+}
+
+.pink-theme {
+    --pink-background-dark: #2c2c2c;
+    --pink-background-light: #3d3d3d;
+    --pink-text-light: #f1f1f1;
+    --pink-border-color: #555;
+    --pink-input-background: #444;
+    --pink-input-background-disabled: #666;
+    --pink-label-color: #ff4081;
+    --pink-radio-checkbox-accent: #ff4081;
+    --pink-button-background: #ff4081;
+    --pink-button-background-hover: #e91e63;
+    --pink-edit-background: #e91e63;
+    --pink-delete-background: #f44336;
+}
+
+.indigo-theme {
+    --indigo-background-dark: #2c2c2c;
+    --indigo-background-light: #3d3d3d;
+    --indigo-text-light: #e0e0e0;
+    --indigo-border-color: #444;
+    --indigo-input-background: #333;
+    --indigo-input-background-disabled: #555;
+    --indigo-label-color: #3f51b5;
+    --indigo-radio-checkbox-accent: #3f51b5;
+    --indigo-button-background: #3f51b5;
+    --indigo-button-background-hover: #303f9f;
+    --indigo-edit-background: #3f51b5;
+    --indigo-delete-background: #f44336;
+}
+
+.blue-theme {
+    --blue-background-dark: #0a0a0a;
+    --blue-background-light: #1a1a1a;
+    --blue-text-light: #e0e0e0;
+    --blue-border-color: #333;
+    --blue-input-background: #222;
+    --blue-input-background-disabled: #444;
+    --blue-label-color: #2196f3;
+    --blue-radio-checkbox-accent: #2196f3;
+    --blue-button-background: #2196f3;
+    --blue-button-background-hover: #1976d2;
+    --blue-edit-background: #2196f3;
+    --blue-delete-background: #f44336;
+}
+
+.dark-orange-theme {
+    --dark-orange-background-dark: #121212;
+    --dark-orange-background-light: #1e1e1e;
+    --dark-orange-text-light: #e0e0e0;
+    --dark-orange-border-color: #333;
+    --dark-orange-input-background: #333;
+    --dark-orange-input-background-disabled: #444;
+    --dark-orange-label-color: #ff9800;
+    --dark-orange-radio-checkbox-accent: #ff9800;
+    --dark-orange-button-background: #ff9800;
+    --dark-orange-button-background-hover: #e68900;
+    --dark-orange-edit-background: #ff9800;
+    --dark-orange-delete-background: #f44336;
+}
+
+
 .anygrid-table {
     width: 100%;
     border-collapse: collapse;
