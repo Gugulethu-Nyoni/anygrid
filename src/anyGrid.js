@@ -87,7 +87,17 @@ class AnyGrid {
         ${this.features.pagination ? `<div id="${this.paginationContainerId}" class="anygrid-pagination"></div>` : ''}
       `;
 
-      dataGrid.insertAdjacentHTML('afterbegin', htmlContent);
+      //dataGrid.insertAdjacentHTML('afterbegin', htmlContent);
+
+      // Create a template
+        const template = document.createElement('template');
+        template.innerHTML = htmlContent.trim();
+
+        // Clone the template content
+        const clone = template.content.cloneNode(true);
+
+        // Append the cloned content to the data grid container
+        dataGrid.appendChild(clone);
 
       // Bind the CSV export button click event
     if (this.features.csvExport) {
