@@ -25,11 +25,16 @@ class AnyGrid {
       pagination: true,
       itemsPerPage: true,
       dynamicHeaders: true,
-      renderActionsInRows: true
+      renderActionsInRows: true,
+      theme:'dark'
     };
 
    // Merging user defined features with defaults
     this.features = { ...defaultFeatures, ...options }; 
+
+    if (this.features.theme) {
+      this.applyTheme(this.features.theme);
+    }
 
     // Initialize the data grid
     this.initializeDataGrid();
@@ -357,7 +362,7 @@ searchTable() {
 
 
 
-applyTheme() {
+applyTheme(themeName) {
 
 const themes = {
   light: {
@@ -447,10 +452,18 @@ const themes = {
 };
 
 
+const theme = themes[themeName];
+  const root = document.documentElement;
+
+  // Apply each CSS variable for the selected theme
+  for (let [key, value] of Object.entries(theme)) {
+    root.style.setProperty(key, value);
+  }
 
 
 
-  
+
+
 }
 
 
