@@ -147,7 +147,7 @@ const carTableFeatures = {
 gridContainerId: 'carsTable',
 csvExport: true,
 excelExport: true,
-theme: 'light'
+theme: 'blue'
 
 
 }

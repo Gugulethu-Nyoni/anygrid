@@ -361,64 +361,80 @@ searchTable() {
 
 
 
-
 applyTheme(theme, gridContainerId) {
-  // Get the link element with the specific identifier
   const stylesheet = document.querySelector('link[anygrid-style]');
-
+  
   if (!stylesheet) {
     console.error("Stylesheet with 'anygrid-style' not found!");
     return;
   }
 
-  // Fetch the stylesheet content
   fetch(stylesheet.href)
     .then(response => response.text())
     .then(cssText => {
-      // Use a regex to extract the CSS rules for the specified theme
       const themeRules = cssText.match(new RegExp(`\\.${theme}-theme\\s*{([^}]*)}`, 'i'));
 
-      if (themeRules) {
-        const dynamicMapping = {
-          [`--${theme}-background-dark`]: '--background-dark',
-          [`--${theme}-background-light`]: '--background-light',
-          [`--${theme}-text-light`]: '--text-light',
-          [`--${theme}-border-color`]: '--border-color',
-          [`--${theme}-input-background`]: '--input-background',
-          [`--${theme}-input-background-disabled`]: '--input-background-disabled',
-          [`--${theme}-label-color`]: '--label-color',
-          [`--${theme}-radio-checkbox-accent`]: '--radio-checkbox-accent',
-          [`--${theme}-button-background`]: '--button-background',
-          [`--${theme}-button-background-hover`]: '--button-background-hover',
-          [`--${theme}-edit-background`]: '--edit-background',
-          [`--${theme}-delete-background`]: '--delete-background',
-        };
-
-        // Extract and process CSS variables from the theme rules
-        const variables = themeRules[1]
-          .trim()
-          .split(';')
-          .filter(rule => rule.includes(':'));
-
-        const rootStyle = document.documentElement.style;
-
-        // Iterate over the variables and map them to the :root variables
-        variables.forEach(rule => {
-          const [varName, varValue] = rule.split(':').map(val => val.trim());
-          const rootVar = dynamicMapping[varName] || varName; // Use the mapped variable or the original
-          rootStyle.setProperty(rootVar, varValue);
-        });
-
-        console.log(`Applied ${theme} theme to grid container: ${gridContainerId}`);
-      } else {
+      if (!themeRules) {
         console.error(`Theme rules for ${theme} not found in the stylesheet.`);
+        return;
+      }
+
+      const dynamicMapping = {
+        [`--${theme}-background-dark`]: '--background-dark',
+        [`--${theme}-background-light`]: '--background-light',
+        [`--${theme}-text-light`]: '--text-light',
+        [`--${theme}-border-color`]: '--border-color',
+        [`--${theme}-input-background`]: '--input-background',
+        [`--${theme}-input-background-disabled`]: '--input-background-disabled',
+        [`--${theme}-label-color`]: '--label-color',
+        [`--${theme}-radio-checkbox-accent`]: '--radio-checkbox-accent',
+        [`--${theme}-button-background`]: '--button-background',
+        [`--${theme}-button-background-hover`]: '--button-background-hover',
+        [`--${theme}-edit-background`]: '--edit-background',
+        [`--${theme}-delete-background`]: '--delete-background',
+      };
+
+      const variables = themeRules[1]
+        .trim()
+        .split(';')
+        .filter(rule => rule.includes(':'));
+
+      const rootStyle = document.documentElement.style;
+
+      // Update :root variables
+      variables.forEach(rule => {
+        const [varName, varValue] = rule.split(':').map(val => val.trim());
+        const rootVar = dynamicMapping[varName] || varName;
+        rootStyle.setProperty(rootVar, varValue);
+      });
+
+      // Clone and insert updated <style> above grid container
+      const gridContainer = document.getElementById(gridContainerId);
+
+      if (gridContainer) {
+        const clonedStyle = document.createElement('style');
+        let updatedCSS = ':root {';
+
+        for (const [key, value] of Object.entries(dynamicMapping)) {
+          const resolvedValue = getComputedStyle(document.documentElement).getPropertyValue(value).trim();
+          if (resolvedValue) {
+            updatedCSS += `\n  ${value}: ${resolvedValue};`;
+          }
+        }
+
+        updatedCSS += '\n}';
+        clonedStyle.textContent = updatedCSS;
+        gridContainer.parentNode.insertBefore(clonedStyle, gridContainer);
+
+        console.log(`Applied ${theme} theme and inserted updated <style> above grid container: ${gridContainerId}`);
+      } else {
+        console.error(`Grid container with ID ${gridContainerId} not found.`);
       }
     })
     .catch(error => {
       console.error('Error loading the stylesheet:', error);
     });
 }
-
 
 
 
