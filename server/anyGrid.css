@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
 
 
- /* Dark Theme */
+ /* Dark Theme
  
 :root {
     --background-dark: #1e1e1e;
@@ -18,9 +18,9 @@
     --delete-background: #dc3545;
 }
 
+*/
 
-
-/* Light Theme 
+/* Light Theme  */
 
 :root {
     --background-dark: #ffffff;
