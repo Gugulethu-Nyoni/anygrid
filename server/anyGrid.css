@@ -16,7 +16,11 @@
     --button-background-hover: #9e9e9e;
     --edit-background: #0d6efd;
     --delete-background: #dc3545;
+    --text-contrast: #ffffff; 
+
 }
+
+
 
 /* Light theme */
 .light-theme {
@@ -28,75 +32,102 @@
     --input-background-disabled: #e0e0e0;
     --label-color: #5a2d81; 
     --radio-checkbox-accent: #5a2d81; 
-    --button-background: #fff; 
-    --button-background-hover: #003d7a; 
+    --button-background: #8a8787; 
+    --button-background-hover: #424141; 
     --edit-background: #e91e63; 
-    --delete-background: #dc3545; 
+    --delete-background: #dc3545;
+    --text-contrast: #ffffff; 
+
 }
 
 /* Pink theme */
 .pink-theme {
-    --background-dark: #2c2c2c;
-    --background-light: #3d3d3d;
-    --text-light: #f1f1f1;
-    --border-color: #555;
-    --input-background: #444;
-    --input-background-disabled: #666;
-    --label-color: #ff4081;
-    --radio-checkbox-accent: #ff4081;
-    --button-background: #ff4081;
-    --button-background-hover: #e91e63;
-    --edit-background: #e91e63;
-    --delete-background: #f44336;
+--background-dark: #fce4ec;
+--background-light: #f8bbd0;
+--text-light: #880e4f;
+--border-color: #f48fb1;
+--input-background: #ffffff;
+--input-background-disabled: #f1f8e9;
+--label-color: #c2185b;
+--radio-checkbox-accent: #c2185b;
+--button-background: #c2185b;
+--button-background-hover: #ad1457;
+--edit-background: #ad1457;
+--delete-background: #d32f2f;
+--text-contrast: #ffffff; 
 }
+
 
 /* Indigo theme */
 .indigo-theme {
-    --background-dark: #2c2c2c;
-    --background-light: #3d3d3d;
-    --text-light: #e0e0e0;
-    --border-color: #444;
-    --input-background: #333;
-    --input-background-disabled: #555;
-    --label-color: #3f51b5;
-    --radio-checkbox-accent: #3f51b5;
-    --button-background: #3f51b5;
-    --button-background-hover: #303f9f;
-    --edit-background: #3f51b5;
-    --delete-background: #f44336;
+--background-dark: #2f3640;
+--background-light: #3b4151;
+--text-light: #f7f7f7;
+--border-color: #434a54;
+--input-background: #2f3640;
+--input-background-disabled: #3b4151;
+--label-color: #8b94b3;
+--radio-checkbox-accent: #8b94b3;
+--button-background: #452b8b;
+--button-background-hover: #3b2f6b;
+--edit-background: #452b8b;
+--delete-background: #e74c3c;
+--text-contrast: #ffffff;
 }
+
 
 /* Blue theme */
 .blue-theme {
-    --background-dark: #0a0a0a;
-    --background-light: #1a1a1a;
-    --text-light: #e0e0e0;
-    --border-color: #333;
-    --input-background: #222;
-    --input-background-disabled: #444;
-    --label-color: #2196f3;
-    --radio-checkbox-accent: #2196f3;
-    --button-background: #2196f3;
-    --button-background-hover: #1976d2;
-    --edit-background: #2196f3;
-    --delete-background: #f44336;
+--background-dark: #87ceeb;
+--background-light: #add8e6;
+--text-light: #1a237e;
+--border-color: #87ceeb;
+--input-background: #f7f7f7;
+--input-background-disabled: #e5e5e5;
+--label-color: #2196f3;
+--radio-checkbox-accent: #2196f3;
+--button-background: #03a9f4;
+--button-background-hover: #039be5;
+--edit-background: #03a9f4;
+--delete-background: #e74c3c;
+--text-contrast: #ffffff;
 }
 
 /* Dark Orange theme */
 .dark-orange-theme {
-    --background-dark: #121212;
-    --background-light: #1e1e1e;
-    --text-light: #e0e0e0;
-    --border-color: #333;
-    --input-background: #333;
-    --input-background-disabled: #444;
-    --label-color: #ff9800;
-    --radio-checkbox-accent: #ff9800;
-    --button-background: #ff9800;
-    --button-background-hover: #e68900;
-    --edit-background: #ff9800;
-    --delete-background: #f44336;
+--background-dark: #2f2f2f;
+--background-light: #3c3c3c;
+--text-light: #ffffff;
+--border-color: #666;
+--input-background: #3c3c3c;
+--input-background-disabled: #4c4c4c;
+--label-color: #ffa07a;
+--radio-checkbox-accent: #ffa07a;
+--button-background: #ff9900;
+--button-background-hover: #e68f00;
+--edit-background: #ff9900;
+--delete-background: #e74c3c;
+--text-contrast: #000000;
 }
+
+.green-theme {
+--background-dark: #f2f9f2;
+--background-light: #e5e5e5; 
+--text-light: #2f4f2f;
+--border-color: #c6efce;
+--input-background: #f7fff7;
+--input-background-disabled: #e5e5e5;
+--label-color: #87b087;
+--radio-checkbox-accent: #87b087;
+--button-background: #004d00;
+--button-background-hover: #003300;
+--button-text-color: #ffffff;
+--edit-background: #004d00;
+--delete-background: #990000;
+--text-contrast: #ffffff;
+}
+
+
 
 
 
@@ -175,7 +206,7 @@ select.items-per-page {
     background-color: var(--input-background);
     border: 1px solid var(--border-color);
     border-radius: 5px;
-    color: var(--label-color);
+    color: var(--text-contrast);
     font-size: 14px;
     padding: 6px 12px;
     box-sizing: border-box;
@@ -222,7 +253,7 @@ select.items-per-page:focus {
 /* CSV Export Button */
 .anygrid-export-csv {
  background-color: var(--button-background);
-    color: var(--text-light);
+    color: var(--text-contrast);
     border: 1px solid var(--border-color);
     padding: 5px 5px 5px 5px; /* Increased padding for icon */
     font-size: 14px;
@@ -261,7 +292,7 @@ select.items-per-page:focus {
 /* EXCEL Export Button */
 .anygrid-export-excel {
     background-color: var(--button-background);
-    color: var(--text-light);
+    color: var(--text-contrast);
     border: 1px solid var(--border-color);
     padding: 5px 5px 5px 5px; /* Increased padding for icon */
     font-size: 14px;
@@ -326,6 +357,10 @@ select.items-per-page:focus {
   justify-content: space-between;
   margin-top: 0.5em;
   text-align: center;
+  background-color: var(--background-dark);
+  margin-top: 0px!important;
+  padding: 5px;
+  
 }
 
 /* Pagination Info */
@@ -347,7 +382,7 @@ select.items-per-page:focus {
   background-color: var(--button-background, #f9f9f9);
   border: 1px solid var(--border-color, #ccc);
   border-radius: 5px;
-  color: var(--text-light, #000);
+  color: var(--text-contrast, #fff);
   cursor: pointer;
   display: inline-block;
   font-size: 14px;
@@ -361,7 +396,7 @@ select.items-per-page:focus {
 .pagination-button.active,
 .pagination-button:hover {
   background-color: var(--button-background-hover, #007bff);
-  color: #fff;
+  color: var(--text-contrast);
   border-color: var(--button-background-hover, #007bff);
 }
 
@@ -372,10 +407,10 @@ select.items-per-page:focus {
 }
 
 .edit {
-    background-color: var(--edit-background);
+    background-color: var(--button-background);
     border-radius: 5px;
     padding: 0.25em 0.5em;
-    color: #fff;
+    color: var(--text-contrast);
     text-decoration: none;
     font-size: 10px;
     display: inline-block;
@@ -383,15 +418,26 @@ select.items-per-page:focus {
 }
 
 .delete {
-    background-color: var(--delete-background);
+    background-color: var(--button-background);
     border-radius: 5px;
     padding: 0.25em 0.5em;
-    color: #fff;
+    color: var(--text-contrast);
     text-decoration: none;
     font-size: 10px;
     display: inline-block;
     text-align: center;
 }
+
+.edit::before {
+    content: '\270E';
+    margin-right: 0.5em;
+}
+
+.delete::before {
+    content: '\1F5D1';
+    margin-right: 0.5em;
+}
+
 
 
 .anygrid-column-sortable::after {

@@ -32,7 +32,7 @@ class AnyGrid {
     this.features = { ...defaultFeatures, ...options }; 
 
     if (this.features.theme) {
-      alert(this.features.theme);
+      //alert(this.features.theme);
       this.applyTheme(this.features.theme, this.gridContainerId);
     }
 
