@@ -372,6 +372,7 @@ applyTheme(theme, gridContainerId) {
   fetch(stylesheet.href)
     .then(response => response.text())
     .then(cssText => {
+      // Extract theme-specific CSS rules
       const themeRules = cssText.match(new RegExp(`\\.${theme}-theme\\s*{([^}]*)}`, 'i'));
 
       if (!themeRules) {
@@ -379,54 +380,28 @@ applyTheme(theme, gridContainerId) {
         return;
       }
 
-      const dynamicMapping = {
-        [`--${theme}-background-dark`]: '--background-dark',
-        [`--${theme}-background-light`]: '--background-light',
-        [`--${theme}-text-light`]: '--text-light',
-        [`--${theme}-border-color`]: '--border-color',
-        [`--${theme}-input-background`]: '--input-background',
-        [`--${theme}-input-background-disabled`]: '--input-background-disabled',
-        [`--${theme}-label-color`]: '--label-color',
-        [`--${theme}-radio-checkbox-accent`]: '--radio-checkbox-accent',
-        [`--${theme}-button-background`]: '--button-background',
-        [`--${theme}-button-background-hover`]: '--button-background-hover',
-        [`--${theme}-edit-background`]: '--edit-background',
-        [`--${theme}-delete-background`]: '--delete-background',
-      };
+      // Extract CSS rules for the theme
+      const themeCSS = themeRules[1].trim();
 
-      const variables = themeRules[1]
-        .trim()
-        .split(';')
-        .filter(rule => rule.includes(':'));
-
-      const rootStyle = document.documentElement.style;
-
-      // Update :root variables
-      variables.forEach(rule => {
-        const [varName, varValue] = rule.split(':').map(val => val.trim());
-        const rootVar = dynamicMapping[varName] || varName;
-        rootStyle.setProperty(rootVar, varValue);
-      });
-
-      // Clone and insert updated <style> above grid container
+      // Find the grid container element
       const gridContainer = document.getElementById(gridContainerId);
 
       if (gridContainer) {
+        // Append the theme class to the grid container
+        gridContainer.classList.add(`${theme}-theme`);
+
+        // Create a <style> tag with the extracted theme styles
         const clonedStyle = document.createElement('style');
-        let updatedCSS = ':root {';
-
-        for (const [key, value] of Object.entries(dynamicMapping)) {
-          const resolvedValue = getComputedStyle(document.documentElement).getPropertyValue(value).trim();
-          if (resolvedValue) {
-            updatedCSS += `\n  ${value}: ${resolvedValue};`;
+        clonedStyle.textContent = `
+          #${gridContainerId} {
+            ${themeCSS}
           }
-        }
+        `;
 
-        updatedCSS += '\n}';
-        clonedStyle.textContent = updatedCSS;
+        // Insert the <style> tag above the grid container
         gridContainer.parentNode.insertBefore(clonedStyle, gridContainer);
 
-        console.log(`Applied ${theme} theme and inserted updated <style> above grid container: ${gridContainerId}`);
+        console.log(`Applied ${theme} theme to grid container: ${gridContainerId}`);
       } else {
         console.error(`Grid container with ID ${gridContainerId} not found.`);
       }
@@ -435,7 +410,6 @@ applyTheme(theme, gridContainerId) {
       console.error('Error loading the stylesheet:', error);
     });
 }
-
 
 
 
