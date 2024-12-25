@@ -154,6 +154,11 @@
 .anygrid-table th {
     background-color: var(--input-background);
     color: var(--text-light);
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 0;
+    z-index: 10;
+
 }
 
 a {

@@ -76,17 +76,16 @@ const data = [
 
 
 
-// disable default features and add available options 
-
+//Disable default features and add any other available options 
 
 const features = {
-  /*search: false,
+  search: false,
   sort: false,
   actions: false,
   pagination: false,
   itemsPerPage: false,
   dynamicHeaders: false,
-  initialItemsPerPage: 30,*/
+  initialItemsPerPage: 30,
   csvExport: true,
   excelExport: true,
   theme: 'green'
