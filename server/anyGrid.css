@@ -162,8 +162,8 @@
 }
 
 a {
-    color: inherit; /* Use the text color of the parent element */
-    text-decoration: none; /* Remove underline */
+    color: inherit; 
+    text-decoration: none; 
 }
 
 
