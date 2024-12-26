@@ -59,6 +59,22 @@ There are three ways to use AnyGrid in your html.
 <div id="anygrid"></div>
 ```
 
+You can also use any id that you prefer e.g. 
+
+```html
+<div id="users"></div>
+```
+
+In this case, you will have to define the target container id in the features object as shown below:
+
+```javascript
+const features = {
+gridContainerId: 'users'
+}
+```
+
+If the id of your target grid container is 'anygrid' then you do not need to define the gridConatinerId in the features object. 
+
 2. Add your js mark up in the html just before the ```html </body> ``` tag:
 
 ```html
@@ -79,26 +95,27 @@ const data = [
 ];
 
   const columns = [
-  { name: 'id', header: 'ID' },
-  { name: 'fullName', header: 'Full Name', joinedColumns: ['name', 'surname'] },
-  { name: 'age', header: 'Age' },
-  { name: 'role', header: 'Role' },
-  { name: 'salary', header: 'Salary',
+  { name: 'id', header: 'ID', render: (value, row) => `<a href="/user/profile/${row.id}">${row.id}</a>`, sortable: true },
+  { name: 'fullName', header: 'FULL NAME', joinedColumns: ['name', 'surname'] },
+  { name: 'age', header: 'AGE', sortable: true },
+  { name: 'role', header: 'ROLE' },
+  { name: 'salary', header: 'SALARY', render: '<strong>R{salary}</strong>', sortable: true,
+
     actions: [
       {
-        label: 'Edit',
+        label: 'EDIT',
         url: 'edit/{id}',
         class: 'edit',
         id: 'edit-{id}',
       },
       {
-        label: 'Delete',
+        label: 'DELETE',
         url: 'delete/{id}',
         class: 'delete',
         id: 'delete-{id}',
         confirm: true,
-      },
-    ],
+      }, 
+    ], 
   },
 ];
 
@@ -251,6 +268,9 @@ const columns = [
 
 const dataGrid = new anyGrid(data, columns, 10);
 ```
+
+
+
 
 # Styling (Optional)
 
