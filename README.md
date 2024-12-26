@@ -1,7 +1,7 @@
   # AnyGridJS
 
 
-<img src="https://github.com/thincmedia/anyGridJs/blob/main/images/anyGridJs_Example.png" alt="anyGridJs Example">
+<img src="https://github.com/thincmedia/anyGridJs/blob/main/images/anygridjs-datagrid-js-datatable-example.png" alt="anyGridJs Example">
 
 AnyGridJS is a Lightweight, feature-rich JS library for dynamic data tables with paginated, sortable, searchable, column joining, action handles &amp; URL definition. The library works with Semantq JS framework and vanilla JS. AnyGrid is flexible, customizable, responsive &amp; performant. Open-source &amp; MIT licensed.
 
