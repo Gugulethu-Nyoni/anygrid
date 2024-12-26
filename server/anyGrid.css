@@ -12,9 +12,9 @@
     --input-background-disabled: #444;
     --label-color: #b0b0b0;
     --radio-checkbox-accent: #b0b0b0;
-    --button-background: #b0b0b0;
+    --button-background: #3e3e40;
     --button-background-hover: #9e9e9e;
-    --edit-background: #0d6efd;
+    --edit-background:  #0d6efd;
     --delete-background: #dc3545;
     --text-contrast: #ffffff; 
 
@@ -412,7 +412,7 @@ select.items-per-page:focus {
 }
 
 .edit {
-    background-color: var(--button-background);
+    background-color: var(--edit-background);
     border-radius: 5px;
     padding: 0.25em 0.5em;
     color: var(--text-contrast);
@@ -423,7 +423,7 @@ select.items-per-page:focus {
 }
 
 .delete {
-    background-color: var(--button-background);
+    background-color: var(--delete-background);
     border-radius: 5px;
     padding: 0.25em 0.5em;
     color: var(--text-contrast);

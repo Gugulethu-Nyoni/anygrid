@@ -311,6 +311,14 @@ theme: 'pink';
 }
 ```
 
+# Block Table Style Mobile displays
+
+AnyGridJS styles and themes come with block table style for mobile screen displays. 
+
+<img src="https://github.com/thincmedia/anyGridJs/blob/main/images/mobile-friendly-js-datagrid-anygrid.png" alt="Mobile Friedly Datagrid Displays">
+
+
+
 # Using Custom Containers (useful for multiple data grids)
 
 By default, AnyGrid will place your data grid in the element with the id: anygrid eg:
