@@ -15,30 +15,30 @@ AnyGridJS is a Lightweight, feature-rich JS library for dynamic data tables with
   - URL Definition: Define URLs for data linking and seamless navigation
   - Framework Agnostic: Works with any JavaScript framework (React, Angular, Vue, Svelte etc.) or vanilla JS
 
-
 ### Data Management
 
-    - Pagination: Effortlessly navigate large datasets with customizable page sizes
-    - Sorting: Enable users to sort data by specific columns
-    - Searching: Include a search bar for quick data filtering
-    -  Column Joining: Combine data from multiple columns for enhanced visualization
+  - Pagination: Effortlessly navigate large datasets with customizable page sizes
+  - Sorting: Enable users to sort data by specific columns
+  - Searching: Include a search bar for quick data filtering
+  - Column Joining: Combine data from multiple columns for enhanced visualization
 
 ### Customization
 
-    - Action Handles: Add custom buttons for interactive functionality
-    - URL Definition: Define URLs for data linking and seamless navigation
-    - Define Theme via JS: Available themes include default (dark), light, blue, pink, indigo, dark-orange, and green
+  - Action Handles: Add custom buttons for interactive functionality
+  - URL Definition: Define URLs for data linking and seamless navigation
+  - Define Theme via JS: Available themes include default (dark), light, blue, pink, indigo, dark-orange, and green
 
 ### Export Options
 
-    - Export Table to CSV: Easily export table data into CSV format
-    - Export Table to Excel: Seamlessly export table data into Excel format
+  - Export Table to CSV: Easily export table data into CSV format
+  - Export Table to Excel: Seamlessly export table data into Excel format
+  - Define Theme via JS: Available themes include default (dark), light, blue, pink, indigo, dark-orange, and green
 
 ### Usability
 
-    - Sticky Table Headers: Keep headers visible while scrolling for better usability
-    - Framework Agnostic: Works with any JavaScript framework (React, Angular, Vue, Svelte etc.) or vanilla JS
-    - Modularity and Features Optionality: Choose only the features you need for a lightweight and tailored implementation
+  - Sticky Table Headers: Keep headers visible while scrolling for better usability
+  - Framework Agnostic: Works with any JavaScript framework (React, Angular, Vue, Svelte etc.) or vanilla JS
+  - Modularity and Features Optionality: Choose only the features you need for a lightweight and tailored implementation
 
 
 ## Why Choose AnyGrid?
