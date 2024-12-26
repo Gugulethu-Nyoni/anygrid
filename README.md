@@ -7,14 +7,6 @@ AnyGridJS is a Lightweight, feature-rich JS library for dynamic data tables with
 
 ## Key Features
 
-  - Pagination: Effortlessly navigate large datasets with customizable page sizes
-  - Sorting: Enable users to sort data by specific columns
-  - Searching: Include a search bar for quick data filtering
-  - Column Joining: Combine data from multiple columns for enhanced visualization
-  - Action Handles: Add custom buttons for interactive functionality
-  - URL Definition: Define URLs for data linking and seamless navigation
-  - Framework Agnostic: Works with any JavaScript framework (React, Angular, Vue, Svelte etc.) or vanilla JS
-
 ### Data Management
 
   - Pagination: Effortlessly navigate large datasets with customizable page sizes
@@ -110,8 +102,14 @@ const data = [
   },
 ];
 
+const features = {
+initialItemsPerPage: 30,
+csvExport: true,
+excelExport: true,
+theme: 'pink'
+}
 
-const dataGrid = new AnyGrid(data, columns, 10);
+const dataGrid = new AnyGrid(data, columns, features);
 ```
 
 
@@ -171,31 +169,38 @@ const data = [
 
 
 const columns = [
-  { name: 'id', header: 'ID' },
-  { name: 'fullName', header: 'Full Name', joinedColumns: ['name', 'surname'] },
-  { name: 'age', header: 'Age' },
-  { name: 'role', header: 'Role' },
-  { name: 'salary', header: 'Salary',
+  { name: 'id', header: 'ID', render: (value, row) => `<a href="/user/profile/${row.id}">${row.id}</a>`, sortable: true },
+  { name: 'fullName', header: 'FULL NAME', joinedColumns: ['name', 'surname'] },
+  { name: 'age', header: 'AGE', sortable: true },
+  { name: 'role', header: 'ROLE' },
+  { name: 'salary', header: 'SALARY', render: '<strong>R{salary}</strong>', sortable: true,
+
     actions: [
       {
-        label: 'Edit',
+        label: 'EDIT',
         url: 'edit/{id}',
         class: 'edit',
         id: 'edit-{id}',
       },
       {
-        label: 'Delete',
+        label: 'DELETE',
         url: 'delete/{id}',
         class: 'delete',
         id: 'delete-{id}',
         confirm: true,
-      },
-    ],
+      }, 
+    ], 
   },
 ];
 
-const dataGrid = new AnyGrid(data, columns, 10);
+const features = {
+initialItemsPerPage: 30,
+csvExport: true,
+excelExport: true,
+theme: 'pink'
+}
 
+const dataGrid = new AnyGrid(data, columns, features);
 ```
 
 
@@ -218,26 +223,27 @@ const data = [
 ```javascript
 
 const columns = [
-  { name: 'id', header: 'ID' },
-  { name: 'fullName', header: 'Full Name', joinedColumns: ['name', 'surname'] },
-  { name: 'age', header: 'Age' },
-  { name: 'role', header: 'Role' },
-  { name: 'salary', header: 'Salary',
+  { name: 'id', header: 'ID', render: (value, row) => `<a href="/user/profile/${row.id}">${row.id}</a>`, sortable: true },
+  { name: 'fullName', header: 'FULL NAME', joinedColumns: ['name', 'surname'] },
+  { name: 'age', header: 'AGE', sortable: true },
+  { name: 'role', header: 'ROLE' },
+  { name: 'salary', header: 'SALARY', render: '<strong>R{salary}</strong>', sortable: true,
+
     actions: [
       {
-        label: 'Edit',
+        label: 'EDIT',
         url: 'edit/{id}',
         class: 'edit',
         id: 'edit-{id}',
       },
       {
-        label: 'Delete',
+        label: 'DELETE',
         url: 'delete/{id}',
         class: 'delete',
         id: 'delete-{id}',
         confirm: true,
-      },
-    ],
+      }, 
+    ], 
   },
 ];
 
