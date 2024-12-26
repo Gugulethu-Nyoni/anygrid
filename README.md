@@ -288,14 +288,27 @@ const features = {
 
 # Styling (Optional)
 
-AnyGrid is a headless js library - meaning the styling is entirely up to you, However as an option we offer a basic css library to enhance the look and feel of your data tables. If you want to use the provided css just deploy anyGrid.css via this cdn link:
+AnyGridJS is a headless js library - meaning the styling is entirely up to you, However as an option we offer a basic and high css themes to enhance the look and feel of your data tables. If you want to use the provided css just deploy anyGrid.css via this cdn link:
 
 Place this somewhere in the head section of your html.
 
 ```html
 
-    <link rel="stylesheet" href="https://unpkg.com/anygridcss@1.0.0/anyGrid.css">
+  <link rel="stylesheet" href="https://unpkg.com/anygridcss@1.0.0/anyGrid.css" anygrid-style>
 
+```
+
+## Color Themes
+
+AnyGrid css offer these color themes: default (dark), light, blue, pink, dark-orange, green and indigo. 
+You can define your prefer color theme on the features object this way:
+
+```javascript
+const features = {
+
+theme: 'pink';
+
+}
 ```
 
 # Using Custom Containers (useful for multiple data grids)
