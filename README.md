@@ -270,6 +270,20 @@ const dataGrid = new anyGrid(data, columns, 10);
 ```
 
 
+# Default Features 
+
+AnyGridJS has these built in features enabled by default: Features like search/filter, sort, actions (row actions like edit or delete), pagination, items per page, dynamic headers and initial items per page. Therefore you do not need to declare them in the features object. However, AnyGridJS gives the option to disable these features if you don't need them. Below is an example of how you can disable these. 
+
+```javascript
+const features = {
+  search: false,
+  sort: false,
+  actions: false,
+  pagination: false,
+  itemsPerPage: false,
+  dynamicHeaders: false,
+}
+```
 
 
 # Styling (Optional)
