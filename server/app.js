@@ -88,7 +88,7 @@ const features = {
   initialItemsPerPage: 30,*/
   csvExport: true,
   excelExport: true,
-  theme: 'green'
+  theme: 'default'
   }
 
 const dataGrid = new AnyGrid(data, columns, features);

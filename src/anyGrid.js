@@ -25,7 +25,7 @@ class AnyGrid {
       pagination: true,
       itemsPerPage: true,
       dynamicHeaders: true,
-      theme:'dark'
+      theme:'default'
     };
 
    // Merging user defined features with defaults
@@ -33,7 +33,9 @@ class AnyGrid {
 
     if (this.features.theme) {
       //alert(this.features.theme);
-      this.applyTheme(this.features.theme, this.gridContainerId);
+      let theme = this.features.theme;
+      if (theme==='dark') theme ='default';
+      this.applyTheme(theme, this.gridContainerId);
     }
 
     // Initialize the data grid
