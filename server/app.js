@@ -88,7 +88,7 @@ const features = {
   initialItemsPerPage: 30,*/
   csvExport: true,
   excelExport: true,
-  theme: 'dark'
+  //theme: 'dark'
   }
 
 const dataGrid = new AnyGrid(data, columns, features);
@@ -146,7 +146,7 @@ const carTableFeatures = {
 gridContainerId: 'carsTable',
 csvExport: true,
 excelExport: true,
-theme: 'pink'
+//theme: 'pink'
 
 
 }

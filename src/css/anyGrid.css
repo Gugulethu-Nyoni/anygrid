@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
 
-
-/* Dark Theme
-:root {
+/* DEFAULT THEME: DARK */
+ 
+/* Default theme */
+.default-theme {
     --background-dark: #1e1e1e;
     --background-light: #2e2e2e;
     --text-light: #e0e0e0;
@@ -11,17 +12,18 @@
     --input-background-disabled: #444;
     --label-color: #b0b0b0;
     --radio-checkbox-accent: #b0b0b0;
-    --button-background: #b0b0b0;
+    --button-background: #3e3e40;
     --button-background-hover: #9e9e9e;
-    --edit-background: #0d6efd;
+    --edit-background:  #0d6efd;
     --delete-background: #dc3545;
+    --text-contrast: #ffffff; 
+
 }
 
 
 
-/* Light Theme 
-
-:root {
+/* Light theme */
+.light-theme {
     --background-dark: #ffffff;
     --background-light: #f9f9f9;
     --text-light: #333333;
@@ -30,78 +32,103 @@
     --input-background-disabled: #e0e0e0;
     --label-color: #5a2d81; 
     --radio-checkbox-accent: #5a2d81; 
-    --button-background: #fff; 
-    --button-background-hover: #003d7a; 
+    --button-background: #8a8787; 
+    --button-background-hover: #424141; 
     --edit-background: #e91e63; 
-    --delete-background: #dc3545; 
+    --delete-background: #dc3545;
+    --text-contrast: #ffffff; 
+
+}
+
+/* Pink theme */
+.pink-theme {
+--background-dark: #fce4ec;
+--background-light: #f8bbd0;
+--text-light: #880e4f;
+--border-color: #f48fb1;
+--input-background: #ffffff;
+--input-background-disabled: #f1f8e9;
+--label-color: #c2185b;
+--radio-checkbox-accent: #c2185b;
+--button-background: #c2185b;
+--button-background-hover: #ad1457;
+--edit-background: #ad1457;
+--delete-background: #d32f2f;
+--text-contrast: #ffffff; 
+}
+
+
+/* Indigo theme */
+.indigo-theme {
+--background-dark: #2f3640;
+--background-light: #3b4151;
+--text-light: #f7f7f7;
+--border-color: #434a54;
+--input-background: #2f3640;
+--input-background-disabled: #3b4151;
+--label-color: #8b94b3;
+--radio-checkbox-accent: #8b94b3;
+--button-background: #452b8b;
+--button-background-hover: #3b2f6b;
+--edit-background: #452b8b;
+--delete-background: #e74c3c;
+--text-contrast: #ffffff;
+}
+
+
+/* Blue theme */
+.blue-theme {
+--background-dark: #87ceeb;
+--background-light: #add8e6;
+--text-light: #1a237e;
+--border-color: #87ceeb;
+--input-background: #f7f7f7;
+--input-background-disabled: #e5e5e5;
+--label-color: #2196f3;
+--radio-checkbox-accent: #2196f3;
+--button-background: #03a9f4;
+--button-background-hover: #039be5;
+--edit-background: #03a9f4;
+--delete-background: #e74c3c;
+--text-contrast: #ffffff;
+}
+
+/* Dark Orange theme */
+.dark-orange-theme {
+--background-dark: #2f2f2f;
+--background-light: #3c3c3c;
+--text-light: #ffffff;
+--border-color: #666;
+--input-background: #3c3c3c;
+--input-background-disabled: #4c4c4c;
+--label-color: #ffa07a;
+--radio-checkbox-accent: #ffa07a;
+--button-background: #ff9900;
+--button-background-hover: #e68f00;
+--edit-background: #ff9900;
+--delete-background: #e74c3c;
+--text-contrast: #000000;
+}
+
+.green-theme {
+--background-dark: #f2f9f2;
+--background-light: #e5e5e5; 
+--text-light: #2f4f2f;
+--border-color: #c6efce;
+--input-background: #f7fff7;
+--input-background-disabled: #e5e5e5;
+--label-color: #87b087;
+--radio-checkbox-accent: #87b087;
+--button-background: #004d00;
+--button-background-hover: #003300;
+--button-text-color: #ffffff;
+--edit-background: #004d00;
+--delete-background: #990000;
+--text-contrast: #ffffff;
 }
 
 
 
-/* Pink Theme  
-:root {
-    --background-dark: #2c2c2c;
-    --background-light: #3d3d3d;
-    --text-light: #f1f1f1;
-    --border-color: #555;
-    --input-background: #444;
-    --input-background-disabled: #666;
-    --label-color: #ff4081;
-    --radio-checkbox-accent: #ff4081;
-    --button-background: #ff4081;
-    --button-background-hover: #e91e63;
-    --edit-background: #e91e63;
-    --delete-background: #f44336;
-}
-
-/* Indigo Theme */ 
-:root {
-    --background-dark: #2c2c2c;
-    --background-light: #3d3d3d;
-    --text-light: #e0e0e0;
-    --border-color: #444;
-    --input-background: #333;
-    --input-background-disabled: #555;
-    --label-color: #3f51b5;
-    --radio-checkbox-accent: #3f51b5;
-    --button-background: #3f51b5;
-    --button-background-hover: #303f9f;
-    --edit-background: #3f51b5;
-    --delete-background: #f44336;
-}
-
-/* Blue Theme 
-:root {
-    --background-dark: #0a0a0a;
-    --background-light: #1a1a1a;
-    --text-light: #e0e0e0;
-    --border-color: #333;
-    --input-background: #222;
-    --input-background-disabled: #444;
-    --label-color: #2196f3;
-    --radio-checkbox-accent: #2196f3;
-    --button-background: #2196f3;
-    --button-background-hover: #1976d2;
-    --edit-background: #2196f3;
-    --delete-background: #f44336;
-}
-
-/* Dark and Orange 
-:root {
-    --background-dark: #121212;
-    --background-light: #1e1e1e;
-    --text-light: #e0e0e0;
-    --border-color: #333;
-    --input-background: #333;
-    --input-background-disabled: #444;
-    --label-color: #ff9800;
-    --radio-checkbox-accent: #ff9800;
-    --button-background: #ff9800;
-    --button-background-hover: #e68900;
-    --edit-background: #ff9800;
-    --delete-background: #f44336;
-}
-*/
 
 
 .anygrid-table {
@@ -127,32 +154,69 @@
 .anygrid-table th {
     background-color: var(--input-background);
     color: var(--text-light);
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 0;
+    z-index: 10;
+
 }
 
 a {
-    color: inherit; /* Use the text color of the parent element */
-    text-decoration: none; /* Remove underline */
+    color: inherit; 
+    text-decoration: none; 
 }
 
+
+
+/* TOP ACTIONS CSS SEARCH, ITEMS PER PAGE, CSV AND EXCEL EXPORT */
 
 .search-container {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 0.5em; 
+    margin-bottom: 0.5em;
+    flex-wrap: wrap; /* Allow wrapping for mobile responsiveness */
 }
 
+/* For mobile screens */
+@media (max-width: 700px) {
+    .search-container {
+        flex-direction: column; /* Stack elements vertically on mobile */
+        gap: 15px; /* Increased gap for better spacing */
+        align-items: stretch; /* Ensure elements take full width */
+    }
+
+    input.anygrid-search-input, 
+    select.items-per-page,
+    .csv-export-button,
+    .excel-export-button {
+        width: 100%; /* Make elements take full width */
+        padding: 10px; /* Adjust padding for better spacing */
+    }
+
+    .csv-export-button, 
+    .excel-export-button {
+        font-size: 16px; /* Increase font size slightly for readability */
+    }
+
+    input.anygrid-search-input,
+    select.items-per-page {
+        max-width: 100% !important; /* Remove any max-width limits */
+    }
+}
+
+/* Standard input and select styles */
 input.anygrid-search-input, 
 select.items-per-page {
     background-color: var(--input-background);
     border: 1px solid var(--border-color);
     border-radius: 5px;
-    color: var(--text-light);
+    color: var(--text-contrast);
     font-size: 14px;
     padding: 6px 12px;
     box-sizing: border-box;
     transition: border-color 0.3s, box-shadow 0.3s;
-    height: 28px; /* Adjust height to align with select */
+    height: 28px; 
     line-height: 1.5;
 }
 
@@ -171,17 +235,6 @@ input.anygrid-search-input::placeholder {
     opacity: 1;
 }
 
-select.items-per-page {
-    max-width: 150px;
-}
-
-select.items-per-page:focus {
-    border-color: var(--button-background);
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-/* Ensure good contrast in dark theme */
 input.anygrid-search-input {
     color: var(--text-color);
 }
@@ -192,72 +245,177 @@ input.anygrid-search-input::placeholder {
 
 select.items-per-page {
     color: var(--text-color);
+    max-width: 150px;
+}
+
+select.items-per-page:focus {
+    border-color: var(--button-background);
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+
+/* CSV Export Button */
+.anygrid-export-csv {
+ background-color: var(--button-background);
+    color: var(--text-contrast);
+    border: 1px solid var(--border-color);
+    padding: 5px 5px 5px 5px; /* Increased padding for icon */
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+.anygrid-export-csv::before {
+    content: "\2193"; /* Unicode character for downwards arrow */
+    font-size: 16px; /* Adjust icon size */
+    margin-right: 10px; /* Add space between icon and text */
+}
+
+
+.anygrid-export-csv:hover {
+    background-color: var(--button-background-hover);
+    border-color: var(--text-light);
+}
+
+.anygrid-export-csv:disabled {
+    background-color: var(--input-background-disabled);
+    color: var(--label-color);
+    cursor: not-allowed;
+    border-color: var(--border-color);
+}
+
+.anygrid-export-csv:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Example for focus effect */
+}
+
+
+/* EXCEL Export Button */
+.anygrid-export-excel {
+    background-color: var(--button-background);
+    color: var(--text-contrast);
+    border: 1px solid var(--border-color);
+    padding: 5px 5px 5px 5px; /* Increased padding for icon */
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.anygrid-export-excel::before {
+    content: "\2193"; /* Unicode character for downwards arrow */
+    font-size: 16px; /* Adjust icon size */
+    margin-right: 10px; /* Add space between icon and text */
 }
 
 
 
-@media only screen and (max-width: 700px) {
+.anygrid-export-excel:hover {
+    background-color: var(--button-background-hover);
+    border-color: var(--text-light);
+}
+
+.anygrid-export-excel:disabled {
+    background-color: var(--input-background-disabled);
+    color: var(--label-color);
+    cursor: not-allowed;
+    border-color: var(--border-color);
+}
+
+.anygrid-export-excel:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Example for focus effect */
+}
+
+
+/* Full Width for Table Rows on Mobile */
+@media (max-width: 700px) {
     .anygrid-table {
-        border: 0;
+        width: 100% !important; /* Ensure table takes full width */
     }
 
-    .anygrid-table th,
-    .anygrid-table td {
-        border: 0;
-        border-bottom: 1px solid var(--border-color);
-        padding: 5px;
-    }
-
-    .anygrid-table th {
-        display: none;
-    }
-
-    .anygrid-table tr td:first-child {
-        width: 40%;
-        font-weight: bold;
-    }
-
-    .anygrid-table tr td:last-child {
-        width: 60%;
+    .anygrid-table td, .anygrid-table th {
+        display: block; /* Ensure table cells behave as blocks */
+        width: 100%; /* Table cells take up full width */
     }
 }
 
-.anygrid-pagination {
-    margin-top: 0.5em;
-    text-align: center;
+/* END OF MOBILE SCREENS CSS */
+
+
+
+
+
+
+
+/* Pagination Wrapper */
+.pagination-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.5em;
+  text-align: center;
+  background-color: var(--background-dark);
+  margin-top: 0px!important;
+  padding: 5px;
+  
+}
+
+/* Pagination Info */
+.pagination-info {
+  margin-right: 20px;
+  font-size: 14px;
+  color: var(--text-light);
+  font-family: 'Montserrat', sans-serif;
+
+}
+
+/* Pagination Buttons */
+.pagination-buttons {
+  display: flex;
+  gap: 5px;
 }
 
 .pagination-button {
-    background-color: var(--button-background);
-    border: 1px solid var(--border-color);
-    border-radius: 5px;
-    color: var(--text-light);
-    cursor: pointer;
-    display: inline-block;
-    font-size: 14px;
-    margin: 0 2px;
-    padding: 8px 12px;
-    text-decoration: none;
-    transition: background-color 0.3s, color 0.3s;
+  background-color: var(--button-background, #f9f9f9);
+  border: 1px solid var(--border-color, #ccc);
+  border-radius: 5px;
+  color: var(--text-contrast, #fff);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  margin: 0 2px;
+  padding: 8px 12px;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
 }
 
+/* Active and Hover States */
 .pagination-button.active,
 .pagination-button:hover {
-    background-color: var(--button-background-hover);
-    color: #ffffff;
-    border-color: var(--button-background-hover);
+  background-color: var(--button-background-hover, #007bff);
+  color: var(--text-contrast);
+  border-color: var(--button-background-hover, #007bff);
 }
 
+/* Focus State */
 .pagination-button:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
 }
 
 .edit {
     background-color: var(--edit-background);
     border-radius: 5px;
     padding: 0.25em 0.5em;
-    color: #fff;
+    color: var(--text-contrast);
     text-decoration: none;
     font-size: 10px;
     display: inline-block;
@@ -268,12 +426,23 @@ select.items-per-page {
     background-color: var(--delete-background);
     border-radius: 5px;
     padding: 0.25em 0.5em;
-    color: #fff;
+    color: var(--text-contrast);
     text-decoration: none;
     font-size: 10px;
     display: inline-block;
     text-align: center;
 }
+
+.edit::before {
+    content: '\270E';
+    margin-right: 0.5em;
+}
+
+.delete::before {
+    content: '\1F5D1';
+    margin-right: 0.5em;
+}
+
 
 
 .anygrid-column-sortable::after {
