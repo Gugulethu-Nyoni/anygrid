@@ -33,7 +33,7 @@ AnyGridJS is a Lightweight, feature-rich JS library for dynamic data tables with
   - Modularity and Features Optionality: Choose only the features you need for a lightweight and tailored implementation
 
 
-## Why Choose AnyGrid?
+## Why Choose AnyGridJS?
 
  - Vanilla JS: No dependencies, works with any JavaScript framework or vanilla JS
  - Lightweight: Minimal footprint, optimized for performance
@@ -42,14 +42,14 @@ AnyGridJS is a Lightweight, feature-rich JS library for dynamic data tables with
  - Flexible: Integrate with your preferred framework or use with vanilla JS
 Get Started
 - Extensible: you can extend the features nd functions of the library
-- Minimal Configs: all you need is  a div with dataGrid id name,  a json data object, column definition in your app.js or via script tag directly on the html. See usage section below.
+- Minimal Configs: all you need is  a div with anygrid or custom id name,  a json data object, column definition, features object (optional) in your app.js or via script tag directly on the html. See usage section below.
 
 ## Usage Example
 
 
 There are three ways to use AnyGrid in your html.
 
-## Option A: Global JS Format
+## Global JS Format
 
 
 
@@ -75,7 +75,14 @@ gridContainerId: 'users'
 
 If the id of your target grid container is 'anygrid' then you do not need to define the gridConatinerId in the features object. 
 
-2. Add your js markup in the html just before the ```html </body> ``` tag:
+
+2. Get the AnyGridCSS via the cdn link. 
+
+```html
+  <link rel="stylesheet" href="https://unpkg.com/anygridcss@1.0.1/anyGrid.css" anygrid-style>
+```
+
+3. Add your js markup in the html just before the ```html </body> ``` tag:
 
 ```html
 <script src="https://unpkg.com/anygridjs@1.0.9/anyGrid.global.js"></script>
@@ -119,98 +126,6 @@ const data = [
   },
 ];
 
-const features = {
-initialItemsPerPage: 30,
-csvExport: true,
-excelExport: true,
-theme: 'pink'
-}
-
-const dataGrid = new AnyGrid(data, columns, features);
-```
-
-
-
-## Option B: Universal Module Definition (UMD) JS Format
-
-
-1. html: insert this containter somewhere in your html (before the js mark up shown in step 2)
-
-```html
-<div id="anygrid"></div>
-```
-
-2. Add your js mark up in the html just before the ```html </body> ``` tag:
-
-```html
-  <script src="https://unpkg.com/anygridjs@1.0.9/anyGrid.umd.js"></script>
- <script src="app.js"></script>
- ```
-
-## Option C: ESM modules importmap
-
-1. html: insert this containter somewhere in your html (before the js mark up shown in step 2)
-
-```html
-<div id="anygrid"></div>
-```
-
-2. Add your js mark up in the html just before the </body> tag:
-
-```html
-<script type="importmap">
-{
-  "imports": {
-    "anygridjs": "https://unpkg.com/anygridjs@1.0.9/anyGrid.mjs"
-  }
-}
-</script>
-
-<script type="module" src="esm_app.js"></script>
-
-```
-
-## esm_app.js 
-
-```javascript
-import AnyGrid from 'anygridjs';
-
-const data = [
-  { id: 1, name: 'John', surname: 'Doe', age: 30, role: 'Developer', salary: 50000 },
-  { id: 2, name: 'Jane', surname: 'Doe', age: 28, role: 'Designer', salary: 45000 },
-  { id: 3, name: 'Jack', surname: 'Smith', age: 34, role: 'Product Manager', salary: 60000 },
-  { id: 4, name: 'Emily', surname: 'Jones', age: 27, role: 'Marketing Specialist', salary: 47000 },
-  { id: 5, name: 'Michael', surname: 'Brown', age: 40, role: 'Software Engineer', salary: 55000 },
-  { id: 6, name: 'Sarah', surname: 'Davis', age: 32, role: 'UX Researcher', salary: 52000 },
-  ];
-
-
-const columns = [
-  { name: 'id', header: 'ID', render: (value, row) => `<a href="/user/profile/${row.id}">${row.id}</a>`, sortable: true },
-  { name: 'fullName', header: 'FULL NAME', joinedColumns: ['name', 'surname'] },
-  { name: 'age', header: 'AGE', sortable: true },
-  { name: 'role', header: 'ROLE' },
-  { name: 'salary', header: 'SALARY', render: '<strong>R{salary}</strong>', sortable: true,
-
-    actions: [
-      {
-        label: 'EDIT',
-        url: 'edit/{id}',
-        class: 'edit',
-        id: 'edit-{id}',
-      },
-      {
-        label: 'DELETE',
-        url: 'delete/{id}',
-        class: 'delete',
-        id: 'delete-{id}',
-        confirm: true,
-      }, 
-    ], 
-  },
-];
-
-// FEATURES OBJECT: OPTIONAL
 const features = {
 initialItemsPerPage: 30,
 csvExport: true,
@@ -279,7 +194,7 @@ const dataGrid = new anyGrid(data, columns);
 
 # Default Features 
 
-AnyGridJS has these built in features enabled by default: Features like search/filter, sort, actions (row actions like edit or delete), pagination, items per page, dynamic headers and initial items per page. Therefore you do not need to declare them in the features object. However, AnyGridJS gives the option to disable these features if you don't need them. Below is an example of how you can disable these. 
+AnyGridJS has these in built features enabled by default: search/filter, sort, actions (row actions like edit or delete), pagination, items per page, dynamic headers and initial items per page. Therefore you do not need to declare them in the features object. However, AnyGridJS gives the option to disable these features if you don't need them. Below is an example of how you can disable these features. 
 
 ```javascript
 const features = {
@@ -295,7 +210,7 @@ const features = {
 
 # Styling (Optional)
 
-AnyGridJS is a headless js library - meaning the styling is entirely up to you, However as an option we offer a basic and high css themes to enhance the look and feel of your data tables. If you want to use the provided css just deploy anyGrid.css via this cdn link:
+AnyGridJS is a headless JS library - meaning the styling is entirely up to you, However as an option we offer a basic and high end css themes to enhance the look and feel of your data tables. If you want to use the provided css just deploy anyGrid.css via this cdn link:
 
 Place this somewhere in the head section of your html.
 
@@ -318,9 +233,11 @@ theme: 'pink';
 }
 ```
 
+### If you want to use the default/dark theme then you don't need to define the theme parameter in your features object. 
+
 # Block Table Style Mobile displays
 
-AnyGridJS styles and themes come with block table style for mobile screen displays. 
+AnyGridJS styles and themes come with block table style for mobile screen displays. See example below: 
 
 <img src="https://github.com/thincmedia/anyGridJs/blob/main/images/mobile-friendly-js-datagrid-anygrid.png" alt="Mobile Friedly Datagrid Displays">
 
@@ -328,13 +245,13 @@ AnyGridJS styles and themes come with block table style for mobile screen displa
 
 # Using Custom Containers (useful for multiple data grids)
 
-By default, AnyGrid will place your data grid in the element with the id: anygrid eg:
+By default, AnyGridJS will place your data grid in the element with the id: anygrid eg:
 
  ```html 
   <div id="anygrid">Your data grid will be displayd here</div>
   ``` 
 
-  However using custom container ids can be useful particularly if you want to display more than one data grids on the same page. 
+  However using custom container ids can be useful particularly if you want to display more than one data grids on the same page. See below.
 
 1. Define your custom container 
 
@@ -342,22 +259,22 @@ By default, AnyGrid will place your data grid in the element with the id: anygri
 <div id="users"></div>
 ```
 
-Having defined your data and columns for your AnyGrid instance you can then invoke the AnyGrid class with the custom container id parameter: 
+Having defined your data and columns for your AnyGrid instance you can then invoke the AnyGridJS class with the custom container id parameter: 
 
 ```javascript
 const containerId='users';
-const dataGrid = new anyGrid(data, columns);
-//or 
+const dataGrid = new anyGrid(data, columns, features);
+//or without the features object
 const dataGrid = new anyGrid(data, columns);
 ```
 
-*You need to use this approach for every instance of AnyGrid you need to implement on your page.*
+*You need to use this approach for every instance of AnyGridJS you need to implement on your page.*
 
 
 ## Contribute
-AnyGrid is an open-source project. Contributions, issues, and feature requests are welcome!
+AnyGridJS is largely an open-source project. Contributions, issues, and feature requests are welcome!
 ## License
-AnyGrid is licensed under the MIT License.
+AnyGridJS is licensed under the MIT License.
 ## Keywords
 
 - JavaScript data tables
