@@ -228,7 +228,7 @@ You can define your prefer color theme on the features object this way:
 ```javascript
 const features = {
 
-theme: 'pink';
+theme: 'pink'
 
 }
 ```
