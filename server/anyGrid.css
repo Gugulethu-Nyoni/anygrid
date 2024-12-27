@@ -175,33 +175,33 @@ a {
     align-items: center;
     gap: 10px;
     margin-bottom: 0.5em;
-    flex-wrap: wrap; /* Allow wrapping for mobile responsiveness */
+    flex-wrap: wrap; 
 }
 
 /* For mobile screens */
 @media (max-width: 700px) {
     .search-container {
-        flex-direction: column; /* Stack elements vertically on mobile */
-        gap: 15px; /* Increased gap for better spacing */
-        align-items: stretch; /* Ensure elements take full width */
+        flex-direction: column; 
+        gap: 15px; 
+        align-items: stretch; 
     }
 
     input.anygrid-search-input, 
     select.items-per-page,
     .csv-export-button,
     .excel-export-button {
-        width: 100%; /* Make elements take full width */
-        padding: 10px; /* Adjust padding for better spacing */
+        width: 100%; 
+        padding: 10px; 
     }
 
     .csv-export-button, 
     .excel-export-button {
-        font-size: 16px; /* Increase font size slightly for readability */
+        font-size: 16px; 
     }
 
     input.anygrid-search-input,
     select.items-per-page {
-        max-width: 100% !important; /* Remove any max-width limits */
+        max-width: 100% !important; 
     }
 }
 
@@ -260,7 +260,7 @@ select.items-per-page:focus {
  background-color: var(--button-background);
     color: var(--text-contrast);
     border: 1px solid var(--border-color);
-    padding: 5px 5px 5px 5px; /* Increased padding for icon */
+    padding: 5px 5px 5px 5px; 
     font-size: 14px;
     font-weight: 600;
     border-radius: 5px;
@@ -270,9 +270,9 @@ select.items-per-page:focus {
     align-items: center;
 }
 .anygrid-export-csv::before {
-    content: "\2193"; /* Unicode character for downwards arrow */
-    font-size: 16px; /* Adjust icon size */
-    margin-right: 10px; /* Add space between icon and text */
+    content: "\2193"; 
+    font-size: 16px; 
+    margin-right: 10px; 
 }
 
 
