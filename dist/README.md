@@ -136,7 +136,7 @@ theme: 'pink'
 const dataGrid = new AnyGrid(data, columns, features);
 ```
 
-### NOTE THAT THE features object is optional so you can invoke AnyGridJS without the features object as shown below:
+### NOTE that the features object is optional so you can invoke AnyGridJS without the features object as shown below:
 
 
 ```javascript
