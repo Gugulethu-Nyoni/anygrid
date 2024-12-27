@@ -3,7 +3,7 @@
 
 <img src="https://github.com/thincmedia/anyGridJs/blob/main/images/anygridjs-datagrid-js-datatable-example.png" alt="anyGridJs Example">
 
-AnyGridJS is a Lightweight, feature-rich JS library for dynamic data tables with paginated, sortable, searchable, column joining, action handles &amp; URL definition. The library works with Semantq JS framework and vanilla JS. AnyGrid is flexible, customizable, responsive &amp; performant. Open-source &amp; MIT licensed.
+AnyGridJS is a Lightweight, feature-rich JS library for dynamic data tables with paginated, sortable, searchable, column joining, action handles &amp; URL definition. The library works with Semantq JS framework and vanilla JS. AnyGridJS is flexible, customizable, EXTENSIVE, responsive &amp; performant. Open-source &amp; MIT licensed.
 
 ## Key Features
 
@@ -75,7 +75,7 @@ gridContainerId: 'users'
 
 If the id of your target grid container is 'anygrid' then you do not need to define the gridConatinerId in the features object. 
 
-2. Add your js mark up in the html just before the ```html </body> ``` tag:
+2. Add your js markup in the html just before the ```html </body> ``` tag:
 
 ```html
 <script src="https://unpkg.com/anygridjs@1.0.9/anyGrid.global.js"></script>
@@ -210,6 +210,7 @@ const columns = [
   },
 ];
 
+// FEATURES OBJECT: OPTIONAL
 const features = {
 initialItemsPerPage: 30,
 csvExport: true,
@@ -220,6 +221,12 @@ theme: 'pink'
 const dataGrid = new AnyGrid(data, columns, features);
 ```
 
+### NOTE THAT THE features object is optional so you can invoke AnyGridJS without the features object as shown below:
+
+
+```javascript
+const dataGrid = new AnyGrid(data, columns);
+```
 
 
 ## The data object
@@ -266,7 +273,7 @@ const columns = [
 
 // create a new instance of AnyGrid
 
-const dataGrid = new anyGrid(data, columns, 10);
+const dataGrid = new anyGrid(data, columns);
 ```
 
 
@@ -339,9 +346,9 @@ Having defined your data and columns for your AnyGrid instance you can then invo
 
 ```javascript
 const containerId='users';
-const dataGrid = new anyGrid(data, columns, 10, containerId);
+const dataGrid = new anyGrid(data, columns);
 //or 
-const dataGrid = new anyGrid(data, columns, 10, 'users');
+const dataGrid = new anyGrid(data, columns);
 ```
 
 *You need to use this approach for every instance of AnyGrid you need to implement on your page.*
