@@ -78,7 +78,7 @@ If the id of your target grid container is 'anygrid' then you do not need to def
 2. Add your js mark up in the html just before the ```html </body> ``` tag:
 
 ```html
-<script src="https://unpkg.com/anygridjs@1.0.8/anyGrid.global.js"></script>
+<script src="https://unpkg.com/anygridjs@1.0.9/anyGrid.global.js"></script>
  <script src="app.js"></script>
  ```
 
