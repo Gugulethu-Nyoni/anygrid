@@ -290,7 +290,7 @@ select.items-per-page:focus {
 
 .anygrid-export-csv:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Example for focus effect */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); 
 }
 
 
@@ -299,7 +299,7 @@ select.items-per-page:focus {
     background-color: var(--button-background);
     color: var(--text-contrast);
     border: 1px solid var(--border-color);
-    padding: 5px 5px 5px 5px; /* Increased padding for icon */
+    padding: 5px 5px 5px 5px; 
     font-size: 14px;
     font-weight: 600;
     border-radius: 5px;
@@ -310,9 +310,9 @@ select.items-per-page:focus {
 }
 
 .anygrid-export-excel::before {
-    content: "\2193"; /* Unicode character for downwards arrow */
-    font-size: 16px; /* Adjust icon size */
-    margin-right: 10px; /* Add space between icon and text */
+    content: "\2193"; 
+    font-size: 16px;
+    margin-right: 10px;
 }
 
 
@@ -331,19 +331,19 @@ select.items-per-page:focus {
 
 .anygrid-export-excel:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Example for focus effect */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
 }
 
 
 /* Full Width for Table Rows on Mobile */
 @media (max-width: 700px) {
     .anygrid-table {
-        width: 100% !important; /* Ensure table takes full width */
+        width: 100% !important;
     }
 
     .anygrid-table td, .anygrid-table th {
-        display: block; /* Ensure table cells behave as blocks */
-        width: 100%; /* Table cells take up full width */
+        display: block;
+        width: 100%;
     }
 }
 
