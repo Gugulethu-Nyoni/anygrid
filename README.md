@@ -161,7 +161,7 @@ const dataGrid = new AnyGrid(data, columns, features);
 <script type="importmap">
 {
   "imports": {
-    "anygridjs": "https://unpkg.com/anygridjs@1.0.8/anyGrid.mjs"
+    "anygridjs": "https://unpkg.com/anygridjs@1.0.9/anyGrid.mjs"
   }
 }
 </script>
