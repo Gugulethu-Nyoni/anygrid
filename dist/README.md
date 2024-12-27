@@ -143,7 +143,7 @@ const dataGrid = new AnyGrid(data, columns, features);
 2. Add your js mark up in the html just before the ```html </body> ``` tag:
 
 ```html
-  <script src="https://unpkg.com/anygridjs@1.0.8/anyGrid.umd.js"></script>
+  <script src="https://unpkg.com/anygridjs@1.0.9/anyGrid.umd.js"></script>
  <script src="app.js"></script>
  ```
 
@@ -294,7 +294,7 @@ Place this somewhere in the head section of your html.
 
 ```html
 
-  <link rel="stylesheet" href="https://unpkg.com/anygridcss@1.0.0/anyGrid.css" anygrid-style>
+  <link rel="stylesheet" href="https://unpkg.com/anygridcss@1.0.1/anyGrid.css" anygrid-style>
 
 ```
 
