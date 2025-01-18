@@ -36,7 +36,9 @@ class AnyGrid {
       let theme = this.features.theme;
       if (theme==='dark') theme ='default';
       this.applyTheme(theme, this.gridContainerId);
-    } 
+    } else {
+      this.applyTheme('dark', this.gridContainerId);
+    }
 
 
 

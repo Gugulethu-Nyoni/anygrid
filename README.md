@@ -1,9 +1,9 @@
-  # AnyGridJS
+  # AnyGrid Documentation
 
 
-<img src="https://github.com/thincmedia/anyGridJs/blob/main/images/anygridjs-datagrid-js-datatable-example.png" alt="anyGridJs Example">
+<img src="https://github.com/thincmedia/AnyGrid/blob/main/images/AnyGrid-datagrid-js-datatable-example.png" alt="AnyGrid Example">
 
-AnyGridJS is a Lightweight, feature-rich JS library for dynamic data tables with paginated, sortable, searchable, column joining, action handles &amp; URL definition. The library works with Semantq JS framework and vanilla JS. AnyGridJS is flexible, customizable, EXTENSIBLE, responsive &amp; performant. Open-source &amp; MIT licensed.
+AnyGrid is a Lightweight, feature-rich JS library for dynamic data tables with paginated, sortable, searchable, column joining, action handles &amp; URL definition. The library works with Semantq JS framework and vanilla JS. AnyGrid is flexible, customizable, EXTENSIBLE, responsive &amp; performant. Open-source &amp; MIT licensed.
 
 ## Key Features
 
@@ -33,7 +33,7 @@ AnyGridJS is a Lightweight, feature-rich JS library for dynamic data tables with
   - Modularity and Features Optionality: Choose only the features you need for a lightweight and tailored implementation
 
 
-## Why Choose AnyGridJS?
+## Why Choose AnyGrid?
 
  - Vanilla JS: No dependencies, works with any JavaScript framework or vanilla JS
  - Lightweight: Minimal footprint, optimized for performance
@@ -85,7 +85,7 @@ If the id of your target grid container is 'anygrid' then you do not need to def
 3. Add your js markup in the html just before the ```html </body> ``` tag:
 
 ```html
-<script src="https://unpkg.com/anygridjs@1.0.9/anyGrid.global.js"></script>
+<script src="https://unpkg.com/AnyGrid@1.0.9/anygrid.global.js"></script>
  <script src="app.js"></script>
  ```
 
@@ -136,7 +136,7 @@ theme: 'pink'
 const dataGrid = new AnyGrid(data, columns, features);
 ```
 
-### NOTE that the features object is optional so you can invoke AnyGridJS without the features object as shown below:
+### NOTE that the features object is optional so you can invoke AnyGrid without the features object as shown below:
 
 
 ```javascript
@@ -194,7 +194,7 @@ const dataGrid = new anyGrid(data, columns);
 
 # Default Features 
 
-AnyGridJS has these in built features enabled by default: search/filter, sort, actions (row actions like edit or delete), pagination, items per page, dynamic headers and initial items per page. Therefore you do not need to declare them in the features object. However, AnyGridJS gives the option to disable these features if you don't need them. Below is an example of how you can disable these features. 
+AnyGrid has these in built features enabled by default: search/filter, sort, actions (row actions like edit or delete), pagination, items per page, dynamic headers and initial items per page. Therefore you do not need to declare them in the features object. However, AnyGrid gives the option to disable these features if you don't need them. Below is an example of how you can disable these features. 
 
 ```javascript
 const features = {
@@ -210,13 +210,13 @@ const features = {
 
 # Styling (Optional)
 
-AnyGridJS is a headless JS library - meaning the styling is entirely up to you, However as an option we offer a basic and high end css themes to enhance the look and feel of your data tables. If you want to use the provided css just deploy anyGrid.css via this cdn link:
+AnyGrid is a headless JS library - meaning the styling is entirely up to you, However as an option we offer a basic and high end css themes to enhance the look and feel of your data tables. If you want to use the provided css just deploy anyGrid.css via this cdn link:
 
 Place this somewhere in the head section of your html.
 
 ```html
 
-  <link rel="stylesheet" href="https://unpkg.com/anygridcss@1.0.1/anyGrid.css" anygrid-style>
+  <link rel="stylesheet" href="https://unpkg.com/anygridcss@1.0.1/anygrid.css" anygrid-style>
 
 ```
 
@@ -237,15 +237,15 @@ theme: 'pink'
 
 # Block Table Style Mobile displays
 
-AnyGridJS styles and themes come with block table style for mobile screen displays. See example below: 
+AnyGrid styles and themes come with block table style for mobile screen displays. See example below: 
 
-<img src="https://github.com/thincmedia/anyGridJs/blob/main/images/mobile-friendly-js-datagrid-anygrid.png" alt="Mobile Friedly Datagrid Displays">
+<img src="https://github.com/thincmedia/AnyGrid/blob/main/images/mobile-friendly-js-datagrid-anygrid.png" alt="Mobile Friedly Datagrid Displays">
 
 
 
 # Using Custom Containers (useful for multiple data grids)
 
-By default, AnyGridJS will place your data grid in the element with the id: anygrid eg:
+By default, AnyGrid will place your data grid in the element with the id: anygrid eg:
 
  ```html 
   <div id="anygrid">Your data grid will be displayd here</div>
@@ -259,7 +259,7 @@ By default, AnyGridJS will place your data grid in the element with the id: anyg
 <div id="users"></div>
 ```
 
-Having defined your data and columns for your AnyGrid instance you can then invoke the AnyGridJS class with the custom container id parameter: 
+Having defined your data and columns for your AnyGrid instance you can then invoke the AnyGrid class with the custom container id parameter: 
 
 ```javascript
 const containerId='users';
@@ -268,13 +268,13 @@ const dataGrid = new anyGrid(data, columns, features);
 const dataGrid = new anyGrid(data, columns);
 ```
 
-*You need to use this approach for every instance of AnyGridJS you need to implement on your page.*
+*You need to use this approach for every instance of AnyGrid you need to implement on your page.*
 
 
 ## Contribute
-AnyGridJS is largely an open-source project. Contributions, issues, and feature requests are welcome!
+AnyGrid is largely an open-source project. Contributions, issues, and feature requests are welcome!
 ## License
-AnyGridJS is licensed under the MIT License.
+AnyGrid is licensed under the MIT License.
 ## Keywords
 
 - JavaScript data tables
