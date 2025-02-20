@@ -271,6 +271,10 @@ const dataGrid = new anyGrid(data, columns);
 *You need to use this approach for every instance of AnyGrid you need to implement on your page.*
 
 
+
+[Laravel Implementaton Guide](docs/Laravel-guide.md)
+
+
 ## Contribute
 AnyGrid is largely an open-source project. Contributions, issues, and feature requests are welcome!
 ## License
