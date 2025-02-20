@@ -1,3 +1,5 @@
+"use strict";
+
 class AnyGrid {
   constructor(data, columns, options = {}) {
     this.data = data;

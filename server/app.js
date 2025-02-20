@@ -1,7 +1,7 @@
 
         // Create an instance of AnyGrid and use it
 
-const data = [
+const dataa = [
   { id: 1, name: 'John', surname: 'Doe', age: 30, role: 'Developer', salary: 50000 },
   { id: 2, name: 'Jane', surname: 'Doe', age: 28, role: 'Designer', salary: 45000 },
   { id: 3, name: 'Jack', surname: 'Smith', age: 34, role: 'Product Manager', salary: 60000 },
@@ -49,12 +49,15 @@ const data = [
   { id: 45, name: 'Mila', surname: 'Brooks', age: 34, role: 'Administrative Assistant', salary: 43000 } 
 ];
 
+
+const data = [{"id":1,"access_level":1,"first_name":"John","surname":"Doe","mobile":"1234567890","email":"johndoe@example.com","password":"hashedpassword123","country":"USA","town_city":"New York","suburb":"Brooklyn","street_number":"123","street_name":"Main St","unit_number":"Apt 1","bank_name":"Bank of America","branch_name":"Fifth Avenue","branch_code":"12345","account_number":"123456789012","swift_number":"BOFAUS3N","routing_number":"987654321","member_status":1,"level_1":1,"level_2":2,"level_3":3,"level_4":4,"level_5":5,"level_6":6,"level_7":7,"level_8":8,"level_9":9,"created_at":"2025-02-17T12:19:49.503678"},{"id":3,"access_level":1,"first_name":"Musa","surname":"Moyo","mobile":"064738383","email":"ghd@emailer.com","password":"$argon2id$v=19$m=65536,t=3,p=4$1xXPiO8Zy52gWsUPaSAF+w$H7NGC6h8t8rhf11IPr6FVlJsTWPvrTm9T5vcFodw+dM","country":null,"town_city":null,"suburb":null,"street_number":null,"street_name":null,"unit_number":null,"bank_name":null,"branch_name":null,"branch_code":null,"account_number":null,"swift_number":null,"routing_number":null,"member_status":0,"level_1":1,"level_2":1,"level_3":2,"level_4":3,"level_5":4,"level_6":5,"level_7":6,"level_8":7,"level_9":null,"created_at":"2025-02-17T12:24:20.697751"},{"id":4,"access_level":1,"first_name":"George","surname":"Dgah","mobile":"98838383","email":"imgdhd@yaho.com","password":"$argon2id$v=19$m=65536,t=3,p=4$qsOIY8q+mc4YeQSpJG3VaQ$en0VN8W3AX0a3dQ/qCTZ/dPribdiqAIO2KBpWREXUSU","country":null,"town_city":null,"suburb":null,"street_number":null,"street_name":null,"unit_number":null,"bank_name":null,"branch_name":null,"branch_code":null,"account_number":null,"swift_number":null,"routing_number":null,"member_status":0,"level_1":1,"level_2":1,"level_3":2,"level_4":3,"level_5":4,"level_6":5,"level_7":6,"level_8":7,"level_9":null,"created_at":"2025-02-17T12:25:32.23263"},{"id":5,"access_level":1,"first_name":"Jane","surname":"Motha","mobile":"085858585","email":"janame@hakako.com","password":"$argon2id$v=19$m=65536,t=3,p=4$EYdV+iCTrGYpg6OQFw3Tag$ZJpvK4LEhyG5wWwigc3GzkyF2ihZg6lIwOCDLymgv9Q","country":null,"town_city":null,"suburb":null,"street_number":null,"street_name":null,"unit_number":null,"bank_name":null,"branch_name":null,"branch_code":null,"account_number":null,"swift_number":null,"routing_number":null,"member_status":0,"level_1":4,"level_2":1,"level_3":1,"level_4":2,"level_5":3,"level_6":4,"level_7":5,"level_8":6,"level_9":null,"created_at":"2025-02-17T12:26:24.407626"}]
+
   const columns = [
   { name: 'id', header: 'ID', render: (value, row) => `<a href="/user/profile/${row.id}">${row.id}</a>`, sortable: true },
-  { name: 'fullName', header: 'FULL NAME', joinedColumns: ['name', 'surname'] },
-  { name: 'age', header: 'AGE', sortable: true },
-  { name: 'role', header: 'ROLE' },
-  { name: 'salary', header: 'SALARY', render: '<strong>R{salary}</strong>', sortable: true,
+  { name: 'fullName', header: 'FULL NAME', joinedColumns: ['first_name', 'surname'] },
+  { name: 'country', header: 'Country', sortable: true },
+  { name: 'mobile', header: 'Mobile' },
+  { name: 'email', header: 'Email', sortable: true,
 
     actions: [
       {
