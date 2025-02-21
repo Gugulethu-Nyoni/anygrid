@@ -189,6 +189,14 @@ In `resources/views/shop/products.blade.php`:
 @endsection
 ```
 
+**Note**
+
+Note how we get the product category name in the column definition object: ```row.category.name```
+
+```javascript
+{ name: 'category_id', header: 'Category', render: (value, row) => row.category ? row.category.name : 'N/A' },
+```
+
 ### 3. Define Routes
 In `routes/web.php`:
 ```php
