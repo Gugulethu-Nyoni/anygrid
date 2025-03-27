@@ -163,6 +163,11 @@ For Object Relational Mapping Laravel-specific implementations Refer to the [Any
 2. **Column Mismatches**: Ensure column names match your database fields
 3. **Action URLs**: Make sure your route definitions match the URLs in your action configurations
 
+
+For more details, visit:
+- [AnyGridJS GitHub Repository](https://github.com/Gugulethu-Nyoni/anygrid)
+- [AnyGridJS Documentation](https://anygridjs.com/)
+
 ## Additional Resources
 
 - [AnyGrid Main Documentation](https://github.com/Gugulethu-Nyoni/anygrid)

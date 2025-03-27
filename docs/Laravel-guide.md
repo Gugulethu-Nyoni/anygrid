@@ -221,3 +221,4 @@ For more details, visit:
 ## References
 - [Laravel Eloquent Relationships](https://laravel.com/docs/10.x/eloquent-relationships)
 - [N+1 Query Problem Explained](https://planetscale.com/blog/what-is-n-1-query-problem-and-how-to-solve-it)
+- [Mastering Obect Relational Mapping In Laravel: Spotlight On AnyGrid JS](https://dev.to/gugulethu_nyoni/mastering-obect-relational-mapping-in-laravel-a-spotlight-on-anygrid-js-3ckf)
