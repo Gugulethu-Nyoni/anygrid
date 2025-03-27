@@ -306,8 +306,8 @@ AnyGrid is licensed under the MIT License.
 ## Additional Resources
 
 - [AnyGrid Main Documentation](https://github.com/Gugulethu-Nyoni/anygrid)
-- [Laravel Basic Integration Guide](https://github.com/Gugulethu-Nyoni/anygrid/blob/main/docs/Laravel.md)
-- [Laravel Integration Guide](https://github.com/Gugulethu-Nyoni/anygrid/blob/main/docs/Laravel-guide.md)
+- [Laravel Basic Integration Guide](https://github.com/Gugulethu-Nyoni/anygrid/blob/main/docs/Lavavel.md)
+- [Laravel Eloquent ORM Integration Guide](https://github.com/Gugulethu-Nyoni/anygrid/blob/main/docs/Laravel-guide.md)
 
 - [Mastering Obect Relational Mapping In Laravel: Spotlight On AnyGrid JS](https://dev.to/gugulethu_nyoni/mastering-obect-relational-mapping-in-laravel-a-spotlight-on-anygrid-js-3ckf)
 
