@@ -27,6 +27,7 @@ class AnyGrid {
       pagination: true,
       itemsPerPage: true,
       dynamicHeaders: true,
+      mode: 'datagrid',
       theme:'default'
     };
 
