@@ -1,6 +1,9 @@
-# Using AnyGridJS in Laravel: A Technical Documentation
+# AnyGrid Laravel (Eloquent) Object-Relational Mapping (ORM) Documentation
 
-This guide provides a concise overview of integrating AnyGridJS with Laravel, focusing on Object-Relational Mapping (ORM) and rendering relational data efficiently.
+This guide provides a concise overview of integrating AnyGrid with Laravel, focusing on Object-Relational Mapping (ORM) and rendering relational data efficiently.
+
+For basic implementation of AnyGrid in Laravel you can refer to: - [Laravel Basic Integration Guide](https://github.com/Gugulethu-Nyoni/anygrid/blob/main/docs/Lavavel.md)
+
 
 ---
 
@@ -213,6 +216,7 @@ This guide demonstrated how to:
 3. Render relational data dynamically in the frontend using AnyGridJS.
 
 For more details, visit:
+- [Laravel Basic Integration Guide](https://github.com/Gugulethu-Nyoni/anygrid/blob/main/docs/Lavavel.md)
 - [AnyGridJS GitHub Repository](https://github.com/Gugulethu-Nyoni/anygrid)
 - [AnyGridJS Documentation](https://anygridjs.com/)
 
