@@ -371,11 +371,13 @@ searchTable() {
 
 
 applyTheme(theme, gridContainerId) {
-  const stylesheet = document.querySelector('link[anygrid-style]');
-  
+  // Find the stylesheet link referencing anyGrid.css
+  const stylesheet = Array.from(document.querySelectorAll('link[rel="stylesheet"]'))
+    .find(link => link.href.includes('anyGrid.css'));
+
   if (!stylesheet) {
-    console.error("Stylesheet with 'anygrid-style' not found!");
-    return;
+    console.error("Stylesheet referencing 'anyGrid.css' not found!");
+    return; // Exit this function gracefully — no fatal error
   }
 
   fetch(stylesheet.href)
@@ -385,21 +387,16 @@ applyTheme(theme, gridContainerId) {
       const themeRules = cssText.match(new RegExp(`\\.${theme}-theme\\s*{([^}]*)}`, 'i'));
 
       if (!themeRules) {
-        console.error(`Theme rules for ${theme} not found in the stylesheet.`);
+        console.error(`Theme rules for '${theme}' not found in the stylesheet.`);
         return;
       }
 
-      // Extract CSS rules for the theme
       const themeCSS = themeRules[1].trim();
-
-      // Find the grid container element
       const gridContainer = document.getElementById(gridContainerId);
 
       if (gridContainer) {
-        // Append the theme class to the grid container
         gridContainer.classList.add(`${theme}-theme`);
 
-        // Create a <style> tag with the extracted theme styles
         const clonedStyle = document.createElement('style');
         clonedStyle.textContent = `
           #${gridContainerId} {
@@ -407,12 +404,11 @@ applyTheme(theme, gridContainerId) {
           }
         `;
 
-        // Insert the <style> tag above the grid container
         gridContainer.parentNode.insertBefore(clonedStyle, gridContainer);
 
-        console.log(`Applied ${theme} theme to grid container: ${gridContainerId}`);
+        console.log(`Applied '${theme}' theme to grid container: ${gridContainerId}`);
       } else {
-        console.error(`Grid container with ID ${gridContainerId} not found.`);
+        console.error(`Grid container with ID '${gridContainerId}' not found.`);
       }
     })
     .catch(error => {
