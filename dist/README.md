@@ -1,7 +1,7 @@
   # AnyGrid Documentation
 
 
-<img src="https://github.com/thincmedia/AnyGrid/blob/main/images/AnyGrid-datagrid-js-datatable-example.png" alt="AnyGrid Example">
+<img src="https://github.com/Gugulethu-Nyoni/anygrid/blob/main/images/anygridjs-datagrid-js-datatable-example.png" alt="AnyGrid Example">
 
 AnyGrid is a Lightweight, feature-rich JS library for dynamic data tables with paginated, sortable, searchable, column joining, action handles &amp; URL definition. The library works with Semantq JS framework and vanilla JS. AnyGrid is flexible, customizable, EXTENSIBLE, responsive &amp; performant. Open-source &amp; MIT licensed.
 
@@ -271,6 +271,10 @@ const dataGrid = new anyGrid(data, columns);
 *You need to use this approach for every instance of AnyGrid you need to implement on your page.*
 
 
+
+[Laravel Implementaton Guide](docs/Laravel-guide.md)
+
+
 ## Contribute
 AnyGrid is largely an open-source project. Contributions, issues, and feature requests are welcome!
 ## License
@@ -293,4 +297,17 @@ AnyGrid is licensed under the MIT License.
 - Front-end Development js data tables
 - Dynamic JS Data Tables
 - Interactive Data Tables
+
+#### For more details, visit:
+
+- [AnyGridJS GitHub Repository](https://github.com/Gugulethu-Nyoni/anygrid)
+- [AnyGridJS Documentation](https://anygridjs.com/)
+
+## Additional Resources
+
+- [AnyGrid Main Documentation](https://github.com/Gugulethu-Nyoni/anygrid)
+- [Laravel Basic Integration Guide](https://github.com/Gugulethu-Nyoni/anygrid/blob/main/docs/Lavavel.md)
+- [Laravel Eloquent ORM Integration Guide](https://github.com/Gugulethu-Nyoni/anygrid/blob/main/docs/Laravel-guide.md)
+
+- [Mastering Obect Relational Mapping In Laravel: Spotlight On AnyGrid JS](https://dev.to/gugulethu_nyoni/mastering-obect-relational-mapping-in-laravel-a-spotlight-on-anygrid-js-3ckf)
 
