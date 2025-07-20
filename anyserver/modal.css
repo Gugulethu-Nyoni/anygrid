@@ -1,0 +1,273 @@
+/* Modal Container */
+.anygrid-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  z-index: 1000;
+}
+
+/* Modal Content */
+.modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  padding: 1.5rem;
+  z-index: 1001;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+/* Modal Body Content */
+.modal-body {
+  padding: 1rem 0;
+}
+
+.record-field {
+  display: flex;
+  margin-bottom: 1rem;
+  align-items: flex-start;
+}
+
+.record-field strong {
+  flex: 0 0 120px;
+  font-weight: 600;
+  color: #555;
+}
+
+.record-field span {
+  flex: 1;
+  word-break: break-word;
+}
+
+/* Modal Footer */
+.modal-footer {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Delete Button */
+.anygrid-btn-delete {
+  background: #ff4444;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.anygrid-btn-delete:hover {
+  background: #cc0000;
+}
+
+/* Close Button */
+.modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #777;
+  padding: 0.25rem;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  color: #333;
+}
+
+/* Backdrop */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(2px);
+  z-index: 1000;
+}
+
+/* Animations (keep your existing animations) */
+.anygrid-modal.fade .modal-content {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.anygrid-modal.slide .modal-content {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translate(-50%, -40px); opacity: 0; }
+  to { transform: translate(-50%, -50%); opacity: 1; }
+}
+
+
+/* Editable Fields */
+.record-field label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.record-field input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.record-field input:focus {
+  border-color: #4285f4;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+}
+
+/* Save Button */
+.btn-save {
+  background: #4285f4;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  margin-right: 0.5rem;
+  transition: background 0.2s;
+}
+
+.btn-save:hover {
+  background: #3367d6;
+}
+
+
+.modal-status {
+  padding: 0.5rem;
+  margin-top: 1rem;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.modal-status.loading {
+  background: #e8f0fe;
+  color: #1967d2;
+}
+
+.modal-status.success {
+  background: #e6f4ea;
+  color: #137333;
+}
+
+.modal-status.error {
+  background: #fce8e6;
+  color: #d93025;
+}
+
+.btn-retry {
+  background: none;
+  border: none;
+  color: #1967d2;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.modal-status.info {
+  background: #e8f0fe;
+  color: #1967d2;
+}
+
+.row-updated {
+  background-color: #2ecc71; /* Solid green */
+  animation: highlightUpdate 1.5s ease 8.5s forwards;
+}
+
+@keyframes highlightUpdate {
+  0%   { background-color: #2ecc71; }
+  100% { background-color: transparent; }
+}
+
+
+
+/* Add to your styles */
+.delete-confirmation, 
+.delete-error {
+  text-align: center;
+  padding: 20px;
+}
+
+.checkmark, .crossmark {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 20px;
+  display: block;
+}
+
+.checkmark circle {
+  stroke: #4CAF50;
+  stroke-width: 2;
+}
+
+.checkmark path {
+  stroke: #4CAF50;
+  stroke-width: 2;
+  stroke-linecap: round;
+  animation: checkmark 0.6s ease-in-out;
+}
+
+.crossmark circle {
+  stroke: #F44336;
+  stroke-width: 2;
+}
+
+.crossmark path {
+  stroke: #F44336;
+  stroke-width: 2;
+  stroke-linecap: round;
+  animation: crossmark 0.6s ease-in-out;
+}
+
+@keyframes checkmark {
+  0% { stroke-dashoffset: 100px }
+  100% { stroke-dashoffset: 0 }
+}
+
+@keyframes crossmark {
+  0% { stroke-dashoffset: 100px }
+  100% { stroke-dashoffset: 0 }
+}
+
+.retry-btn {
+  background: #F44336;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+
+

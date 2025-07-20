@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+  <link rel="stylesheet" href="https://unpkg.com/anygridcss@1.0.1/anyGrid.css" anygrid-style />
+<link rel="stylesheet" type="text/css" href="./modal.css">
+
+	<script type="module">
+
+import { $state } from './state/index.js';
+import AnyGrid from './anygrid.js';
+
+import smQL from './semantqQL.js';
+		
+const data = await new smQL('http://localhost:3003/productcategory/productcategories')
+
+ const columns = [
+  {
+    name: 'id',
+    header: 'ID',
+    render: (value, row) => `<a href="/user/profile/${row.id}">${row.id}</a>`,
+    sortable: true
+  },
+  {
+    name: 'name',
+    header: 'Title'
+  },
+ 
+  {
+    name: 'description',
+    header: 'Description',
+    sortable: true,
+
+    actions: [
+      {
+        label: 'EDIT',
+        url: 'edit/{id}',
+        class: 'edit',
+        id: 'edit-{id}'
+      },
+      {
+        label: 'DELETE',
+        url: 'delete/{id}',
+        class: 'delete',
+        id: 'delete-{id}',
+        confirm: true
+      }
+    ]
+  }
+];
+
+
+
+//Disable default features and add any other available options 
+
+const features = {
+  initialItemsPerPage: 5,
+  csvExport: true,
+  excelExport: true,
+  theme: 'light',
+  gridModal: true,
+    modalConfig: {
+    editable: true,
+    nonEditableFields: ['id', 'uuid', 'status','sortOrder','createdAt','updatedAt'],
+    deletable: true,
+  },
+
+  dataApiEndPoint: 'http://localhost:3003/productcategory/productcategories',
+    
+  }
+
+const dataGrid = new AnyGrid(data.data, columns, features);
+
+
+	</script>
+	<style>
+.anygrid-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+
+.anygrid-modal.active {
+  display: block;
+}
+
+	</style>
+</head>
+<body>
+
+<div id="anygrid"></div>
+
+
+</body>
+</html>
