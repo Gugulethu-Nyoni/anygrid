@@ -1,6 +1,6 @@
 {
   "name": "anygridjs",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Lightweight, headless, framework agnostic, feature rich, paginated, extensible, sortable, searchable data tables in plain js. Open-source & MIT licensed.",
   "type": "module",
   "exports": {

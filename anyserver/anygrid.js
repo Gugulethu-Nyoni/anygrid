@@ -148,33 +148,37 @@ applyDynamicTheme(color, gridContainerId) {
     const existingStyle = document.getElementById('anygrid-dynamic-theme');
     if (existingStyle) existingStyle.remove();
 
-    // Calculate theme colors based on the primary color
+    // Calculate theme colors - mostly using light theme values with accent color for key elements
     const themeCSS = `
       .dynamic-theme {
-        --background-dark: ${this.lightenColor(color, 80)};
-        --background-light:  #f9f9f9;
-        --text-light: #333333;
-        --border-color: ${this.lightenColor(color, 80)};
-        --input-background: #ffffff;
-        --input-background-disabled: ${this.lightenColor(color, 90)};
-        --label-color: ${color};
-        --radio-checkbox-accent: ${color};
-        --button-background: ${this.lightenColor(color, 20)};
-        --button-background-hover: ${color};
-        --edit-background: ${color};
-        --delete-background: #dc3545;
-        --text-contrast: ${this.lightenColor(color, 60)};
-        --shadow-color: ${this.hexToRgb(color, 0.1)};
-        --primary-color: ${color};
+        --background-dark: #ededeb; /* Keep light theme value */
+        --background-light: #f9f9f9; /* Keep light theme value */
+        --text-light: #333333; /* Keep light theme value */
+        --border-color: #cccccc; /* Keep light theme value */
+        --input-background: #ffffff; /* Keep light theme value */
+        --input-background-disabled: #e0e0e0; /* Keep light theme value */
+        --label-color: ${color}; /* Use theme color */
+        --radio-checkbox-accent: ${color}; /* Use theme color */
+        --button-background: ${this.lightenColor(color, 20)}; /* Very light version of theme color */
+        --button-background-hover: ${this.lightenColor(color, 50)}; /* Slightly darker */
+        --edit-background: #e91e63; /* Keep light theme value (red) */
+        --delete-background: #dc3545; /* Keep light theme value (red) */
+        --text-contrast: #ffffff; /* Keep light theme value */
+        --shadow-color: rgba(79, 77, 77, 0.1); /* Keep light theme value */
+        --primary-color: ${color}; /* Use theme color */
         --primary-color-rgb: ${primaryColor};
-        --hover-bg: ${this.lightenColor(color, 50)}
+        --hover-bg: ${this.lightenColor(color, 90)}; /* Very subtle hover effect */
+        
+        /* Additional variables for consistency */
+        --focus-shadow: 0 0 0 0.2rem ${this.hexToRgb(color, 0.25)};
+        --link-color: ${color};
+        --link-hover-color: ${this.lightenColor(color, 30)};
       }
     `;
 
     style.textContent = themeCSS;
     document.head.appendChild(style);
-  }
-
+}
   // Helper function to lighten a color
   lightenColor(color, percent) {
     const num = parseInt(color.replace('#', ''), 16);
