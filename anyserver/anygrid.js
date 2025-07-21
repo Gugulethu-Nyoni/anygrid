@@ -61,7 +61,19 @@ class AnyGrid {
 
         // Initialize the data grid
     this.initializeDataGrid();
+
+
+    if (options.themeColor) {
+      this.applyDynamicTheme(options.themeColor, this.gridContainerId);
+    } else if (this.features.theme) {
+      let theme = this.features.theme;
+      if (theme === 'dark') theme = 'default';
+      this.applyTheme(theme, this.gridContainerId);
+    } else {
+      this.applyTheme('dark', this.gridContainerId);
+    }
     
+  /*
  if (this.features.theme) {
       //alert(this.features.theme);
       let theme = this.features.theme;
@@ -70,7 +82,7 @@ class AnyGrid {
     } else {
       this.applyTheme('dark', this.gridContainerId);
     }
-
+*/
 
 
     //console.log(this.features.search);
@@ -111,6 +123,84 @@ this.modalElement.querySelector('.anygrid-btn-delete').addEventListener('click',
   // CLOSE CONSTRUCTOR HERE
 
 
+applyDynamicTheme(color, gridContainerId) {
+    const gridContainer = document.getElementById(gridContainerId);
+    if (!gridContainer) {
+      console.error(`Grid container with ID '${gridContainerId}' not found.`);
+      return;
+    }
+
+    // Remove any existing theme classes
+    const themeClasses = Array.from(gridContainer.classList).filter(cls => 
+      cls.endsWith('-theme')
+    );
+    themeClasses.forEach(cls => gridContainer.classList.remove(cls));
+
+    // Add dynamic theme class
+    gridContainer.classList.add('dynamic-theme');
+
+    // Generate CSS variables based on the provided color
+    const primaryColor = this.hexToRgb(color);
+    const style = document.createElement('style');
+    style.id = 'anygrid-dynamic-theme';
+    
+    // Remove existing dynamic theme if it exists
+    const existingStyle = document.getElementById('anygrid-dynamic-theme');
+    if (existingStyle) existingStyle.remove();
+
+    // Calculate theme colors based on the primary color
+    const themeCSS = `
+      .dynamic-theme {
+        --background-dark: ${this.lightenColor(color, 80)};
+        --background-light:  #f9f9f9;
+        --text-light: #333333;
+        --border-color: ${this.lightenColor(color, 80)};
+        --input-background: #ffffff;
+        --input-background-disabled: ${this.lightenColor(color, 90)};
+        --label-color: ${color};
+        --radio-checkbox-accent: ${color};
+        --button-background: ${this.lightenColor(color, 20)};
+        --button-background-hover: ${color};
+        --edit-background: ${color};
+        --delete-background: #dc3545;
+        --text-contrast: ${this.lightenColor(color, 60)};
+        --shadow-color: ${this.hexToRgb(color, 0.1)};
+        --primary-color: ${color};
+        --primary-color-rgb: ${primaryColor};
+        --hover-bg: ${this.lightenColor(color, 50)}
+      }
+    `;
+
+    style.textContent = themeCSS;
+    document.head.appendChild(style);
+  }
+
+  // Helper function to lighten a color
+  lightenColor(color, percent) {
+    const num = parseInt(color.replace('#', ''), 16);
+    const amt = Math.round(2.55 * percent);
+    const R = (num >> 16) + amt;
+    const G = (num >> 8 & 0x00FF) + amt;
+    const B = (num & 0x0000FF) + amt;
+    
+    return `#${(
+      0x1000000 +
+      (R < 255 ? (R < 1 ? 0 : R) : 255) * 0x10000 +
+      (G < 255 ? (G < 1 ? 0 : G) : 255) * 0x100 +
+      (B < 255 ? (B < 1 ? 0 : B) : 255)
+    ).toString(16).slice(1)}`;
+  }
+
+  // Helper function to convert hex to rgb
+  hexToRgb(hex, alpha = 1) {
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+    
+    return alpha === 1 
+      ? `rgb(${r}, ${g}, ${b})`
+      : `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  }
 
 // ========================
 // MODAL METHODS (SEQUENTIAL ORDER)

@@ -3,50 +3,34 @@
 
 <img src="https://github.com/Gugulethu-Nyoni/anygrid/blob/main/images/anygridjs-datagrid-js-datatable-example.png" alt="AnyGrid Example">
 
-AnyGrid offers a powerful, flexible data grid system with built-in form integration, pagination, sorting, modals, and more — all without needing to touch any HTML or CSS.
+AnyGrid is a Lightweight, feature-rich JS library for dynamic data tables with paginated, sortable, searchable, column joining, action handles &amp; URL definition. The library works with Semantq JS framework and vanilla JS. AnyGrid is flexible, customizable, EXTENSIBLE, responsive &amp; performant. Open-source &amp; MIT licensed.
 
-While the library is build for the Semantq JS Framework - AnyGrid is framework agnostic and can work with any JS Framework and vanilla JavaScript. 
+## Key Features
 
+### Data Management
 
-## Feature Overview
+  - Pagination: Effortlessly navigate large datasets with customizable page sizes
+  - Sorting: Enable users to sort data by specific columns
+  - Searching: Include a search bar for quick data filtering
+  - Column Joining: Combine data from multiple columns for enhanced visualization
 
+### Customization
 
-### Data Handling & Display
+  - Action Handles: Add custom buttons for interactive functionality
+  - URL Definition: Define URLs for data linking and seamless navigation
+  - Define Theme via JS: Available themes include default (dark), light, blue, pink, indigo, dark-orange, and green
 
-* **Flexible Data Presentation**:
-    * **Pagination**: Easily navigate large datasets with configurable items per page, ensuring optimal performance and user experience.
-    * **Search & Filtering**: Empower users with an integrated search functionality for quick and efficient data filtering.
-    * **Sorting**: Enable data sorting by specific columns, with options to configure which columns are sortable.
-* **Advanced Column Management**:
-    * **Custom Column Display**: Choose precisely which columns from your form data to display in the grid.
-    * **Joinable Columns**: Combine data from multiple columns (e.g., `name` and `surname` rendered as `fullName`) for enhanced readability and visualization.
-    * **Custom Rendering**: Deploy custom JavaScript functions or inject HTML directly into data rendering, allowing for highly flexible and dynamic cell content.
+### Export Options
 
-### Customization & Theming
+  - Export Table to CSV: Easily export table data into CSV format
+  - Export Table to Excel: Seamlessly export table data into Excel format
+  - Define Theme via JS: Available themes include default (dark), light, blue, pink, indigo, dark-orange, and green
 
-* **Effortless Theming**:
-    * **Built-in Themes**: Apply predefined visual themes by simply defining your preferred theme (e.g., `theme: 'blue'`) in the `features` object.
-    * **Custom Theme Colors**: Override built-in themes or define a unique aesthetic by specifying a custom main color using a HEX code (e.g., `themeColor: '#4f4f4d'`) in your `features` object.
-* **Action Handles**: Integrate custom action buttons (e.g., "Edit," "Delete") directly within table rows, providing interactive functionality.
+### Usability
 
-### Interactivity & Modals
-
-* **Grid Modal for Detailed Views**:
-    * **Row-Click Modal**: Enable a `gridModal` option to allow users to click on any row and view the full record details in a dedicated modal window.
-    * **In-Modal Editing & Deleting**: The modal mode provides options for record editing and deleting. This is particularly useful for use cases where you want to disable inline editing/deleting (e.g., for lower-level users or front-end displays).
-    * **Seamless API Integration**: Grid Modal editing and deleting (including a confirmation step for deleting) are backed by a fully functional API. You simply need to pass your record editing and deleting endpoints in the `features` object. e.g. `dataApiEndPoint: 'http://localhost:3000/product/products',`
-    * **Dynamic UI Updates**: All modal editing and deleting features occur on-screen without a page refresh. AnyGrid seamlessly updates the data grid and the modal itself after record modifications, ensuring a smooth and responsive user experience without page reloads.
-
-### Integration & Deployment
-
-* **Easy & Quick Deployment**: AnyGrid is designed for rapid deployment. All you need is your `$data` object, column definitions, and an optional `features` object to get started.
-* **Multiple Grid Capability**: Implement the capability to display multiple independent data grids on the same page, each with its own data and configurations.
-* **Formique Integration**: Works seamlessly with Formique, a robust code, low-code/no-code JavaScript-driven form builder, enabling you to write complete forms with robust inbuilt form submission logic without touching HTML or CSS.
-* **On-the-Fly Export**: Optionally enable CSV and Excel export formats for your data directly from the grid interface.
-
-* **Sticky Table Headers**: Keep headers visible while scrolling for better usability.
-* **Framework Agnostic**: Works with any JavaScript framework (Semantq, React, Angular, Vue, Svelte etc.) or vanilla JS.
-* **Modularity and Features Optionality**: Choose only the features you need for a lightweight and tailored implementation.
+  - Sticky Table Headers: Keep headers visible while scrolling for better usability
+  - Framework Agnostic: Works with any JavaScript framework (React, Angular, Vue, Svelte etc.) or vanilla JS
+  - Modularity and Features Optionality: Choose only the features you need for a lightweight and tailored implementation
 
 
 ## Why Choose AnyGrid?
@@ -60,22 +44,14 @@ Get Started
 - Extensible: you can extend the features nd functions of the library
 - Minimal Configs: all you need is  a div with anygrid or custom id name,  a json data object, column definition, features object (optional) in your app.js or via script tag directly on the html. See usage section below.
 
-## Installation & Usage
+## Usage Example
 
 
-### Installation
+There are three ways to use AnyGrid in your html.
 
-```bash
-npm install anygridjs
-```
+## Global JS Format
 
-Import into your project:
 
-```js
-import AnyGrid from 'anygridjs';
-```
-
-### Usage
 
 1. html: insert this containter somewhere in your html (before the js script tags html mark up shown in step 2)
 
@@ -154,13 +130,7 @@ const features = {
 initialItemsPerPage: 30,
 csvExport: true,
 excelExport: true,
-theme: 'pink',
-gridModal:true,
-modalConfig {
-  editable: true,
-  deletable:true,
-  nonEditableFields:['id']
-}
+theme: 'pink'
 }
 
 const dataGrid = new AnyGrid(data, columns, features);
@@ -240,13 +210,13 @@ const features = {
 
 # Styling (Optional)
 
-AnyGrid is a headless JS library - meaning the library can still work without any CSS and the styling is entirely up to you. However as an option we offer a basic and high end css themes to enhance the look and feel of your data tables. If you want to use the provided css just deploy anyGrid.css via this cdn link:
+AnyGrid is a headless JS library - meaning the styling is entirely up to you, However as an option we offer a basic and high end css themes to enhance the look and feel of your data tables. If you want to use the provided css just deploy anyGrid.css via this cdn link:
 
 Place this somewhere in the head section of your html.
 
 ```html
 
-  <link rel="stylesheet" href="https://unpkg.com/anygridcss@1.0.1/anygrid.css" />
+  <link rel="stylesheet" href="https://unpkg.com/anygridcss@1.0.1/anygrid.css" anygrid-style>
 
 ```
 
@@ -263,121 +233,6 @@ theme: 'pink'
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-### 🌐 API Integration with smQL
-
-Use `@semantq/ql` for fetching and submitting data efficiently.
-
-#### Install
-
-```bash
-npm install @semantq/ql
-```
-
-#### Import
-
-```js
-import smQL from '@semantq/ql';
-```
-
-#### Fetching data:
-
-```js
-const records = await new smQL(API_END_POINT); 
-```
-
-> `smQL` handles GET, POST, PUT, DELETE behind the scenes and simplifies async handling.
-> It's recommended to declare `API_END_POINT` (e.g. `http://localhost:3000/product/products`) as a constant or environment variable for maintainability.
-
-Here’s a refined and more professional version of your explanation:
-
-
-### Edit & Delete API Structure in SemantqQL
-
-In the **SemantqQL** full-stack project, the API routes for editing and deleting records follow a consistent structure:
-
-```
-{server_url} / {model_name (lowercase)} / {route_name}
-```
-
-For example, if you're working with the `Product` model, the API endpoint for editing or deleting records would look like:
-
-```
-http://localhost:3000/product/products
-```
-
-You can always confirm or modify these routes by checking the `semantQL/server/routes/modelRoutes.js` file.
-
-
-## Advanced Usage
-
-### Column Definition and Feature Configuration
-
-```js
-const features = {
-  initialItemsPerPage: 5,
-  csvExport: true,
-  excelExport: true,
-
-  theme: 'indigo', // Optional: Built-in colour themes like 'indigo', 'teal', 'slate', etc.
-  themeColor: '#556B2F', // Optional: Custom HEX colour to override built-in theme
-
-  gridModal: true, // NEW: Enables row-click modal interaction
-  modalConfig: {
-    editable: true,                  // Show "Edit" button in modal
-    deletable: true,                 // Show "Delete" button in modal
-    nonEditableFields: [            // Optional: Fields excluded from edit view
-      'id', 'uuid', 'status', 
-      'sortOrder', 'createdAt', 'updatedAt'
-    ]
-  },
-
-  dataApiEndPoint: 'http://localhost:3000/product/products', // For update/delete actions
-};
-```
-
-### New Feature Explanations
-
-#### `gridModal` (Default: `false`)
-
-* When enabled, clicking on any row opens a modal displaying full record details.
-* This modal is useful for CRUD-lite use cases where inline editing is disabled.
-* Controlled via `modalConfig`:
-
-| Option              | Description                              |
-| - | - |
-| `editable`          | Enables "Edit" button inside the modal   |
-| `deletable`         | Enables "Delete" button inside the modal |
-| `nonEditableFields` | Prevents editing of specified fields     |
-
-
-#### `dataApiEndPoint`
-
-* Sets the URL for **update** and **delete** operations (used by the modal).
-* Automatically appends record ID to the endpoint for PUT and DELETE requests.
-
-```js
-// Example:
-PUT    /product/products/6
-DELETE /product/products/6
-```
-
-#### `themeColor`
-
-* Accepts a custom HEX code (e.g. `#556B2F`) - this will override the theme if a theme is also defined in the features object.
-* Affects button backgrounds, hover states, modal accents, and more.
-
-
 ### If you want to use the default/dark theme then you don't need to define the theme parameter in your features object. 
 
 # Block Table Style Mobile displays
@@ -386,15 +241,7 @@ AnyGrid styles and themes come with block table style for mobile screen displays
 
 <img src="https://github.com/thincmedia/AnyGrid/blob/main/images/mobile-friendly-js-datagrid-anygrid.png" alt="Mobile Friedly Datagrid Displays">
 
-AVAILABLE IN BUILT THEMES (List is to be extended)
 
-- default or dark
-- Light
-- Pink
-- Indigo
-- Blue
-- Dark Orange
-- Green
 
 # Using Custom Containers (useful for multiple data grids)
 
@@ -423,6 +270,8 @@ const dataGrid = new anyGrid(data, columns);
 
 *You need to use this approach for every instance of AnyGrid you need to implement on your page.*
 
+
+
 [Laravel Implementaton Guide](docs/Laravel-guide.md)
 
 
@@ -448,9 +297,6 @@ AnyGrid is licensed under the MIT License.
 - Front-end Development js data tables
 - Dynamic JS Data Tables
 - Interactive Data Tables
-- Datagrid Modals
-- DataGrid Crud
-- Datagrid with edit and delete options
 
 #### For more details, visit:
 
@@ -465,4 +311,3 @@ AnyGrid is licensed under the MIT License.
 
 - [Mastering Obect Relational Mapping In Laravel: Spotlight On AnyGrid JS](https://dev.to/gugulethu_nyoni/mastering-obect-relational-mapping-in-laravel-a-spotlight-on-anygrid-js-3ckf)
 
-Danko! Ngyabonga -:)
