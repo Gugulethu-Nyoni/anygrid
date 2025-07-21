@@ -6,10 +6,14 @@
 	<title></title>
   <link rel="stylesheet" href="./anyGrid.css" />
 
+      <link rel="stylesheet" href="https://unpkg.com/formique-css@1.0.11/formique-css.css" />
+
+
 	<script type="module">
 
 import AnyGrid from './anygrid.js';
-import smQL from './semantqQL.js';
+import smQL, { Form } from './semantqQL.js';
+import Formique from './formique-semantq.js';
 		
 const data = await new smQL('http://localhost:3003/productcategory/productcategories')
 
@@ -72,6 +76,123 @@ const features = {
 const dataGrid = new AnyGrid(data.data, columns, features);
 
 
+
+
+
+
+// PRODUCTS
+
+const categories = await new smQL('http://localhost:3003/productcategory/productcategories');
+
+
+let productsData;
+const productsCall = await new smQL('http://localhost:3003/product/products');
+productsData=productsCall.data;
+
+const productColumns = [
+  { name: 'id', header: 'ID' },
+  { name: 'title', header: 'Title' },
+  { name: 'description', header: 'Description' },
+  { name: 'status', header: 'Status' },
+  { name: 'currency', header: 'Currency', joinedColumns: ['currency','price'] }
+];
+
+
+
+const productFeatures = {
+initialItemsPerPage: 5,
+csvExport: true,
+excelExport: true,
+theme: 'light',
+themeColor: '#556B2F',
+gridModal: true,
+modalConfig: {
+    editable:true,
+    deletable:true,
+    nonEditableFields: ['id','createdAt','updatedAt']
+},
+dataApiEndPoint: 'http://localhost:3003/product/products',
+gridContainerId: 'productsGrid',
+}
+
+const productsGrid = new AnyGrid(productsData, productColumns, productFeatures)
+
+
+/// PRODUCTS FORM 
+const cats = categories.data; 
+const categoryOptions = cats.map(cat => ({
+  value: cat.id,               // use id here
+  label: toTitleCase(cat.name) // keep title case for label
+}));
+
+function toTitleCase(str) {
+  return str.replace(/\w\S*/g, txt =>
+    txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+  );
+}
+
+
+const productSchema = [
+  ['multipleSelect','categories','Category', {required:true},{},
+  categoryOptions ],
+  ['text', 'title', 'Title', { required: true }],
+  ['text', 'slug', 'Slug', { required: true }],
+  ['text', 'sku', 'SKU'],
+  ['textarea', 'description', 'Description'],
+  ['textarea', 'shortDescription', 'Short Description'],
+    ['singleSelect', 'status', 'Status', { required: true }, {}, [
+    { value: 'draft', label: 'Draft', selected: true },
+    { value: 'active', label: 'Active' },
+    { value: 'archived', label: 'Archived' }
+  ]],
+  ['singleSelect', 'currency', 'Currency', { required: true }, {}, [
+    { value: 'ZAR', label: 'ZAR', selected: true },
+    { value: 'USD', label: 'USD' },
+    { value: 'EUR', label: 'EUR' }
+  ]],
+  ['number', 'price', 'Price', { required: true }],
+  ['number', 'sale_price', 'Sale Price'],
+  ['text', 'image', 'Image URL'],
+  ['textarea', 'attributes', 'Attributes (JSON)'],
+  ['textarea', 'metadata', 'Metadata (JSON)'],
+  ['submit', 'submit', 'Submit']
+];
+
+
+
+const productFormSettings = {
+  themeColor: '#556B2F',
+  placeholders: false,
+  formContainerId: 'addProductContainer',
+  submitOnPage:true
+
+}
+
+const productFormParams  = {
+  action: '#',
+  method: 'POST',
+  id:'addProduct',
+}
+
+
+
+const productForm = new Formique(productSchema, productFormSettings,productFormParams);
+
+// PRODUCT FORM SUBMISSION
+
+const productFormId='addProduct';
+const productFormHandler = new Form(productFormId);
+
+productFormHandler.form.addEventListener('form:captured', async ({ detail }) => {
+console.log("The form data:", JSON.stringify(detail,null,2));
+  await new smQL('http://localhost:3003/product/products', 'POST', detail, {
+    formId: productFormId
+  });
+});
+
+
+
+
 	</script>
 	<style>
 .anygrid-modal {
@@ -93,6 +214,21 @@ const dataGrid = new AnyGrid(data.data, columns, features);
 <body>
 
 <div id="anygrid"></div>
+
+
+<hr /> 
+
+
+
+<div id="productsGrid"> </div>
+
+<hr />
+
+<div id="addProductContainer" class="width-half"> </div>
+
+
+
+
 
 
 </body>

@@ -1045,19 +1045,28 @@ _extractCleanValue(formattedText) {
 // 4. FOURTH: API communication
 async _recordUpdateApi(dataUpdate) {
   if (!dataUpdate.recordId) throw new Error('recordId is required');
-  
+
   const endpoint = `${this.dataApiEndPoint}/${dataUpdate.recordId}`;
-  const payload = {...dataUpdate};
+  const payload = { ...dataUpdate };
   delete payload.recordId;
 
+  // Get the list of non-editable fields
+  const nonEditable = (this.features?.modalConfig?.nonEditableFields || []);
+
+  // Clean and filter payload values
   Object.keys(payload).forEach(key => {
-    payload[key] = this._cleanPayloadValue(payload[key]);
+    if (nonEditable.includes(key)) {
+      delete payload[key];
+    } else {
+      payload[key] = this._cleanPayloadValue(payload[key]);
+    }
   });
 
   console.debug('API Payload:', payload);
 
   try {
     this._showLoadingState(true);
+
     const response = await fetch(endpoint, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
@@ -1068,9 +1077,9 @@ async _recordUpdateApi(dataUpdate) {
       const error = await response.json().catch(() => ({}));
       throw new Error(error.message || `HTTP ${response.status}`);
     }
-    
+
     return await response.json();
-    
+
   } catch (error) {
     console.error('API Error:', error);
     throw error;
@@ -1078,6 +1087,7 @@ async _recordUpdateApi(dataUpdate) {
     this._showLoadingState(false);
   }
 }
+
 
 _cleanPayloadValue(value) {
   if (value === null || value === undefined || value === 'null') return null;
