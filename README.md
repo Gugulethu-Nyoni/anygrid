@@ -2,7 +2,7 @@
 
 <img src="https://github.com/Gugulethu-Nyoni/anygrid/blob/main/images/anygridjs-datagrid-js-datatable-example.png" alt="AnyGrid Example">
 
-AnyGrid offers a powerful, flexible data grid system with built-in form integration, pagination, sorting, modals (with functional edit and delete capabilties), and more — all without having to touch any HTML or CSS.
+##### AnyGrid offers a powerful, flexible data grid system with built-in form integration, pagination, sorting, modals (with functional edit and delete capabilties), and more — all without having to touch any HTML or CSS.
 
 While the library is build for the Semantq JS Framework - AnyGrid is framework agnostic and can work with any JS Framework and vanilla JavaScript. 
 
