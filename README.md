@@ -326,7 +326,7 @@ http://localhost:3000/product/products
 
 Note that `http://localhost:3000/` is just an example. 
 
-You can always confirm or modify these routes by checking the `semantQL/server/routes/modelRoutes.js` file.
+You can always confirm or modify these routes by checking the `semantqQL/server/routes/modelRoutes.js` file.
 
 
 ## Advanced Usage
