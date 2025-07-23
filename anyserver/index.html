@@ -6,7 +6,7 @@
 	<title></title>
   <link rel="stylesheet" href="./anyGrid.css" />
 
-      <link rel="stylesheet" href="https://unpkg.com/formique-css@1.0.11/formique-css.css" />
+      <link rel="stylesheet" href="./formique-css.css" />
 
 
 	<script type="module">
@@ -133,7 +133,7 @@ function toTitleCase(str) {
 
 
 const productSchema = [
-  ['multipleSelect','categories','Category', {required:true},{},
+  ['checkbox','categories','Category', {required:true},{},
   categoryOptions ],
   ['text', 'title', 'Title', { required: true }],
   ['text', 'slug', 'Slug', { required: true }],

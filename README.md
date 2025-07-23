@@ -73,7 +73,41 @@ Import into your project:
 import AnyGrid from 'anygridjs';
 ```
 
+**Using AnyGrid in Non-Bundler Environments**
+
+If you're not using a bundler (or working in an environment that doesn't handle `npm` installs and ES module imports), you can simply include AnyGrid via CDN. Add the following `<script>` tag inside the `<head>` or just before the closing `</body>` tag of your HTML page:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/anygridjs@1.0.13/anyGrid.global.min.js"></script>
+```
+
+This will make `AnyGrid` available globally as a browser-friendly script.
+
 ### Usage
+
+
+Get the AnyGrid css via the cdn link. 
+
+```html
+<link rel="stylesheet" href="https://unpkg.com/anygridcss@1.0.2/anyGrid.css" />
+```
+
+In a Semantq project you can place that stylesheet link tag inside the `@head ...link tag here.. @end` section of your `@layout.smq` page inside the route where you want to use AnyGrid.
+
+You would have created the route this way: 
+
+`semantq make:route products -l`
+
+this will create a dir:
+
+`src/routes/products`
+
+inside that directory there would two files 
+
+`@page.smq` and `@layout.smq`
+
+[For more on this you can view the Semantq Layouts Guide here](https://github.com/Gugulethu-Nyoni/semantq/blob/main/docs/SemantqLayouts.md)
+
 
 1. html: insert this containter somewhere in your html (before the js script tags html mark up shown in step 2)
 
@@ -97,21 +131,11 @@ gridContainerId: 'users'
 
 If the id of your target grid container is 'anygrid' then you do not need to define the gridConatinerId in the features object. 
 
+2. The JS api call
 
-2. Get the AnyGridCSS via the cdn link. 
 
-```html
-  <link rel="stylesheet" href="https://unpkg.com/anygridcss@1.0.1/anyGrid.css" anygrid-style>
-```
 
-3. Add your js markup in the html just before the ```html </body> ``` tag:
-
-```html
-<script src="https://unpkg.com/AnyGrid@1.0.9/anygrid.global.js"></script>
- <script src="app.js"></script>
- ```
-
- ## app.js 
+ ## app.js (For non Semantq environments)
 
  ```javascript
 
@@ -238,20 +262,14 @@ const features = {
 
 # Styling (Optional)
 
-AnyGrid is a headless JS library - meaning the library can still work without any CSS and the styling is entirely up to you. However as an option we offer a basic and high end css themes to enhance the look and feel of your data tables. If you want to use the provided css just deploy anyGrid.css via this cdn link:
+AnyGrid is a headless JS library - meaning the library can still work without any CSS and the styling is entirely up to you. However as an option we offer a basic and high end css themes to enhance the look and feel of your data tables. If you want to use the provided css just deploy anyGrid.css via this cdn link as demonstated earlier in the docs. 
 
-Place this somewhere in the head section of your html.
-
-```html
-
-  <link rel="stylesheet" href="https://unpkg.com/anygridcss@1.0.1/anygrid.css" />
-
-```
 
 ## Color Themes
 
 AnyGrid css offer these color themes: default (dark), light, blue, pink, dark-orange, green and indigo. 
-You can define your prefer color theme on the features object this way:
+
+You can define your preferred color theme on the features object this way:
 
 ```javascript
 const features = {
@@ -262,17 +280,7 @@ theme: 'pink'
 ```
 
 
-
-
-
-
-
-
-
-
-
-
-### 🌐 API Integration with smQL
+### 🌐 API Integration with smQL (For NPM environments)
 
 Use `@semantq/ql` for fetching and submitting data efficiently.
 
@@ -297,10 +305,8 @@ const records = await new smQL(API_END_POINT);
 > `smQL` handles GET, POST, PUT, DELETE behind the scenes and simplifies async handling.
 > It's recommended to declare `API_END_POINT` (e.g. `http://localhost:3000/product/products`) as a constant or environment variable for maintainability.
 
-Here’s a refined and more professional version of your explanation:
 
-
-### Edit & Delete API Structure in SemantqQL
+### Edit & Delete API Structure in SemantqQL (Semantq Context)
 
 In the **SemantqQL** full-stack project, the API routes for editing and deleting records follow a consistent structure:
 
@@ -308,11 +314,17 @@ In the **SemantqQL** full-stack project, the API routes for editing and deleting
 {server_url} / {model_name (lowercase)} / {route_name}
 ```
 
-For example, if you're working with the `Product` model, the API endpoint for editing or deleting records would look like:
+For example, if you create this resource:
+
+`semantq make:resource Product`
+
+The API endpoint for editing or deleting records would look like:
 
 ```
 http://localhost:3000/product/products
 ```
+
+Note that `http://localhost:3000/` is just an example. 
 
 You can always confirm or modify these routes by checking the `semantQL/server/routes/modelRoutes.js` file.
 
@@ -327,7 +339,7 @@ const features = {
   csvExport: true,
   excelExport: true,
 
-  theme: 'indigo', // Optional: Built-in colour themes like 'indigo', 'teal', 'slate', etc.
+  theme: 'indigo', // Optional: Built-in colour themes like 'indigo', 'green', 'slate', etc.
   themeColor: '#556B2F', // Optional: Custom HEX colour to override built-in theme
 
   gridModal: true, // NEW: Enables row-click modal interaction
@@ -425,9 +437,10 @@ const dataGrid = new anyGrid(data, columns);
 
 
 ## Contribute
-AnyGrid is largely an open-source project. Contributions, issues, and feature requests are welcome!
+AnyGrid is primarily an open-source project. Contributions, issues, and feature requests are welcome!
 ## License
 AnyGrid is licensed under the MIT License.
+
 ## Keywords
 
 - JavaScript data tables

@@ -1,0 +1,515 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+
+/* ==================== */
+/* BASE FORM VARIABLES */
+/* ==================== */
+
+:root {
+    --formique-border-radius: 6px;
+    --formique-padding: 2rem;
+}
+/*
+:root {
+    --formique-base-bg: white;
+    --formique-base-text: #333;
+    --formique-base-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --formique-base-label: #555;
+    --formique-input-border: #ddd;
+    --formique-focus-color: #6a4fbf;
+    --formique-btn-bg: #6a4fbf;
+    --formique-btn-text: white;
+    --formique-btn-shadow: 0 2px 10px rgba(106, 79, 191, 0.3);
+    --formique-border-radius: 6px;
+    --formique-max-width: 100%;
+    --formique-padding: 2rem;
+}
+*/
+/* ==================== */
+/* BASE FORM STYLES */
+/* ==================== */
+.formique {
+    width: 100%;
+    max-width: var(--formique-max-width);
+    margin: 2rem auto;
+    padding: var(--formique-padding);
+    background-color: var(--formique-base-bg);
+    border-radius: var(--formique-border-radius);
+    box-shadow: var(--formique-base-shadow);
+    font-family: 'Montserrat', sans-serif;
+    color: var(--formique-base-text);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+/* Input Block */
+.formique .input-block {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.formique .input-block label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--formique-base-label);
+    font-size: 0.9rem;
+}
+
+.formique .input-block .form-input,
+.formique .input-block .form-control {
+    width: 100%;
+    padding: 0.75rem 0;
+    border: none;
+    border-bottom: 1px solid var(--formique-input-border);
+    background-color: transparent;
+    color: var(--formique-base-text);
+    box-sizing: border-box;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.formique .input-block .form-input:focus,
+.formique .input-block .form-control:focus {
+    outline: none;
+    border-bottom-width: 2px;
+    border-bottom-color: var(--formique-focus-color);
+}
+
+.formique .input-block .form-input:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Fieldset General Styling */
+.formique fieldset {
+    border: 1px solid var(--formique-input-border);
+    border-radius: var(--formique-border-radius);
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    background-color: var(--formique-base-bg);
+    transition: all 0.3s ease;
+}
+
+.formique fieldset legend {
+    font-weight: 600;
+    color: var(--formique-base-label);
+    font-size: 1rem;
+    padding: 0 0.5rem;
+}
+
+/* Radio Group */
+.formique .radio-group {
+    /* Styles are now handled by the general fieldset or input-block if used outside fieldset */
+}
+
+.formique .radio-group legend {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+    color: var(--formique-base-label);
+    font-size: 0.9rem;
+}
+
+.formique .radio-group div {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.formique .radio-group .form-radio-input {
+    margin-right: 0.75rem;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--formique-focus-color);
+    cursor: pointer;
+}
+
+/* Checkbox Group */
+.formique .checkbox-group {
+    /* Styles are now handled by the general fieldset or input-block if used outside fieldset */
+}
+
+.formique .checkbox-group legend {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+    color: var(--formique-base-label);
+    font-size: 0.9rem;
+}
+
+.formique .checkbox-group div {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.formique .checkbox-group .form-checkbox-input {
+    margin-right: 0.75rem;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--formique-focus-color);
+    cursor: pointer;
+}
+
+/* Select (Dropdowns) */
+.formique .form-select {
+    margin-bottom: 1.5rem;
+}
+
+.formique .form-select label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--formique-base-label);
+    font-size: 0.9rem;
+}
+
+.formique .form-select .form-input { /* Changed from .form-select-input to .form-input */
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--formique-input-border);
+    border-radius: var(--formique-border-radius);
+    background-color: var(--formique-base-bg);
+    color: var(--formique-base-text);
+    box-sizing: border-box;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    /* Custom arrow for select element */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20256%20256%22%3E%3Cpath%20fill%3D%22%23'+encodeURIComponent(var(--formique-base-text)).substring(1)+'%22%20d%3D%22M208.5%2084.5l-80%2080a12%2012%200%2001-17%200l-80-80a12%2012%200%200117-17L128%20139l71.5-71.5a12%2012%200%200117%2017z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1rem;
+    cursor: pointer;
+}
+
+.formique .form-select .form-input:focus { /* Changed from .form-select-input to .form-input */
+    outline: none;
+    border-color: var(--formique-focus-color);
+    box-shadow: 0 0 0 2px rgba(106, 79, 191, 0.1);
+}
+
+/* Multiple Selects */
+.formique .form-select .form-input[multiple] {
+    min-height: 100px; /* Adjust as needed */
+    padding: 0.5rem;
+    background-image: none; /* Remove custom arrow for multiselect */
+}
+
+/* Submit Button */
+.formique .form-submit-btn {
+    display: block;
+    width: 100%;
+    padding: 0.875rem 1.75rem;
+    border: none;
+    border-radius: var(--formique-border-radius);
+    background-color: var(--formique-btn-bg);
+    color: var(--formique-btn-text);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--formique-btn-shadow);
+    box-sizing: border-box;
+}
+
+.formique .form-submit-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px var(--formique-btn-shadow);
+}
+
+.formique .form-submit-btn:active {
+    transform: translateY(0);
+}
+
+/* ==================== */
+/* THEME DEFINITIONS */
+/* ==================== */
+.dark-theme {
+    --formique-base-bg: #1e1e1e;
+    --formique-base-text: #e0e0e0;
+    --formique-base-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    --formique-base-label: #b0b0b0;
+    --formique-input-border: #444;
+    --formique-focus-color: #b0b0b0;
+    --formique-btn-bg: #b0b0b0;
+    --formique-btn-text: #1e1e1e;
+    --formique-btn-shadow: 0 2px 10px rgba(176, 176, 176, 0.3);
+}
+
+.light-theme {
+    --formique-base-bg: #ffffff;
+    --formique-base-text: #333333;
+    --formique-base-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --formique-base-label: #555555;
+    --formique-input-border: #dddddd;
+    --formique-focus-color: #555555;
+    --formique-btn-bg: #777777;
+    --formique-btn-text: #ffffff;
+    --formique-btn-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.pink-theme {
+    --formique-base-bg: #ffffff;
+    --formique-base-text: #333333;
+    --formique-base-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --formique-base-label: #555555;
+    --formique-input-border: #dddddd;
+    --formique-focus-color: #ff4081;
+    --formique-btn-bg: #ff4081;
+    --formique-btn-text: #ffffff;
+    --formique-btn-shadow: 0 2px 10px rgba(255, 64, 129, 0.3);
+}
+
+.indigo-theme {
+    --formique-base-bg: #ffffff;
+    --formique-base-text: #333333;
+    --formique-base-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --formique-base-label: #555555;
+    --formique-input-border: #dddddd;
+    --formique-focus-color: #3f51b5;
+    --formique-btn-bg: #3f51b5;
+    --formique-btn-text: #ffffff;
+    --formique-btn-shadow: 0 2px 10px rgba(63, 81, 181, 0.3);
+}
+
+.dark-blue-theme {
+    --formique-base-bg: #0a192f;
+    --formique-base-text: #e6f1ff;
+    --formique-base-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    --formique-base-label: #a8b2d1;
+    --formique-input-border: #233554;
+    --formique-focus-color: #64ffda;
+    --formique-btn-bg: #64ffda;
+    --formique-btn-text: #0a192f;
+    --formique-btn-shadow: 0 2px 10px rgba(100, 255, 218, 0.3);
+}
+
+.light-blue-theme {
+    --formique-base-bg: #f5f9ff;
+    --formique-base-text: #2a4365;
+    --formique-base-shadow: 0 10px 30px rgba(66, 153, 225, 0.1);
+    --formique-base-label: #4299e1;
+    --formique-input-border: #bee3f8;
+    --formique-focus-color: #3182ce;
+    --formique-btn-bg: #3182ce;
+    --formique-btn-text: #ffffff;
+    --formique-btn-shadow: 0 2px 10px rgba(49, 130, 206, 0.3);
+}
+
+.dark-orange-theme {
+    --formique-base-bg: #2d3748;
+    --formique-base-text: #f7fafc;
+    --formique-base-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    --formique-base-label: #cbd5e0;
+    --formique-input-border: #4a5568;
+    --formique-focus-color: #ed8936;
+    --formique-btn-bg: #ed8936;
+    --formique-btn-text: #1a202c;
+    --formique-btn-shadow: 0 2px 10px rgba(237, 137, 54, 0.3);
+}
+
+.bright-yellow-theme {
+    --formique-base-bg: #ffffff;
+    --formique-base-text: #1a202c;
+    --formique-base-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --formique-base-label: #4a5568;
+    --formique-input-border: #e2e8f0;
+    --formique-focus-color: #f6e05e;
+    --formique-btn-bg: #f6e05e;
+    --formique-btn-text: #1a202c;
+    --formique-btn-shadow: 0 2px 10px rgba(246, 224, 94, 0.3);
+}
+
+.green-theme {
+    --formique-base-bg: #ffffff;
+    --formique-base-text: #1a202c;
+    --formique-base-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --formique-base-label: #4a5568;
+    --formique-input-border: #e2e8f0;
+    --formique-focus-color: #48bb78;
+    --formique-btn-bg: #48bb78;
+    --formique-btn-text: #ffffff;
+    --formique-btn-shadow: 0 2px 10px rgba(72, 187, 120, 0.3);
+}
+
+.purple-theme {
+    --formique-base-bg: #ffffff;
+    --formique-base-text: #1a202c;
+    --formique-base-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --formique-base-label: #4a5568;
+    --formique-input-border: #e2e8f0;
+    --formique-focus-color: #9f7aea;
+    --formique-btn-bg: #9f7aea;
+    --formique-btn-text: #ffffff;
+    --formique-btn-shadow: 0 2px 10px rgba(159, 122, 234, 0.3);
+}
+
+.midnight-blush-theme {
+    --formique-base-bg: #1a1a2e;
+    --formique-base-text: #e6e6e6;
+    --formique-base-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    --formique-base-label: #b8b8b8;
+    --formique-input-border: #4e4e6a;
+    --formique-focus-color: #f67280;
+    --formique-btn-bg: #f67280;
+    --formique-btn-text: #1a1a2e;
+    --formique-btn-shadow: 0 2px 10px rgba(246, 114, 128, 0.3);
+}
+
+.deep-blue-theme {
+    --formique-base-bg: #0f172a;
+    --formique-base-text: #e2e8f0;
+    --formique-base-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    --formique-base-label: #94a3b8;
+    --formique-input-border: #1e293b;
+    --formique-focus-color: #60a5fa;
+    --formique-btn-bg: #60a5fa;
+    --formique-btn-text: #0f172a;
+    --formique-btn-shadow: 0 2px 10px rgba(96, 165, 250, 0.3);
+}
+
+.blue-theme {
+    --formique-base-bg: #ffffff;
+    --formique-base-text: #1e3a8a;
+    --formique-base-shadow: 0 10px 30px rgba(29, 78, 216, 0.1);
+    --formique-base-label: #3b82f6;
+    --formique-input-border: #bfdbfe;
+    --formique-focus-color: #2563eb;
+    --formique-btn-bg: #2563eb;
+    --formique-btn-text: #ffffff;
+    --formique-btn-shadow: 0 2px 10px rgba(37, 99, 235, 0.3);
+}
+
+.brown-theme {
+    --formique-base-bg: #f5f5f5;
+    --formique-base-text: #3e2723;
+    --formique-base-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --formique-base-label: #5d4037;
+    --formique-input-border: #d7ccc8;
+    --formique-focus-color: #8d6e63;
+    --formique-btn-bg: #6d4c41;
+    --formique-btn-text: #ffffff;
+    --formique-btn-shadow: 0 2px 10px rgba(109, 76, 65, 0.3);
+}
+
+.orange-theme {
+    --formique-base-bg: #ffffff;
+    --formique-base-text: #7b341e;
+    --formique-base-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --formique-base-label: #dd6b20;
+    --formique-input-border: #fed7aa;
+    --formique-focus-color: #ed8936;
+    --formique-btn-bg: #ed8936;
+    --formique-btn-text: #ffffff;
+    --formique-btn-shadow: 0 2px 10px rgba(237, 137, 54, 0.3);
+}
+/* ==================== */
+/* WIDTH CONTROL CLASSES */
+/* ==================== */
+.formique {
+    padding: 1rem;
+}
+.formique.width-full {
+    --formique-max-width: 100%;
+}
+
+.formique.width-half {
+    --formique-max-width: 50%;
+}
+
+.formique.width-medium {
+    --formique-max-width: 600px;
+}
+
+.formique.width-small {
+    --formique-max-width: 400px;
+}
+
+.formique.width-custom {
+    /* To be set inline or via JS */
+}
+
+/* Spinner Container */
+#formiqueSpinner {
+    display: none;
+    align-items: center;
+    gap: 1rem;
+    font-family: var(--formique-font-family, 'Montserrat, sans-serif');
+    padding: 1rem;
+    border-radius: var(--formique-border-radius, 6px);
+    background-color: var(--formique-base-bg);
+    color: var(--formique-base-text);
+    margin-top: 1rem;
+}
+
+/* Spinner Circle */
+.formique-spinner {
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top-color: var(--formique-btn-bg);
+    animation: formique-spin 1s ease-in-out infinite;
+}
+
+/* Spinner Animation */
+@keyframes formique-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Message */
+#formiqueSpinner .message {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--formique-focus-color);
+}
+
+
+.formique-success, .formique-error {
+    /* Background with opacity to work with both themes */
+    background-color: var(--formique-base-bg); /* Based on --formique-btn-bg */
+    
+    /* Text styling using theme variables */
+    color: var(--formique-focus-color);
+    font-family: inherit;
+    font-size: 0.95rem;
+    
+    /* Border using focus color with opacity */
+    border: 1px solid var(--formique-focus-color); /* Based on --formique-btn-bg */
+    border-radius: 4px;
+    padding: 12px 16px;
+    margin: 16px 0;
+    
+    /* Layout */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
+    /* Animation */
+    animation: fadeIn 0.3s ease-in-out;
+    
+    /* Shadow using theme variable */
+    box-shadow: var(--formique-base-shadow);
+}
+
+.formique-success::before {
+    content: "✓";
+    color: var(--formique-btn-bg); /* Using button background color for checkmark */
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.formique-error::before {
+    content: "✗";
+    color: var(--formique-btn-bg); /* Using button background color for checkmark */
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
