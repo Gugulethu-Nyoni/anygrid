@@ -1,5 +1,16 @@
 # AnyGrid Documentation
 
+[![NPM](https://img.shields.io/npm/v/anygridjs.svg)](https://www.npmjs.com/package/anygridjs)
+[![NPM Downloads](https://img.shields.io/npm/dt/anygridjs.svg)](https://www.npmjs.com/package/anygridjs)
+[![GitHub Stars](https://img.shields.io/github/stars/Gugulethu-Nyoni/anygridjs.svg)](https://github.com/Gugulethu-Nyoni/anygridjs/stargazers)
+[![GitHub Issues](https://img.shields.io/github/issues/Gugulethu-Nyoni/anygridjs.svg)](https://github.com/Gugulethu-Nyoni/anygridjs/issues)
+<a href="https://github.com/Gugulethu-Nyoni/anygridjs/blob/main/LICENSE">
+  <img alt="anygridjs uses the MIT license" src="https://img.shields.io/github/license/Gugulethu-Nyoni/anygridjs" style="max-width: 100%;">
+</a>
+[![GitHub Workflow](https://img.shields.io/github/workflow/status/Gugulethu-Nyoni/anygridjs/CI/main.svg)](https://github.com/Gugulethu-Nyoni/anygridjs/actions)
+
+
+
 <img src="https://github.com/Gugulethu-Nyoni/anygrid/blob/main/images/anygridjs-datagrid-js-datatable-example.png" alt="AnyGrid Example">
 
 #### AnyGrid offers a powerful, flexible data grid system with built-in form integration, pagination, sorting, modals (with functional edit and delete capabilties), and more — all without having to touch any HTML or CSS.

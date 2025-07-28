@@ -107,9 +107,17 @@ class AnyGrid {
       this._setupRowClickHandlers();
 
       // Add to your modal initialization (where delete button is created)
-this.modalElement.querySelector('.anygrid-btn-delete').addEventListener('click', () => {
-  this._handleDeleteRecord();
-});
+// Add to your modal initialization (where delete button is created)
+if (this.features.modalConfig.deletable) { // <-- ONLY ADD IF DELETABLE IS TRUE
+    // Ensure the element actually exists before trying to add the listener
+    const deleteButton = this.modalElement.querySelector('.anygrid-btn-delete');
+    if (deleteButton) {
+        deleteButton.addEventListener('click', () => {
+            this._handleDeleteRecord();
+        });
+    }
+}
+
 
     }
 
