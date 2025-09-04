@@ -107,17 +107,9 @@ class AnyGrid {
       this._setupRowClickHandlers();
 
       // Add to your modal initialization (where delete button is created)
-// Add to your modal initialization (where delete button is created)
-if (this.features.modalConfig.deletable) { // <-- ONLY ADD IF DELETABLE IS TRUE
-    // Ensure the element actually exists before trying to add the listener
-    const deleteButton = this.modalElement.querySelector('.anygrid-btn-delete');
-    if (deleteButton) {
-        deleteButton.addEventListener('click', () => {
-            this._handleDeleteRecord();
-        });
-    }
-}
-
+this.modalElement.querySelector('.anygrid-btn-delete').addEventListener('click', () => {
+  this._handleDeleteRecord();
+});
 
     }
 
@@ -168,7 +160,7 @@ applyDynamicTheme(color, gridContainerId) {
         --label-color: ${color}; /* Use theme color */
         --radio-checkbox-accent: ${color}; /* Use theme color */
         --button-background: ${this.lightenColor(color, 20)}; /* Very light version of theme color */
-        --button-background-hover: ${this.lightenColor(color, 50)}; /* Slightly darker */
+        --button-background-hover: ${this.lightenColor(color, 25)};
         --edit-background: #e91e63; /* Keep light theme value (red) */
         --delete-background: #dc3545; /* Keep light theme value (red) */
         --text-contrast: #ffffff; /* Keep light theme value */
@@ -202,6 +194,27 @@ applyDynamicTheme(color, gridContainerId) {
       (B < 255 ? (B < 1 ? 0 : B) : 255)
     ).toString(16).slice(1)}`;
   }
+
+
+  darkenColor(hex, percent) {
+    const f = parseInt(hex.slice(1), 16),
+      t = percent < 0 ? 0 : 255,
+      p = percent < 0 ? percent * -1 : percent,
+      R = f >> 16,
+      G = (f >> 8) & 0x00ff,
+      B = f & 0x0000ff;
+    return (
+      "#" +
+      (
+        0x1000000 +
+        (Math.round((t - R) * p) + R) * 0x10000 +
+        (Math.round((t - G) * p) + G) * 0x100 +
+        (Math.round((t - B) * p) + B)
+      )
+      .toString(16)
+      .slice(1)
+    );
+  };
 
   // Helper function to convert hex to rgb
   hexToRgb(hex, alpha = 1) {
@@ -741,24 +754,45 @@ _hideModal() {
 
   // Implement sorting functionality (only if sorting is enabled)
   sortTable(index) {
-    if (this.features.sort) {
-      const column = this.columns[index];
-      const isAsc = this.sortingOrder[column.name] !== 'asc';
-      const sortedData = [...this.filteredData].sort((a, b) => {
-        let valueA = a[column.name];
-        let valueB = b[column.name];
-        if (column.type === 'number') {
-          valueA = parseFloat(valueA);
-          valueB = parseFloat(valueB);
-        }
+  if (this.features.sort) {
+    const column = this.columns[index];
+    const isAsc = this.sortingOrder[column.name] !== 'asc';
+    
+    const sortedData = [...this.filteredData].sort((a, b) => {
+      let valueA = a[column.name];
+      let valueB = b[column.name];
+      
+      // Handle null/undefined values
+      if (valueA == null) valueA = '';
+      if (valueB == null) valueB = '';
+      
+      // Convert to numbers if column is numeric
+      if (column.type === 'number') {
+        valueA = parseFloat(valueA) || 0;
+        valueB = parseFloat(valueB) || 0;
         return isAsc ? valueA - valueB : valueB - valueA;
-      });
+      }
+      
+      // For strings, use localeCompare for proper alphabetical sorting
+      if (typeof valueA === 'string' && typeof valueB === 'string') {
+        return isAsc ? 
+          valueA.localeCompare(valueB, undefined, { sensitivity: 'base' }) : 
+          valueB.localeCompare(valueA, undefined, { sensitivity: 'base' });
+      }
+      
+      // Fallback for mixed types
+      const strA = String(valueA);
+      const strB = String(valueB);
+      return isAsc ? 
+        strA.localeCompare(strB, undefined, { sensitivity: 'base' }) : 
+        strB.localeCompare(strA, undefined, { sensitivity: 'base' });
+    });
 
-      this.filteredData = sortedData;
-      this.sortingOrder[column.name] = isAsc ? 'asc' : 'desc';
-      this.renderData();
-    }
+    this.filteredData = sortedData;
+    this.sortingOrder[column.name] = isAsc ? 'asc' : 'desc';
+    this.renderData();
   }
+}
 
   // Implement search functionality (only if search is enabled)
 searchTable() {

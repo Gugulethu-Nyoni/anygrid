@@ -1,10 +1,44 @@
-# AnyGrid Documentation
+# AnyGrid Data Grid Documentation
+
+[![NPM](https://img.shields.io/npm/v/anygridjs.svg)](https://www.npmjs.com/package/anygridjs)
+[![NPM Downloads](https://img.shields.io/npm/dt/anygridjs.svg)](https://www.npmjs.com/package/anygridjs)
+[![GitHub Stars](https://img.shields.io/github/stars/Gugulethu-Nyoni/anygridjs.svg)](https://github.com/Gugulethu-Nyoni/anygridjs/stargazers)
+[![GitHub Issues](https://img.shields.io/github/issues/Gugulethu-Nyoni/anygridjs.svg)](https://github.com/Gugulethu-Nyoni/anygridjs/issues)
+<a href="https://github.com/Gugulethu-Nyoni/anygridjs/blob/main/LICENSE">
+  <img alt="anygridjs uses the MIT license" src="https://img.shields.io/github/license/Gugulethu-Nyoni/anygridjs" style="max-width: 100%;">
+</a>
+[![GitHub Workflow](https://img.shields.io/github/workflow/status/Gugulethu-Nyoni/anygridjs/CI/main.svg)](https://github.com/Gugulethu-Nyoni/anygridjs/actions)
+
+
 
 <img src="https://github.com/Gugulethu-Nyoni/anygrid/blob/main/images/anygridjs-datagrid-js-datatable-example.png" alt="AnyGrid Example">
 
 #### AnyGrid offers a powerful, flexible data grid system with built-in form integration, pagination, sorting, modals (with functional edit and delete capabilties), and more — all without having to touch any HTML or CSS.
 
 While the library is built for the Semantq JS Framework - AnyGrid is framework agnostic and can work with any JS Framework and vanilla JavaScript. 
+
+## Table of Contents  
+- [AnyGrid Data Grid Documentation](#anygrid-data-grid-documentation)  
+- [Feature Overview](#feature-overview)  
+  - [Data Handling & Display](#data-handling--display)  
+  - [Customization & Theming](#customization--theming)  
+  - [Interactivity & Modals](#interactivity--modals)  
+  - [Integration & Deployment](#integration--deployment)  
+- [Why Choose AnyGrid?](#why-choose-anygrid)  
+- [Installation & Usage](#installation--usage)  
+  - [Installation](#installation)  
+  - [Usage](#usage)  
+- [The Data Object](#the-data-object)  
+- [Column Definition](#column-definition)  
+- [Default Features](#default-features)  
+- [Styling (Optional)](#styling-optional)  
+  - [Color Themes](#color-themes)  
+- [API Integration with smQL](#api-integration-with-smql)  
+- [Advanced Usage](#advanced-usage)  
+- [Using Custom Containers](#using-custom-containers)  
+- [Contribute](#contribute)  
+- [License](#license)  
+- [Additional Resources](#additional-resources)  
 
 
 ## Feature Overview

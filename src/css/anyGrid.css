@@ -1,30 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
 
-/* Define a primary color variable to be used sparingly for theme accents */
-
-:root {
-  --primary-color: #8B3A3A; 
-  --secondary-color: #6C8C64;  
-}
-
-
-/* DEFAULT THEME: DARK */
+/* DEFAULT THEME: PURE DARK */
 .default-theme {
-    --background-dark: #1e1e1e;
-    --background-light: #2e2e2e;
+    --background-dark: #121212;
+    --background-light: #1e1e1e;
     --text-light: #e0e0e0;
-    --border-color: #444;
-    --input-background: #333;
-    --input-background-disabled: #444;
-    --label-color: #b0b0b0;
-    --radio-checkbox-accent: #b0b0b0;
-    --button-background: #3e3e40;
-    --button-background-hover: #555; /* Adjusted for better contrast */
-    --edit-background: #0d6efd;
-    --delete-background: #dc3545;
+    --border-color: #333333;
+    --input-background: #1e1e1e;
+    --input-background-disabled: #2a2a2a;
+    --label-color: #a0a0a0;
+    --radio-checkbox-accent: #666666;
+    --button-background: #252525;
+    --button-background-hover: #383838;
+    --edit-background: #444444;
+    --delete-background: #884d4d;
     --text-contrast: #ffffff;
-    --shadow-color: rgba(0, 0, 0, 0.2); /* For sleek shadows */
-    --primary-color: #0d6efd; /* Explicit primary color for this theme */
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --primary-color: #444444;
+    --primary-color-rgb: 68, 68, 68;
+    --secondary-color: #666666;
+    --secondary-color-rgb: 102, 102, 102;
 }
 
 /* Light theme */
@@ -38,13 +33,15 @@
     --label-color: #5a2d81;
     --radio-checkbox-accent: #5a2d81;
     --button-background: #8a8787;
-    --button-background-hover: #666; /* Adjusted for better contrast */
+    --button-background-hover: #666;
     --edit-background: #e91e63;
     --delete-background: #dc3545;
     --text-contrast: #ffffff;
     --shadow-color: rgba(79, 77, 77, 0.1);
     --primary-color: #4f4d4d;
-    --primary-color-rgb: rgba(79, 77, 77, 0.1);
+    --primary-color-rgb: 79, 77, 77;
+    --secondary-color: #5a2d81;
+    --secondary-color-rgb: 90, 45, 129;
 }
 
 /* Pink theme */
@@ -64,6 +61,9 @@
     --text-contrast: #ffffff;
     --shadow-color: rgba(0, 0, 0, 0.1);
     --primary-color: #c2185b;
+    --primary-color-rgb: 194, 24, 91;
+    --secondary-color: #ad1457;
+    --secondary-color-rgb: 173, 20, 87;
 }
 
 /* Indigo theme */
@@ -83,6 +83,9 @@
     --text-contrast: #ffffff;
     --shadow-color: rgba(0, 0, 0, 0.2);
     --primary-color: #452b8b;
+    --primary-color-rgb: 69, 43, 139;
+    --secondary-color: #3b2f6b;
+    --secondary-color-rgb: 59, 47, 107;
 }
 
 /* Blue theme */
@@ -102,6 +105,9 @@
     --text-contrast: #ffffff;
     --shadow-color: rgba(0, 0, 0, 0.1);
     --primary-color: #03a9f4;
+    --primary-color-rgb: 3, 169, 244;
+    --secondary-color: #039be5;
+    --secondary-color-rgb: 3, 155, 229;
 }
 
 /* Dark Orange theme */
@@ -121,6 +127,9 @@
     --text-contrast: #000000;
     --shadow-color: rgba(0, 0, 0, 0.2);
     --primary-color: #ff9900;
+    --primary-color-rgb: 255, 153, 0;
+    --secondary-color: #e68f00;
+    --secondary-color-rgb: 230, 143, 0;
 }
 
 .green-theme {
@@ -140,16 +149,19 @@
     --text-contrast: #ffffff;
     --shadow-color: rgba(0, 0, 0, 0.1);
     --primary-color: #004d00;
+    --primary-color-rgb: 0, 77, 0;
+    --secondary-color: #003300;
+    --secondary-color-rgb: 0, 51, 0;
 }
 
 /* General Data Grid Container Styling */
 .anygrid-container {
-    border-radius: 0.75rem; /* Rounded corners for the entire grid container */
-    overflow: hidden; /* Ensures content respects border-radius */
-    box-shadow: 0 4px 6px -1px var(--shadow-color), 0 2px 4px -2px var(--shadow-color); /* Subtle shadow */
-    background-color: var(--background-dark); /* Ensure background matches theme */
-    margin: 1rem auto; /* Center the grid and provide some margin */
-    max-width: 95%; /* Limit width for better presentation */
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px var(--shadow-color), 0 2px 4px -2px var(--shadow-color);
+    background-color: var(--background-dark);
+    margin: 1rem auto;
+    max-width: 95%;
 }
 
 /* Table Styling */
@@ -157,64 +169,64 @@
     width: 100%;
     border-collapse: collapse;
     font-family: 'Montserrat', sans-serif;
-    font-size: 0.875rem; /* Equivalent to 14px for better readability */
+    font-size: 0.875rem;
     background-color: var(--background-dark);
     color: var(--text-light);
-    border-radius: 0rem; /* Inherit from container or apply directly */
-    overflow: hidden; /* Important for rounded corners on table */
+    border-radius: 0rem;
+    overflow: hidden;
 }
 
 .anygrid-table th,
 .anygrid-table td {
-    border: none; /* Remove default borders for a cleaner look */
+    border: none;
     text-align: left;
-    padding: 0.75rem 1rem; /* Increased padding for spaciousness */
-    vertical-align: middle; /* Align content vertically */
+    padding: 0.75rem 1rem;
+    vertical-align: middle;
 }
 
 .anygrid-table thead tr {
-    background-color: var(--input-background); /* Header background */
+    background-color: var(--input-background);
     color: var(--text-light);
-    position: -webkit-sticky; /* For Safari */
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
     z-index: 10;
-    box-shadow: 0 1px 3px var(--shadow-color); /* Subtle shadow for sticky header */
+    box-shadow: 0 1px 3px var(--shadow-color);
 }
 
 .anygrid-table th {
-    font-weight: 600; /* Slightly bolder headers */
+    font-weight: 600;
     padding-top: 1rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid var(--border-color); /* Separator below header */
+    border-bottom: 1px solid var(--border-color);
 }
 
 .anygrid-table tbody tr {
-    border-bottom: 1px solid var(--border-color); /* Subtle row separator */
-    transition: background-color 0.2s ease; /* Smooth transition for hover */
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s ease;
 }
 
 .anygrid-table tbody tr:last-child {
-    border-bottom: none; /* No border for the last row */
+    border-bottom: none;
 }
 
 .anygrid-table tbody tr:nth-child(even) {
-    background-color: var(--background-light); /* Alternate row background */
+    background-color: var(--background-light);
 }
 
 .anygrid-table tbody tr:hover {
-    background-color: var(--button-background-hover); /* Highlight row on hover */
-    color: var(--text-contrast); /* Adjust text color on hover for readability */
+    background-color: var(--button-background-hover);
+    color: var(--text-contrast);
 }
 
 a {
-    color: var(--primary-color); /* Links use primary color */
+    color: var(--primary-color);
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
 a:hover {
-    color: var(--button-background-hover); /* Darker on hover */
+    color: var(--button-background-hover);
     text-decoration: underline;
 }
 
@@ -223,35 +235,35 @@ a:hover {
 .search-container {
     display: flex;
     align-items: center;
-    gap: 1rem; /* Increased gap for better spacing */
-    padding: 1rem; /* Padding around the action bar */
-    background-color: var(--background-dark); /* Match container background */
-    border-bottom: 1px solid var(--border-color); /* Separator from table */
-    flex-wrap: wrap; /* Allow wrapping for mobile responsiveness */
-    border-top-left-radius: 0.75rem; /* Match container radius */
-    border-top-right-radius: 0.75rem; /* Match container radius */
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--background-dark);
+    border-bottom: 1px solid var(--border-color);
+    flex-wrap: wrap;
+    border-top-left-radius: 0.75rem;
+    border-top-right-radius: 0.75rem;
 }
 
 /* For mobile screens */
 @media (max-width: 700px) {
     .search-container {
-        flex-direction: column; /* Stack elements vertically on mobile */
-        gap: 1rem; /* Increased gap for better spacing */
-        align-items: stretch; /* Ensure elements take full width */
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
     }
 
     input.anygrid-search-input,
     select.items-per-page,
     .anygrid-export-csv,
     .anygrid-export-excel {
-        width: 100%; /* Make elements take full width */
-        padding: 0.75rem 1rem; /* Adjust padding for better spacing */
-        font-size: 1rem; /* Increase font size slightly for readability */
+        width: 100%;
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
     }
 
     input.anygrid-search-input,
     select.items-per-page {
-        max-width: 100% !important; /* Remove any max-width limits */
+        max-width: 100% !important;
     }
 }
 
@@ -260,15 +272,15 @@ input.anygrid-search-input,
 select.items-per-page {
     background-color: var(--input-background);
     border: 1px solid var(--border-color);
-    border-radius: 0.5rem; /* More rounded corners */
-    color: var(--text-light); /* Use text-light for input text */
+    border-radius: 0.5rem;
+    color: var(--text-light);
     font-size: 0.875rem;
-    padding: 0.6rem 0.8rem; /* Adjusted padding */
+    padding: 0.6rem 0.8rem;
     box-sizing: border-box;
     transition: border-color 0.3s, box-shadow 0.3s;
-    height: 2.5rem; /* Consistent height */
+    height: 2.5rem;
     line-height: 1.5;
-    -webkit-appearance: none; /* Remove default select arrow */
+    -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%239CA3AF'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E");
@@ -278,30 +290,30 @@ select.items-per-page {
 }
 
 input.anygrid-search-input {
-    max-width: 18rem; /* Tailwind equivalent of max-w-xs */
-    color: var(--text-light); /* Ensure input text color is light */
+    max-width: 18rem;
+    color: var(--text-light);
 }
 
 input.anygrid-search-input:focus {
-    border-color: var(--primary-color); /* Focus border uses primary color */
+    border-color: var(--primary-color);
     outline: none;
-    box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb, 13, 110, 253), 0.25); /* Subtle focus ring */
+    box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.25);
 }
 
 input.anygrid-search-input::placeholder {
     color: var(--label-color);
-    opacity: 0.7; /* Slightly transparent placeholder */
+    opacity: 0.7;
 }
 
 select.items-per-page {
-    color: var(--text-light); /* Ensure select text color is light */
+    color: var(--text-light);
     max-width: 10rem;
 }
 
 select.items-per-page:focus {
     border-color: var(--primary-color);
     outline: none;
-    box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb, 13, 110, 253), 0.25);
+    box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.25);
 }
 
 /* CSV & Excel Export Buttons */
@@ -310,30 +322,30 @@ select.items-per-page:focus {
     background-color: var(--button-background);
     color: var(--text-contrast);
     border: 1px solid var(--border-color);
-    padding: 0.6rem 1rem; /* Adjusted padding */
+    padding: 0.6rem 1rem;
     font-size: 0.875rem;
     font-weight: 600;
-    border-radius: 0.5rem; /* Rounded corners */
+    border-radius: 0.5rem;
     cursor: pointer;
     transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem; /* Space between icon and text */
-    box-shadow: 0 1px 2px 0 var(--shadow-color); /* Subtle shadow */
+    gap: 0.5rem;
+    box-shadow: 0 1px 2px 0 var(--shadow-color);
 }
 
 .anygrid-export-csv::before,
 .anygrid-export-excel::before {
-    content: "\2193"; /* Unicode character for downwards arrow */
-    font-size: 1rem; /* Adjust icon size */
-    line-height: 1; /* Ensure vertical alignment */
+    content: "\2193";
+    font-size: 1rem;
+    line-height: 1;
 }
 
 .anygrid-export-csv:hover,
 .anygrid-export-excel:hover {
     background-color: var(--button-background-hover);
     border-color: var(--button-background-hover);
-    box-shadow: 0 2px 4px 0 var(--shadow-color); /* Slightly more prominent shadow on hover */
+    box-shadow: 0 2px 4px 0 var(--shadow-color);
 }
 
 .anygrid-export-csv:disabled,
@@ -348,7 +360,7 @@ select.items-per-page:focus {
 .anygrid-export-csv:focus,
 .anygrid-export-excel:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb, 13, 110, 253), 0.25);
+    box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.25);
 }
 
 /* END OF MOBILE SCREENS CSS */
@@ -358,13 +370,13 @@ select.items-per-page:focus {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem; /* Consistent padding */
+    padding: 1rem;
     background-color: var(--background-dark);
-    border-top: 1px solid var(--border-color); /* Separator from table */
-    border-bottom-left-radius: 0.75rem; /* Match container radius */
-    border-bottom-right-radius: 0.75rem; /* Match container radius */
-    flex-wrap: wrap; /* Allow wrapping for mobile */
-    gap: 1rem; /* Space between info and buttons */
+    border-top: 1px solid var(--border-color);
+    border-bottom-left-radius: 0.75rem;
+    border-bottom-right-radius: 0.75rem;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 /* Pagination Info */
@@ -377,40 +389,40 @@ select.items-per-page:focus {
 /* Pagination Buttons */
 .pagination-buttons {
     display: flex;
-    gap: 0.5rem; /* Space between buttons */
-    flex-wrap: wrap; /* Allow wrapping */
+    gap: 0.5rem;
+    flex-wrap: wrap;
 }
 
 .pagination-button {
     background-color: var(--button-background);
-    border: none; /* Remove border for sleek look */
-    border-radius: 50%; /* Make buttons perfectly round */
+    border: none;
+    border-radius: 50%;
     color: var(--text-contrast);
     cursor: pointer;
-    display: flex; /* Use flex for centering content */
+    display: flex;
     align-items: center;
     justify-content: center;
     font-size: 0.875rem;
-    width: 2.5rem; /* Fixed width for circle */
-    height: 2.5rem; /* Fixed height for circle */
+    width: 2.5rem;
+    height: 2.5rem;
     text-decoration: none;
     transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
-    box-shadow: 0 2px 4px 0 var(--shadow-color); /* Sleek drop shadow */
+    box-shadow: 0 2px 4px 0 var(--shadow-color);
 }
 
 /* Active and Hover States for Pagination Buttons */
 .pagination-button.active {
-    background-color: var(--primary-color); /* Active button uses primary color */
+    background-color: var(--primary-color);
     color: var(--text-contrast);
-    box-shadow: 0 4px 8px 0 rgba(var(--primary-color-rgb, 13, 110, 253), 0.3); /* More prominent shadow for active */
-    transform: translateY(-1px); /* Slight lift */
+    box-shadow: 0 4px 8px 0 rgba(var(--primary-color-rgb), 0.3);
+    transform: translateY(-1px);
 }
 
 .pagination-button:hover:not(.active) {
     background-color: var(--button-background-hover);
     color: var(--text-contrast);
-    box-shadow: 0 3px 6px 0 var(--shadow-color); /* Slightly more prominent shadow on hover */
-    transform: translateY(-1px); /* Slight lift on hover */
+    box-shadow: 0 3px 6px 0 var(--shadow-color);
+    transform: translateY(-1px);
 }
 
 .pagination-button:disabled {
@@ -424,23 +436,23 @@ select.items-per-page:focus {
 /* Focus State for Pagination Buttons */
 .pagination-button:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb, 13, 110, 253), 0.25); /* Focus ring */
+    box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.25);
 }
 
 /* Edit and Delete Buttons */
 .edit,
 .delete {
-    border-radius: 0.375rem; /* Slightly more rounded */
-    padding: 0.4rem 0.75rem; /* Increased padding */
+    border-radius: 0.375rem;
+    padding: 0.4rem 0.75rem;
     color: var(--text-contrast);
     text-decoration: none;
-    font-size: 0.75rem; /* Smaller font size */
-    display: inline-flex; /* Align icon and text */
+    font-size: 0.75rem;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.3rem; /* Space between icon and text */
+    gap: 0.3rem;
     transition: background-color 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 1px 2px 0 var(--shadow-color); /* Subtle shadow */
+    box-shadow: 0 1px 2px 0 var(--shadow-color);
 }
 
 .edit {
@@ -452,54 +464,44 @@ select.items-per-page:focus {
 }
 
 .edit:hover {
-    background-color: color-mix(in srgb, var(--edit-background) 80%, black); /* Darken on hover */
+    background-color: color-mix(in srgb, var(--edit-background) 80%, black);
     box-shadow: 0 2px 4px 0 var(--shadow-color);
 }
 
 .delete:hover {
-    background-color: color-mix(in srgb, var(--delete-background) 80%, black); /* Darken on hover */
+    background-color: color-mix(in srgb, var(--delete-background) 80%, black);
     box-shadow: 0 2px 4px 0 var(--shadow-color);
 }
 
 .edit::before {
-    content: '\270E'; /* Pencil icon */
+    content: '\270E';
 }
 
 .delete::before {
-    content: '\1F5D1'; /* Trash can icon */
+    content: '\1F5D1';
 }
 
-/* Column Sortable (if applicable, add visual indicator) */
+/* Column Sortable */
 .anygrid-column-sortable {
     cursor: pointer;
     position: relative;
-}
-
-.anygrid-column-sortable::after {
-    content: '\2195'; /* Up-down arrow for sortable */
-    font-size: 0.7em;
-    margin-left: 0.5em;
-    vertical-align: middle;
-    opacity: 0.6;
-    transition: opacity 0.2s ease;
 }
 
 .anygrid-column-sortable:hover::after {
     opacity: 1;
 }
 
-/* Add specific styles for sorted columns */
 .anygrid-column-sortable.asc::after {
-    content: '\2191'; /* Up arrow for ascending */
+    content: '\2191';
     opacity: 1;
 }
 
 .anygrid-column-sortable.desc::after {
-    content: '\2193'; /* Down arrow for descending */
+    content: '\2193';
     opacity: 1;
 }
 
-/* MODAL CSS */
+/* MODAL CSS - FIXED WITH SOLID WHITE BACKGROUND */
 
 /* Base Modal Styles */
 .anygrid-modal {
@@ -518,8 +520,8 @@ select.items-per-page:focus {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #ffffff; /* solid white background */
-    color: #222222; /* dark text for readability */
+    background: #ffffff; /* Solid white background */
+    color: #333333; /* Dark text for readability */
     width: 90%;
     max-width: 600px;
     border-radius: 0.75rem;
@@ -528,7 +530,7 @@ select.items-per-page:focus {
     z-index: 1001;
     max-height: 90vh;
     overflow-y: auto;
-    border: 2px solid #ccc; /* stronger, subtle grey border */
+    border: 1px solid #cccccc; /* Light border */
 }
 
 .modal-backdrop {
@@ -537,143 +539,138 @@ select.items-per-page:focus {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* Darker backdrop */
-    backdrop-filter: blur(4px); /* Stronger blur */
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
     z-index: 1000;
 }
 
 /* Modal Content Structure */
 .modal-body {
-    padding: 1.5rem 0; /* Increased padding */
+    padding: 1.5rem 0;
 }
 
 .modal-footer {
-    margin-top: 2rem; /* Increased margin */
-    padding-top: 1.5rem; /* Increased padding */
-    border-top: 1px solid var(--border-color); /* Themed border */
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #cccccc; /* Light border */
     display: flex;
     justify-content: flex-end;
-    gap: 0.75rem; /* Increased gap */
+    gap: 0.75rem;
 }
 
 /* Typography and Fields */
 .record-field {
     display: flex;
-    margin-bottom: 1.25rem; /* Increased margin */
-    align-items: flex-start; /* Changed to flex-start for better multi-line alignment */
-    flex-wrap: wrap; /* Allow wrapping for mobile */
+    margin-bottom: 1.25rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
 }
 
 .record-field strong,
 .record-field label {
-    flex: 0 0 150px; /* Wider label column */
+    flex: 0 0 150px;
     font-weight: 600;
-    color: var(--label-color); /* Label color from theme */
-    padding-right: 1rem; /* Space between label and input */
+    color: #5a2d81; /* Label color from theme */
+    padding-right: 1rem;
 }
 
 .record-field span {
     flex: 1;
     word-break: break-word;
-    color: var(--text-light); /* Ensure display text uses light text color */
+    color: #333333; /* Dark text for readability */
 }
 
 /* Styles for non-editable fields */
 .record-field.non-editable {
-    background-color: color-mix(in srgb, var(--background-light) 95%, var(--border-color)); /* Slightly muted background */
+    background-color: #f5f5f5; /* Light gray background */
     border-radius: 0.375rem;
-    padding: 0.5rem 1rem; /* Add padding for visual separation */
-    cursor: not-allowed; /* Explicitly set cursor */
-    opacity: 0.9; /* Slightly less opaque to hint non-interactivity */
+    padding: 0.5rem 1rem;
+    cursor: not-allowed;
+    opacity: 0.9;
 }
 
 .record-field.non-editable strong,
 .record-field.non-editable span {
-    color: var(--label-color); /* Mute text color for non-editable fields */
-    opacity: 0.8; /* Further mute text */
+    color: #8a8787; /* Muted text color */
+    opacity: 0.8;
 }
 
 /* Styles for editable fields */
 .record-field:not(.non-editable) {
-    cursor: pointer; /* Explicitly set cursor for editable fields */
+    cursor: pointer;
 }
 
 /* Form Elements */
 .record-field input {
     width: 100%;
-    padding: 0.75rem; /* Increased padding */
-    border: 1px solid var(--border-color); /* Themed border */
-    border-radius: 0.5rem; /* Rounded corners */
+    padding: 0.75rem;
+    border: 1px solid #cccccc; /* Light border */
+    border-radius: 0.5rem;
     font-family: inherit;
-    font-size: 0.9rem; /* Slightly larger font */
-    background-color: var(--input-background); /* Input background from theme */
-    color: var(--text-light); /* Input text color from theme */
+    font-size: 0.9rem;
+    background-color: #ffffff; /* White background */
+    color: #333333; /* Dark text */
     transition: all 0.2s;
 }
 
 .record-field input:focus {
-    border-color: var(--primary-color); /* Focus border uses primary color */
+    border-color: #4f4d4d; /* Primary color from theme */
     outline: none;
-    box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb, 13, 110, 253), 0.25); /* Subtle focus ring */
+    box-shadow: 0 0 0 3px rgba(79, 77, 77, 0.25); /* Primary color with opacity */
 }
 
-/* Buttons within Modal */
+/* Buttons within Modal - FIXED */
 .modal-close {
     position: absolute;
-    top: 1rem; /* Adjusted position */
-    right: 1rem; /* Adjusted position */
+    top: 1rem;
+    right: 1rem;
     background: none;
     border: none;
-    font-size: 1.75rem; /* Larger close icon */
+    font-size: 1.75rem;
     cursor: pointer;
-    color: var(--label-color); /* Use label color for close icon */
+    color: #5a2d81; /* Label color from theme */
     padding: 0.25rem;
     line-height: 1;
     transition: color 0.2s;
 }
 
 .modal-close:hover {
-    color: var(--text-light); /* Darken on hover */
+    color: #333333; /* Dark text on hover */
 }
 
+/* FIXED: Modal buttons with theme colors */
 .anygrid-btn-delete,
 .btn-save,
 .retry-btn {
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background 0.2s ease, box-shadow 0.2s ease;
-  color: #ffffff;
-  box-shadow: 0 1px 2px 0 var(--shadow-color);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+    color: #ffffff; /* White text for contrast */
+    box-shadow: 0 1px 2px 0 rgba(79, 77, 77, 0.1);
 }
 
-/* Base Background Colours */
 .anygrid-btn-delete,
 .retry-btn {
-  background-color: var(--primary-color);
+    background-color: #dc3545; /* Delete background from theme */
 }
 
 .btn-save {
-  background-color: var(--secondary-color);
+    background-color: #8a8787; /* Button background from theme */
 }
 
-/* Hover States */
 .anygrid-btn-delete:hover,
 .retry-btn:hover {
-  background-color: color-mix(in srgb, var(--secondary-color) 80%, black);
-  /* Fallback if color-mix is not supported */
-  background-color: #b02a37; /* Darker red fallback */
-  box-shadow: 0 2px 4px 0 var(--shadow-color);
+    background-color: #c82333; /* Darker red on hover */
+    box-shadow: 0 2px 4px 0 rgba(79, 77, 77, 0.1);
 }
 
 .btn-save:hover {
-  background-color: color-mix(in srgb, var(--primary-color) 80%, black);
-  background-color: #3d3c3c; /* Fallback for darkened grey */
-  box-shadow: 0 2px 4px 0 var(--shadow-color);
+    background-color: #666666; /* Button background hover from theme */
+    box-shadow: 0 2px 4px 0 rgba(79, 77, 77, 0.1);
 }
-
 
 /* Animations */
 .anygrid-modal.fade .modal-content {
@@ -688,7 +685,7 @@ select.items-per-page:focus {
     from {
         opacity: 0;
         transform: translate(-50%, -60%);
-    } /* Start slightly higher */
+    }
     to {
         opacity: 1;
         transform: translate(-50%, -50%);
@@ -708,17 +705,17 @@ select.items-per-page:focus {
 
 /* Status Messages */
 .modal-status {
-    padding: 1rem; /* Increased padding */
-    margin-top: 1.5rem; /* Increased margin */
-    border-radius: 0.5rem; /* Rounded corners */
+    padding: 1rem;
+    margin-top: 1.5rem;
+    border-radius: 0.5rem;
     text-align: center;
     font-weight: 500;
-    font-size: 0.9rem; /* Slightly larger font */
+    font-size: 0.9rem;
 }
 
 .modal-status.loading {
-    background: color-mix(in srgb, var(--primary-color) 10%, white); /* Light tint of primary */
-    color: var(--primary-color);
+    background: rgba(79, 77, 77, 0.1); /* Primary color with opacity */
+    color: #4f4d4d; /* Primary color from theme */
 }
 
 .modal-status.success {
@@ -735,36 +732,36 @@ select.items-per-page:focus {
 .delete-confirmation,
 .delete-error {
     text-align: center;
-    padding: 2.5rem; /* More padding */
-    font-size: 1rem; /* Larger font */
+    padding: 2.5rem;
+    font-size: 1rem;
 }
 
 .delete-confirmation {
-    color: #137333;
+    color: #137333; /* Dark green */
 }
 
 .delete-error {
-    color: #d93025;
+    color: #d93025; /* Dark red */
 }
 
 .checkmark,
 .crossmark {
-    width: 70px; /* Larger icon */
+    width: 70px;
     height: 70px;
-    margin: 0 auto 2rem; /* More margin */
+    margin: 0 auto 2rem;
     display: block;
 }
 
 .checkmark circle {
     stroke: #4CAF50;
-    stroke-width: 2.5; /* Thicker stroke */
+    stroke-width: 2.5;
 }
 
 .checkmark path {
     stroke: #4CAF50;
     stroke-width: 2.5;
     stroke-linecap: round;
-    animation: checkmark 0.6s ease-in-out forwards; /* Keep final state */
+    animation: checkmark 0.6s ease-in-out forwards;
 }
 
 .crossmark circle {
@@ -776,7 +773,7 @@ select.items-per-page:focus {
     stroke: #F44336;
     stroke-width: 2.5;
     stroke-linecap: round;
-    animation: crossmark 0.6s ease-in-out forwards; /* Keep final state */
+    animation: crossmark 0.6s ease-in-out forwards;
 }
 
 @keyframes checkmark {
@@ -803,11 +800,11 @@ select.items-per-page:focus {
 
 /* Row States */
 .row-deleting {
-    animation: pulseWarning 0.8s infinite alternate; /* Slower pulse */
+    animation: pulseWarning 0.8s infinite alternate;
 }
 
 .row-updated {
-    animation: highlightUpdate 2s ease-out; /* Slower highlight */
+    animation: highlightUpdate 2s ease-out;
 }
 
 @keyframes pulseWarning {
@@ -816,25 +813,14 @@ select.items-per-page:focus {
     }
     to {
         background-color: color-mix(in srgb, var(--delete-background) 15%, var(--background-dark));
-    } /* Light tint of delete color */
+    }
 }
 
 @keyframes highlightUpdate {
     from {
         background-color: color-mix(in srgb, var(--primary-color) 15%, var(--background-dark));
-    } /* Light tint of primary color */
+    }
     to {
         background-color: transparent;
     }
 }
-
-/* Utility to get RGB values for rgba() in JS */
-/*
-.default-theme { --primary-color-rgb: 13, 110, 253; }
-.light-theme { --primary-color-rgb: 233, 30, 99; }
-.pink-theme { --primary-color-rgb: 194, 24, 91; }
-.indigo-theme { --primary-color-rgb: 69, 43, 139; }
-.blue-theme { --primary-color-rgb: 3, 169, 244; }
-.dark-orange-theme { --primary-color-rgb: 255, 153, 0; }
-.green-theme { --primary-color-rgb: 0, 77, 0; }
-*/
