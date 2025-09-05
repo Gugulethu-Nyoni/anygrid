@@ -212,7 +212,7 @@ csvExport: true,
 excelExport: true,
 theme: 'pink',
 gridModal:true,
-modalConfig {
+modalConfig: {
   editable: true,
   deletable:true,
   nonEditableFields:['id']

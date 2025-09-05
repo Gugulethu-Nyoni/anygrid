@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Product Management</title>
+
+  <link rel="stylesheet" href="./anyGrid.css" />
+  <link rel="stylesheet" href="./formique-css.css" />
+
+  <style>
+    .anygrid-modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 1000;
+    }
+    .anygrid-modal.active {
+      display: block;
+    }
+    .width-half {
+      width: 50%;
+    }
+  </style>
+
+  <script type="module">
+    import AnyGrid from './anygrid.js';
+
+    
+
+const data = [
+  {
+    "id": 1,
+    "name": "Theodore",
+    "surname": "Peterson",
+    "age": 23,
+    "role": "HR Manager",
+    "salary": 81094
+  },
+  {
+    "id": 2,
+    "name": "Elena",
+    "surname": "Hernandez",
+    "age": 40,
+    "role": "Data Scientist",
+    "salary": 99746
+  },
+  {
+    "id": 3,
+    "name": "Skylar",
+    "surname": "Scott",
+    "age": 33,
+    "role": "Designer",
+    "salary": 53583
+  },
+  {
+    "id": 4,
+    "name": "Violet",
+    "surname": "Perry",
+    "age": 37,
+    "role": "QA Engineer",
+    "salary": 54335
+  },
+  {
+    "id": 5,
+    "name": "Layla",
+    "surname": "Ross",
+    "age": 45,
+    "role": "DevOps Engineer",
+    "salary": 79122
+  },
+  {
+    "id": 6,
+    "name": "David",
+    "surname": "Gonzalez",
+    "age": 48,
+    "role": "Product Manager",
+    "salary": 74744
+  },
+  {
+    "id": 7,
+    "name": "Grace",
+    "surname": "Stewart",
+    "age": 50,
+    "role": "Product Manager",
+    "salary": 118257
+  },
+  {
+    "id": 8,
+    "name": "Carter",
+    "surname": "Wright",
+    "age": 31,
+    "role": "Product Manager",
+    "salary": 68285
+  },
+  {
+    "id": 9,
+    "name": "Connor",
+    "surname": "Evans",
+    "age": 56,
+    "role": "QA Engineer",
+    "salary": 57272
+  },
+  {
+    "id": 10,
+    "name": "Benjamin",
+    "surname": "Kelly",
+    "age": 27,
+    "role": "Technical Writer",
+    "salary": 68658
+  },
+  {
+    "id": 11,
+    "name": "Elijah",
+    "surname": "Robinson",
+    "age": 58,
+    "role": "Developer",
+    "salary": 70706
+  },
+  {
+    "id": 12,
+    "name": "Aurora",
+    "surname": "Turner",
+    "age": 48,
+    "role": "Designer",
+    "salary": 56124
+  },
+  {
+    "id": 13,
+    "name": "Ethan",
+    "surname": "Gonzalez",
+    "age": 46,
+    "role": "Designer",
+    "salary": 71886
+  },
+  {
+    "id": 14,
+    "name": "Leah",
+    "surname": "Wright",
+    "age": 34,
+    "role": "DevOps Engineer",
+    "salary": 110929
+  },
+  {
+    "id": 15,
+    "name": "Aria",
+    "surname": "Robinson",
+    "age": 37,
+    "role": "HR Manager",
+    "salary": 64186
+  },
+  {
+    "id": 16,
+    "name": "Nora",
+    "surname": "Martinez",
+    "age": 48,
+    "role": "HR Manager",
+    "salary": 88287
+  },
+  {
+    "id": 17,
+    "name": "Lily",
+    "surname": "Butler",
+    "age": 57,
+    "role": "Data Scientist",
+    "salary": 112374
+  },
+  {
+    "id": 18,
+    "name": "Lucas",
+    "surname": "Scott",
+    "age": 48,
+    "role": "Designer",
+    "salary": 81202
+  },
+  {
+    "id": 19,
+    "name": "Benjamin",
+    "surname": "Rogers",
+    "age": 36,
+    "role": "DevOps Engineer",
+    "salary": 113398
+  },
+  {
+    "id": 20,
+    "name": "Paisley",
+    "surname": "Flores",
+    "age": 38,
+    "role": "QA Engineer",
+    "salary": 51285
+  },
+  {
+    "id": 21,
+    "name": "Alexander",
+    "surname": "Moore",
+    "age": 53,
+    "role": "Marketing Specialist",
+    "salary": 71648
+  },
+  {
+    "id": 22,
+    "name": "Adrian",
+    "surname": "White",
+    "age": 37,
+    "role": "QA Engineer",
+    "salary": 72936
+  },
+  {
+    "id": 23,
+    "name": "Skylar",
+    "surname": "Powell",
+    "age": 59,
+    "role": "Designer",
+    "salary": 81853
+  },
+  {
+    "id": 24,
+    "name": "Isabella",
+    "surname": "Evans",
+    "age": 27,
+    "role": "Data Scientist",
+    "salary": 102169
+  },
+  {
+    "id": 25,
+    "name": "Elijah",
+    "surname": "Allen",
+    "age": 37,
+    "role": "Designer",
+    "salary": 72244
+  },
+  {
+    "id": 26,
+    "name": "Paisley",
+    "surname": "Wilson",
+    "age": 47,
+    "role": "QA Engineer",
+    "salary": 84930
+  },
+  {
+    "id": 27,
+    "name": "Leah",
+    "surname": "Watson",
+    "age": 32,
+    "role": "Business Analyst",
+    "salary": 105077
+  },
+  {
+    "id": 28,
+    "name": "Victoria",
+    "surname": "White",
+    "age": 26,
+    "role": "Technical Writer",
+    "salary": 63019
+  },
+  {
+    "id": 29,
+    "name": "Ezra",
+    "surname": "Peterson",
+    "age": 57,
+    "role": "Product Manager",
+    "salary": 110130
+  },
+  {
+    "id": 30,
+    "name": "Samuel",
+    "surname": "King",
+    "age": 24,
+    "role": "Data Scientist",
+    "salary": 104285
+  },
+  {
+    "id": 31,
+    "name": "Ava",
+    "surname": "Thomas",
+    "age": 26,
+    "role": "Technical Writer",
+    "salary": 70812
+  },
+  {
+    "id": 32,
+    "name": "William",
+    "surname": "Perry",
+    "age": 26,
+    "role": "HR Manager",
+    "salary": 63077
+  },
+  {
+    "id": 33,
+    "name": "Carter",
+    "surname": "Cook",
+    "age": 26,
+    "role": "Designer",
+    "salary": 48461
+  },
+  {
+    "id": 34,
+    "name": "Liam",
+    "surname": "Gray",
+    "age": 43,
+    "role": "HR Manager",
+    "salary": 60853
+  },
+  {
+    "id": 35,
+    "name": "Wyatt",
+    "surname": "Cook",
+    "age": 41,
+    "role": "Business Analyst",
+    "salary": 107002
+  },
+  {
+    "id": 36,
+    "name": "Natalie",
+    "surname": "Perez",
+    "age": 54,
+    "role": "DevOps Engineer",
+    "salary": 104524
+  },
+  {
+    "id": 37,
+    "name": "Natalie",
+    "surname": "Brooks",
+    "age": 36,
+    "role": "Marketing Specialist",
+    "salary": 56264
+  },
+  {
+    "id": 38,
+    "name": "Alexander",
+    "surname": "Anderson",
+    "age": 57,
+    "role": "HR Manager",
+    "salary": 69149
+  },
+  {
+    "id": 39,
+    "name": "Kennedy",
+    "surname": "Rodriguez",
+    "age": 49,
+    "role": "DevOps Engineer",
+    "salary": 89420
+  },
+  {
+    "id": 40,
+    "name": "Andrew",
+    "surname": "Wilson",
+    "age": 42,
+    "role": "Technical Writer",
+    "salary": 50962
+  },
+  {
+    "id": 41,
+    "name": "Emma",
+    "surname": "Price",
+    "age": 35,
+    "role": "DevOps Engineer",
+    "salary": 127455
+  },
+  {
+    "id": 42,
+    "name": "Ryan",
+    "surname": "Perry",
+    "age": 25,
+    "role": "Business Analyst",
+    "salary": 74904
+  },
+  {
+    "id": 43,
+    "name": "Alice",
+    "surname": "Wright",
+    "age": 55,
+    "role": "QA Engineer",
+    "salary": 58416
+  },
+  {
+    "id": 44,
+    "name": "Owen",
+    "surname": "Garcia",
+    "age": 28,
+    "role": "Data Scientist",
+    "salary": 100404
+  },
+  {
+    "id": 45,
+    "name": "Noah",
+    "surname": "Baker",
+    "age": 47,
+    "role": "Technical Writer",
+    "salary": 46923
+  },
+  {
+    "id": 46,
+    "name": "Caden",
+    "surname": "Sanchez",
+    "age": 23,
+    "role": "HR Manager",
+    "salary": 65653
+  },
+  {
+    "id": 47,
+    "name": "Noah",
+    "surname": "Scott",
+    "age": 28,
+    "role": "DevOps Engineer",
+    "salary": 92325
+  },
+  {
+    "id": 48,
+    "name": "Ava",
+    "surname": "Gray",
+    "age": 45,
+    "role": "QA Engineer",
+    "salary": 49784
+  },
+  {
+    "id": 49,
+    "name": "Paisley",
+    "surname": "James",
+    "age": 22,
+    "role": "Product Manager",
+    "salary": 104120
+  },
+  {
+    "id": 50,
+    "name": "Brooklyn",
+    "surname": "Adams",
+    "age": 58,
+    "role": "Developer",
+    "salary": 77446
+  },
+  {
+    "id": 51,
+    "name": "Lillian",
+    "surname": "Wright",
+    "age": 60,
+    "role": "Data Scientist",
+    "salary": 138901
+  },
+  {
+    "id": 52,
+    "name": "Elise",
+    "surname": "Smith",
+    "age": 33,
+    "role": "Designer",
+    "salary": 81339
+  },
+  {
+    "id": 53,
+    "name": "Paisley",
+    "surname": "Smith",
+    "age": 60,
+    "role": "DevOps Engineer",
+    "salary": 104895
+  },
+  {
+    "id": 54,
+    "name": "Ava",
+    "surname": "Cooper",
+    "age": 45,
+    "role": "HR Manager",
+    "salary": 84260
+  },
+  {
+    "id": 55,
+    "name": "Elise",
+    "surname": "Watson",
+    "age": 37,
+    "role": "Marketing Specialist",
+    "salary": 62669
+  },
+  {
+    "id": 56,
+    "name": "Ella",
+    "surname": "Torres",
+    "age": 51,
+    "role": "Data Scientist",
+    "salary": 111434
+  },
+  {
+    "id": 57,
+    "name": "Thomas",
+    "surname": "Anderson",
+    "age": 54,
+    "role": "Technical Writer",
+    "salary": 61591
+  },
+  {
+    "id": 58,
+    "name": "Riley",
+    "surname": "Ward",
+    "age": 47,
+    "role": "HR Manager",
+    "salary": 87077
+  },
+  {
+    "id": 59,
+    "name": "Nova",
+    "surname": "Cook",
+    "age": 32,
+    "role": "Data Scientist",
+    "salary": 90672
+  },
+  {
+    "id": 60,
+    "name": "Addison",
+    "surname": "Foster",
+    "age": 34,
+    "role": "DevOps Engineer",
+    "salary": 115046
+  }
+];
+
+ const columns = [
+ { name: 'id', header: 'ID', render: (value, row) => `<a href="/user/profile/${row.id}">${row.id}</a>`, sortable: true },
+ { name: 'fullName', header: 'FULL NAME', joinedColumns: ['name', 'surname'] },
+ { name: 'age', header: 'AGE', sortable: true },
+ { name: 'role', header: 'ROLE' },
+ { name: 'salary', header: 'SALARY', render: '<strong>R{salary}</strong>', sortable: true,
+
+   actions: [
+     {
+       label: 'EDIT',
+       url: 'edit/{id}',
+       class: 'edit',
+       id: 'edit-{id}',
+     },
+     {
+       label: 'DELETE',
+       url: 'delete/{id}',
+       class: 'delete',
+       id: 'delete-{id}',
+       confirm: true,
+     }, 
+   ], 
+ },
+];
+
+const features = {
+initialItemsPerPage: 30,
+csvExport: true,
+excelExport: true,
+theme: 'dark',
+gridModal:true,
+modalConfig: {
+ editable: true,
+ deletable:true,
+ nonEditableFields:['id']
+}
+}
+
+const dataGrid = new AnyGrid(data, columns, features);
+  </script>
+</head>
+<body>
+  <div id="anygrid"></div>
+  
+</body>
+</html>
