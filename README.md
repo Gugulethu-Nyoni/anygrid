@@ -123,8 +123,14 @@ This will make `AnyGrid` available globally as a browser-friendly script.
 Get the AnyGrid css via the cdn link. 
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/anygridcss@1.0.2/anyGrid.css" />
+<link rel="stylesheet" href="https://unpkg.com/anygridcss@1.0.4/anyGrid.css" />
 ```
+
+
+> **Note:** You should check the latest CSS version here:  
+> - [`https://unpkg.com/anygridcss/`](https://unpkg.com/anygridcss/)  
+> - [`https://www.npmjs.com/package/anygridcss`](https://www.npmjs.com/package/anygridcss)  
+
 
 In a Semantq project you can place that stylesheet link tag inside the `@head ...link tag here.. @end` section of your `@layout.smq` page inside the route where you want to use AnyGrid.
 
@@ -248,11 +254,21 @@ const data = [
 ```javascript
 
 const columns = [
-  { name: 'id', header: 'ID', render: (value, row) => `<a href="/user/profile/${row.id}">${row.id}</a>`, sortable: true },
+  { 
+    name: 'id', 
+    header: 'ID', 
+    render: (value, row) => `<a href="/user/profile/${row.id}">${row.id}</a>`, 
+    sortable: true, 
+    noModal: true // Prevents this cell from triggering the modal
+  },
   { name: 'fullName', header: 'FULL NAME', joinedColumns: ['name', 'surname'] },
   { name: 'age', header: 'AGE', sortable: true },
   { name: 'role', header: 'ROLE' },
-  { name: 'salary', header: 'SALARY', render: '<strong>R{salary}</strong>', sortable: true,
+  { 
+    name: 'salary', 
+    header: 'SALARY', 
+    render: '<strong>R{salary}</strong>', 
+    sortable: true,
 
     actions: [
       {
@@ -276,6 +292,10 @@ const columns = [
 
 const dataGrid = new anyGrid(data, columns);
 ```
+
+> **Note:**
+> The `noModal: true` property is useful when `gridModal: true` is enabled in `features`. Normally, clicking anywhere in a row would open the modal with record details.
+> By setting `noModal: true` on a specific column, you **exclude that cell from triggering the modal**. This is ideal for cases where a column already has its own clickable action (e.g., profile links, external navigation, or inline buttons) and you don’t want the modal trigger to interfere with that interaction.
 
 
 # Default Features 
@@ -380,7 +400,11 @@ const features = {
   modalConfig: {
     editable: true,                  // Show "Edit" button in modal
     deletable: true,                 // Show "Delete" button in modal
-    nonEditableFields: [            // Optional: Fields excluded from edit view
+    nonEditableFields: [             // Fields will show in modal but cannot be edited
+      'id', 'uuid', 'status', 
+      'sortOrder', 'createdAt', 'updatedAt'
+    ],
+    hiddenFields: [                  // Fields will not be shown at all in modal
       'id', 'uuid', 'status', 
       'sortOrder', 'createdAt', 'updatedAt'
     ]

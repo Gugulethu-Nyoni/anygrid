@@ -2,7 +2,7 @@
 class AnyGrid {
   constructor(data, columns, options = {}) {
     this.data = data;
-    this.dataApiEndPoint=options.dataApiEndPoint || null;
+    this.dataApiEndPoint = options.dataApiEndPoint || null;
     this.totalRecords = data.length;
     this.columns = columns;
     this.itemsPerPage = options.initialItemsPerPage || 10;
@@ -18,9 +18,7 @@ class AnyGrid {
     this.itemsPerPageId = this.generateUniqueId('items-per-page');
     this.gridContainerId = options.gridContainerId || 'anygrid';
 
-
     // AnyGrid Default Settings
-    // Default Features (including modal defaults)
     const defaultFeatures = {
       // Core Grid Features
       search: true,
@@ -37,18 +35,16 @@ class AnyGrid {
       gridModal: false,
       modalConfig: {
         editable: false,
-        nonEditableFields:['id'],
+        nonEditableFields: ['id'],
         deletable: false,
         animation: 'fade',
         closeOnOutsideClick: true,
         confirmDelete: true,
         confirmEdit: true
       }
+    };
 
-    }
-
-   // Merging user defined features with defaults
-   // Deep Merge User Options
+    // Merging user defined features with defaults
     this.features = {
       ...defaultFeatures,
       ...options,
@@ -58,11 +54,21 @@ class AnyGrid {
       }
     };
 
-
-        // Initialize the data grid
+    // Initialize the data grid FIRST (creates HTML elements)
     this.initializeDataGrid();
 
+    // THEN set up search input (only if search is enabled) - MOVED AFTER initializeDataGrid()
+    if (this.features.search) {
+      this.searchInput = document.getElementById(`${this.searchInputId}`);
+      // Add null check for safety
+      if (this.searchInput) {
+        this.searchInput.addEventListener('input', this.searchTable.bind(this));
+      } else {
+        console.warn('Search input element not found');
+      }
+    }
 
+    // Apply theme
     if (options.themeColor) {
       this.applyDynamicTheme(options.themeColor, this.gridContainerId);
     } else if (this.features.theme) {
@@ -72,54 +78,30 @@ class AnyGrid {
     } else {
       this.applyTheme('dark', this.gridContainerId);
     }
-    
-  /*
- if (this.features.theme) {
-      //alert(this.features.theme);
-      let theme = this.features.theme;
-      if (theme==='dark') theme ='default';
-      this.applyTheme(theme, this.gridContainerId);
-    } else {
-      this.applyTheme('dark', this.gridContainerId);
-    }
-*/
 
-
-    //console.log(this.features.search);
-
-    // Set up search input (only if search is enabled)
-    if (this.features.search) {
-      this.searchInput = document.getElementById(`${this.searchInputId}`);
-      this.searchInput.addEventListener('input', this.searchTable.bind(this));
-    }
-
-
-    // ONLY NEW CODE FOR THIS STEP:
-
-     this._editState = {
-      originalRecord: null,    // Store original values
-      pendingChanges: {}       // Track changed fields
+    // Edit state for modal
+    this._editState = {
+      originalRecord: null,
+      pendingChanges: {}
     };
 
-
+    // Modal initialization (also after initializeDataGrid)
     if (this.features.gridModal) {
       this._initModalStructure();
       this._setupRowClickHandlers();
 
-      // Add to your modal initialization (where delete button is created)
-this.modalElement.querySelector('.anygrid-btn-delete').addEventListener('click', () => {
-  this._handleDeleteRecord();
-});
+      // Add null check for modal elements
+      const deleteBtn = this.modalElement?.querySelector('.anygrid-btn-delete');
+      if (deleteBtn) {
+        deleteBtn.addEventListener('click', () => {
+          this._handleDeleteRecord();
+        });
+      }
+
 
     }
-
-    // TEST: Verify merged configuration
-    //console.log(this.features)
-
-
-   
-  }
-
+    }
+  
   // CLOSE CONSTRUCTOR HERE
 
 
@@ -275,6 +257,12 @@ _setupRowClickHandlers() {
   }
 
   this.tbody.addEventListener('click', (event) => {
+    // Check if click originated from a no-modal cell
+    const clickedCell = event.target.closest('td');
+    if (clickedCell && clickedCell.hasAttribute('data-no-modal')) {
+      return; // Skip modal for action cells
+    }
+
     const row = event.target.closest('tr');
     if (!row) return;
 
@@ -299,9 +287,13 @@ _showModalWithData(record) {
   this.currentRecord = record; // Store current record
   const modalBody = this.modalElement.querySelector('.modal-body');
 
+  // Get hidden fields configuration (new feature)
+  const hiddenFields = this.features.modalConfig.hiddenFields || [];
+
   if (this.features.modalConfig.editable) {
-    // Click-to-edit version
+    // Click-to-edit version - filter out hidden fields
     modalBody.innerHTML = Object.entries(record)
+      .filter(([key]) => !hiddenFields.includes(key)) // New: Hide specified fields
       .map(([key, value]) => `
         <div class="record-field" data-field="${key}">
           <strong>${key}:</strong>
@@ -311,8 +303,9 @@ _showModalWithData(record) {
       
     this._setupClickToEdit();
   } else {
-    // Read-only version
+    // Read-only version - filter out hidden fields
     modalBody.innerHTML = Object.entries(record)
+      .filter(([key]) => !hiddenFields.includes(key)) // New: Hide specified fields
       .map(([key, value]) => `
         <div class="record-field">
           <strong>${key}:</strong>
@@ -326,12 +319,13 @@ _showModalWithData(record) {
     this._setupModalFooter();
   }
 
-   this._editState.originalRecord = {...record};
+  this._editState.originalRecord = {...record};
   this._editState.pendingChanges = {};
 
   this.modalElement.style.display = 'block';
   document.body.style.overflow = 'hidden';
 }
+
 
 /**
  * 4. Setup click-to-edit handlers
@@ -570,7 +564,7 @@ _hideModal() {
     }
   }
 
-  renderData() {
+ renderData() {
   // Safeguard: Ensure filteredData is always an array
   if (!Array.isArray(this.filteredData)) {
     console.warn('filteredData is not an array - resetting to empty array');
@@ -652,21 +646,23 @@ _hideModal() {
     this.columns.forEach((column) => {
       if (!column || column.hidden) return;
 
+      const cell = document.createElement('td');
+      
+      // Add data attribute for modal exclusion
+      if (column.noModal) {
+        cell.setAttribute('data-no-modal', 'true');
+      }
+
       if (column.joinedColumns && Array.isArray(column.joinedColumns)) {
         // Handle joined columns - create one cell that combines all values
-        const cell = document.createElement('td');
         const value = column.joinedColumns.map(col => row[col]).join(' ');
         cell.textContent = value;
-        tr.appendChild(cell);
       } else {
         // Normal column
-        const cell = document.createElement('td');
         let value = row[column.name];
         cell.setAttribute('data-id', column.name);
-       
 
         if(column.name === 'id') tr.setAttribute('data-id', value); 
-
 
         // Handle null/undefined values
         if (value == null) value = '';
@@ -685,9 +681,9 @@ _hideModal() {
         } else {
           cell.textContent = value;
         }
-        
-        tr.appendChild(cell);
       }
+      
+      tr.appendChild(cell);
     });
 
     this.tbody.appendChild(tr);
@@ -698,6 +694,8 @@ _hideModal() {
     this.updatePagination();
   }
 }
+
+
 
   updatePagination() {
   if (this.features.pagination) {

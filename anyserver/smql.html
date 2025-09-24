@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Product Management</title>
+
+  <link rel="stylesheet" href="./anyGrid.css" />
+  <link rel="stylesheet" href="./formique-css.css" />
+
+  <style>
+    .anygrid-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1000;
+    }
+
+    .anygrid-modal.active {
+      display: block;
+    }
+
+    .width-half {
+      width: 50%;
+    }
+  </style>
+
+  <script type="module">
+    import AnyGrid from './anygrid.js';
+    import { smQL, Form, Notification } from './smQL.js';
+
+    const baseOrigin = `http://localhost:3003`;
+    const eventId = 1;
+    const api = new smQL(`${baseOrigin}`);
+
+    (async () => {
+      try {
+        const response = await api.get(`/student/students/event/${eventId}`);
+        console.log("Relation HERE", JSON.stringify(response, null, 2));
+
+        const studentsData = Object.values(response).filter(
+          item => typeof item === 'object' && item !== null && !Array.isArray(item)
+        );
+
+        // Define columns for the students object
+        const studentColumns = [
+          { name: 'id', header: 'ID', sortable: true },
+          { name: 'studentNumber', header: 'Student No.', sortable: true},
+          {
+            name: 'name',
+            header: 'Full Name',
+            joinedColumns: ['name', 'surname'],
+            sortable: true,
+          },
+          { name: 'email', header: 'Email', sortable: true },
+          { name: 'mobile', header: 'Mobile', sortable: true },
+          { name: 'identityNumber', header: 'ID Number', sortable: true },
+          {
+            name: 'createdAt',
+            header: 'Registered',
+            sortable: true,
+            render: (value) => {
+              return new Date(value).toLocaleDateString();
+            }
+          },
+          {
+            name: 'guests',
+            header: 'Guests',
+            noModal: true,
+            render: (guestArray) => {
+              if (!guestArray || guestArray.length === 0) {
+                return '<span style="color: gray;">No QR Codes Generated</span>';
+              }
+
+              // Sort guests to ensure 'student' is first
+              const sortedGuests = [...guestArray].sort((a, b) => {
+                if (a.type === 'student') return -1;
+                if (b.type === 'student') return 1;
+                return a.type.localeCompare(b.type);
+              });
+
+              // Build table rows safely
+              const tableRows = sortedGuests.map(guest => {
+                const emailedIcon = guest.is_emailed
+                  ? '<span class="fa fa-envelope" style="color: green;" title="Emailed"></span>'
+                  : '<span class="fa fa-minus-circle" style="color: gray;" title="Not Emailed"></span>';
+
+                const usedIcon = guest.is_used
+                  ? '<span class="fa fa-check-circle" style="color: green;" title="Used"></span>'
+                  : '<span class="fa fa-minus-circle" style="color: gray;" title="Not Used"></span>';
+
+                return `
+                  <tr>
+                    <td><div id="qr-container-${guest.id}" class="qr-placeholder" data-access-code="${guest.access_code}">QR Code</div></td>
+                    <td>${guest.type}</td>
+                    <td>${emailedIcon}</td>
+                    <td>${usedIcon}</td>
+                  </tr>
+                `;
+              }).join('');
+
+              return `
+                <details class="anygrid-accordion-standalone">
+                  <summary class="anygrid-accordion-title" style="cursor: pointer;">QR Codes</summary>
+                  <div class="anygrid-accordion-content">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>QR Code</th>
+                          <th>Type</th>
+                          <th>Emailed</th>
+                          <th>Used</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        ${tableRows}
+                      </tbody>
+                    </table>
+                  </div>
+                </details>
+              `;
+            }
+          },
+
+        { name: 'studentNumber', header: 'View', sortable: true, noModal: true,
+        render: (value,row) => { return `<a href="http://google.com"> Google </a>`;} },
+
+        ];
+
+        // Grid features
+        const studentFeatures = {
+          initialItemsPerPage: 5,
+          gridModal: true,
+          modalConfig: {
+            editable: true,
+            deletable: true,
+            hiddenFields: [
+              'id', 'userId', 'eventId', 'createdAt', 'updatedAt','guests'
+            ]
+          },
+          dataApiEndPoint: `${baseOrigin}/student/students`,
+          theme: 'light',
+          //themeColor: '#990000',
+        };
+
+        // Create a new instance of AnyGrid for students
+        const studentGrid = new AnyGrid(studentsData, studentColumns, studentFeatures);
+
+        Notification.show({
+          type: 'success',
+          message: 'Success',
+          duration: 3000,
+          successColor: '#009688',
+          
+        });
+
+      } catch (error) {
+        console.error('There was an error fetching data:', error);
+        Notification.show({
+          type: 'warning',
+          message: 'Please check your API call or server',
+          duration: 3000,
+          warningColor: '#FFC107',
+          //successColor: '#009688',
+          //error: '#E91E63'
+        });
+      }
+    })();
+  </script>
+</head>
+<body>
+  <div id="anygrid"></div>
+  <br />
+  <div id="productsGrid"></div>
+</body>
+</html>

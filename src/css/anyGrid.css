@@ -501,6 +501,21 @@ select.items-per-page:focus {
     opacity: 1;
 }
 
+/* Target all links inside AnyGrid containers */
+#anygrid a,
+.anygrid-table a,
+.anygrid-modal a {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+/* Optional: Add hover effect for better UX */
+#anygrid a:hover,
+.anygrid-table a:hover,
+.anygrid-modal a:hover {
+  text-decoration: underline !important;
+}
+
 /* MODAL CSS - FIXED WITH SOLID WHITE BACKGROUND */
 
 /* Base Modal Styles */
