@@ -682,7 +682,7 @@ const ANYGRID_CSS = `@import url('https://fonts.googleapis.com/css2?family=Monts
 /* MODAL CSS - ISOLATED                               */
 /* ==================================================== */
 
-.anygrid-container .anygrid-modal {
+.anygrid-modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -693,7 +693,7 @@ const ANYGRID_CSS = `@import url('https://fonts.googleapis.com/css2?family=Monts
     font-family: 'Montserrat', sans-serif;
 }
 
-.anygrid-container .modal-content {
+.modal-content {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -711,7 +711,7 @@ const ANYGRID_CSS = `@import url('https://fonts.googleapis.com/css2?family=Monts
     border: 1px solid #cccccc;
 }
 
-.anygrid-container .modal-backdrop {
+.modal-backdrop {
     position: fixed;
     top: 0;
     left: 0;
@@ -722,11 +722,11 @@ const ANYGRID_CSS = `@import url('https://fonts.googleapis.com/css2?family=Monts
     z-index: 1000;
 }
 
-.anygrid-container .modal-body {
+.modal-body {
     padding: 1.5rem 0;
 }
 
-.anygrid-container .modal-footer {
+.modal-footer {
     margin-top: 2rem;
     padding-top: 1.5rem;
     border-top: 1px solid #cccccc;
@@ -735,28 +735,28 @@ const ANYGRID_CSS = `@import url('https://fonts.googleapis.com/css2?family=Monts
     gap: 0.75rem;
 }
 
-.anygrid-container .record-field {
+.record-field {
     display: flex;
     margin-bottom: 1.25rem;
     align-items: flex-start;
     flex-wrap: wrap;
 }
 
-.anygrid-container .record-field strong,
-.anygrid-container .record-field label {
+.record-field strong,
+.record-field label {
     flex: 0 0 150px;
     font-weight: 600;
     color: #5a2d81;
     padding-right: 1rem;
 }
 
-.anygrid-container .record-field span {
+.record-field span {
     flex: 1;
     word-break: break-word;
     color: #333333;
 }
 
-.anygrid-container .record-field.non-editable {
+.record-field.non-editable {
     background-color: #f5f5f5;
     border-radius: 0.375rem;
     padding: 0.5rem 1rem;
@@ -764,17 +764,17 @@ const ANYGRID_CSS = `@import url('https://fonts.googleapis.com/css2?family=Monts
     opacity: 0.9;
 }
 
-.anygrid-container .record-field.non-editable strong,
-.anygrid-container .record-field.non-editable span {
+.record-field.non-editable strong,
+.record-field.non-editable span {
     color: #8a8787;
     opacity: 0.8;
 }
 
-.anygrid-container .record-field:not(.non-editable) {
+.record-field:not(.non-editable) {
     cursor: pointer;
 }
 
-.anygrid-container .record-field input {
+.record-field input {
     width: 100%;
     padding: 0.75rem;
     border: 1px solid #cccccc;
@@ -786,13 +786,13 @@ const ANYGRID_CSS = `@import url('https://fonts.googleapis.com/css2?family=Monts
     transition: all 0.2s;
 }
 
-.anygrid-container .record-field input:focus {
+.record-field input:focus {
     border-color: #4f4d4d;
     outline: none;
     box-shadow: 0 0 0 3px rgba(79, 77, 77, 0.25);
 }
 
-.anygrid-container .modal-close {
+.modal-close {
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -806,13 +806,13 @@ const ANYGRID_CSS = `@import url('https://fonts.googleapis.com/css2?family=Monts
     transition: color 0.2s;
 }
 
-.anygrid-container .modal-close:hover {
+.modal-close:hover {
     color: #333333;
 }
 
-.anygrid-container .anygrid-btn-delete,
-.anygrid-container .btn-save,
-.anygrid-container .retry-btn {
+.anygrid-btn-delete,
+.btn-save,
+.retry-btn {
     border: none;
     padding: 0.75rem 1.5rem;
     border-radius: 0.5rem;
@@ -823,31 +823,31 @@ const ANYGRID_CSS = `@import url('https://fonts.googleapis.com/css2?family=Monts
     box-shadow: 0 1px 2px 0 rgba(79, 77, 77, 0.1);
 }
 
-.anygrid-container .anygrid-btn-delete,
-.anygrid-container .retry-btn {
+.anygrid-btn-delete,
+.retry-btn {
     background-color: #dc3545;
 }
 
-.anygrid-container .btn-save {
+.btn-save {
     background-color: #8a8787;
 }
 
-.anygrid-container .anygrid-btn-delete:hover,
-.anygrid-container .retry-btn:hover {
+.anygrid-btn-delete:hover,
+.retry-btn:hover {
     background-color: #c82333;
     box-shadow: 0 2px 4px 0 rgba(79, 77, 77, 0.1);
 }
 
-.anygrid-container .btn-save:hover {
+.btn-save:hover {
     background-color: #666666;
     box-shadow: 0 2px 4px 0 rgba(79, 77, 77, 0.1);
 }
 
-.anygrid-container .anygrid-modal.fade .modal-content {
+.anygrid-modal.fade .modal-content {
     animation: fadeIn 0.3s ease-out;
 }
 
-.anygrid-container .anygrid-modal.slide .modal-content {
+.anygrid-modal.slide .modal-content {
     animation: slideIn 0.3s ease-out;
 }
 
@@ -873,7 +873,7 @@ const ANYGRID_CSS = `@import url('https://fonts.googleapis.com/css2?family=Monts
     }
 }
 
-.anygrid-container .modal-status {
+.modal-status {
     padding: 1rem;
     margin-top: 1.5rem;
     border-radius: 0.5rem;
@@ -882,62 +882,62 @@ const ANYGRID_CSS = `@import url('https://fonts.googleapis.com/css2?family=Monts
     font-size: 0.9rem;
 }
 
-.anygrid-container .modal-status.loading {
+.modal-status.loading {
     background: rgba(79, 77, 77, 0.1);
     color: #4f4d4d;
 }
 
-.anygrid-container .modal-status.success {
+.modal-status.success {
     background: #e6f4ea;
     color: #137333;
 }
 
-.anygrid-container .modal-status.error {
+.modal-status.error {
     background: #fce8e6;
     color: #d93025;
 }
 
 .anygrid-container .delete-confirmation,
-.anygrid-container .delete-error {
+.delete-error {
     text-align: center;
     padding: 2.5rem;
     font-size: 1rem;
 }
 
-.anygrid-container .delete-confirmation {
+.delete-confirmation {
     color: #137333;
 }
 
-.anygrid-container .delete-error {
+.delete-error {
     color: #d93025;
 }
 
-.anygrid-container .checkmark,
-.anygrid-container .crossmark {
+.checkmark,
+.crossmark {
     width: 70px;
     height: 70px;
     margin: 0 auto 2rem;
     display: block;
 }
 
-.anygrid-container .checkmark circle {
+.checkmark circle {
     stroke: #4CAF50;
     stroke-width: 2.5;
 }
 
-.anygrid-container .checkmark path {
+.checkmark path {
     stroke: #4CAF50;
     stroke-width: 2.5;
     stroke-linecap: round;
     animation: checkmark 0.6s ease-in-out forwards;
 }
 
-.anygrid-container .crossmark circle {
+.crossmark circle {
     stroke: #F44336;
     stroke-width: 2.5;
 }
 
-.anygrid-container .crossmark path {
+.crossmark path {
     stroke: #F44336;
     stroke-width: 2.5;
     stroke-linecap: round;
@@ -1366,6 +1366,7 @@ class AnyGrid {
       modalConfig: {
         editable: false,
         nonEditableFields: ['id'],
+        hiddenFields: ['metadata'],
         deletable: false,
         animation: 'fade',
         closeOnOutsideClick: true,
@@ -1620,21 +1621,32 @@ applyTheme(theme, gridContainerId) {
  * @returns {Object} Effective editor metadata
  */
 _getFieldMetadata(fieldName) {
-  // Start with field metadata from constructor
   const base = this.fieldMetadata?.fields?.[fieldName] || {};
-  const baseEditor = base.editor || {};
+  const rawEditor = base.editor;
 
-  // Find column override
+  // Accept both:
+  //   editor: "text"
+  //   editor: { type: "text", ... }
+  const normalizedEditor = typeof rawEditor === 'string'
+    ? { type: rawEditor }
+    : { ...(rawEditor || {}) };
+
   const column = this.columns?.find(c => c.name === fieldName);
   const columnEditor = column?.editor || {};
 
-  // Merge: column overrides win
+  const merged = {
+    ...normalizedEditor,
+    ...columnEditor
+  };
+
+  // Guarantee a valid type
+  if (!merged.type) {
+    merged.type = 'text';
+  }
+
   return {
     ...base,
-    editor: {
-      ...baseEditor,
-      ...columnEditor
-    }
+    editor: merged
   };
 }
 
@@ -2563,9 +2575,7 @@ _hideModal() {
     return `${prefix}-${randomPart}`;
   }
 
-
-
-
+  // Initialize the data grid layout and event listeners
   initializeDataGrid() {
   const dataGrid = document.getElementById(this.gridContainerId);
 
@@ -2649,6 +2659,10 @@ _hideModal() {
   this.renderData(this.filteredData);
   this.updatePagination();
 }
+
+
+
+
 
 
 
