@@ -3,3 +3,7 @@ testserver/
 server/
 
 
+.DS_Store
+**/.DS_Store
+*.bak
+*.bak-*
