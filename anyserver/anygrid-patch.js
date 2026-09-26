@@ -1366,7 +1366,6 @@ class AnyGrid {
       modalConfig: {
         editable: false,
         nonEditableFields: ['id'],
-        hiddenFields: ['metadata'],
         deletable: false,
         animation: 'fade',
         closeOnOutsideClick: true,
@@ -2295,6 +2294,16 @@ _formatModalValue(value) {
   return String(value);
 }
 
+/**
+ * Record properties that are infrastructure, not model fields.
+ * These are never shown in the modal, regardless of hiddenFields.
+ * Applications should not need to know about these — the library owns them.
+ * @returns {string[]}
+ */
+_getInfrastructureFields() {
+  return ['metadata'];
+}
+
 _showModalWithData(record) {
   if (!this.modalElement) return;
   
@@ -2304,10 +2313,15 @@ _showModalWithData(record) {
   // Get hidden fields configuration (new feature)
   const hiddenFields = this.features.modalConfig.hiddenFields || [];
 
+  const infrastructureFields = this._getInfrastructureFields();
+
+  const isVisible = ([key]) =>
+    !hiddenFields.includes(key) && !infrastructureFields.includes(key);
+
   if (this.features.modalConfig.editable) {
-    // Click-to-edit version - filter out hidden fields
+    // Click-to-edit version - filter out hidden + infrastructure fields
     modalBody.innerHTML = Object.entries(record)
-      .filter(([key]) => !hiddenFields.includes(key)) // New: Hide specified fields
+      .filter(isVisible)
       .map(([key, value]) => {
         const nonEditable = this.features.modalConfig.nonEditableFields || ['id', 'createdAt', 'updatedAt'];
         const isEditable = !nonEditable.includes(key);
@@ -2322,9 +2336,9 @@ _showModalWithData(record) {
       
     this._setupClickToEdit();
   } else {
-    // Read-only version - filter out hidden fields
+    // Read-only version - filter out hidden + infrastructure fields
     modalBody.innerHTML = Object.entries(record)
-      .filter(([key]) => !hiddenFields.includes(key)) // New: Hide specified fields
+      .filter(isVisible)
       .map(([key, value]) => `
         <div class="record-field">
           <strong>${key}:</strong>
