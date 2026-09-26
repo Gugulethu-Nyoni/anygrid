@@ -21,6 +21,7 @@ registerEditor('text', TextEditor);
 registerEditor('number', NumberEditor);
 registerEditor('select', SelectEditor);
 registerEditor('datetime', DateTimeEditor);
+registerEditor('datetime-local', DateTimeEditor);
 registerEditor('checkbox', CheckboxEditor);
 registerEditor('textarea', TextareaEditor);
 registerEditor('decimal', DecimalEditor);
