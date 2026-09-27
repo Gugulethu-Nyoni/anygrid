@@ -2306,7 +2306,13 @@ _getInfrastructureFields() {
 
 _showModalWithData(record) {
   if (!this.modalElement) return;
-  
+
+  console.log('[ANYGRID PATCH MODAL]', {
+    editable: this.features?.modalConfig?.editable,
+    deletable: this.features?.modalConfig?.deletable,
+    recordId: record?.id
+  });
+
   this.currentRecord = record; // Store current record
   const modalBody = this.modalElement.querySelector('.modal-body');
 
@@ -2317,6 +2323,9 @@ _showModalWithData(record) {
 
   const isVisible = ([key]) =>
     !hiddenFields.includes(key) && !infrastructureFields.includes(key);
+
+  console.log('[AnyGrid modal config]', this.features.modalConfig);
+  console.log('[AnyGrid editable]', this.features.modalConfig.editable);
 
   if (this.features.modalConfig.editable) {
     // Click-to-edit version - filter out hidden + infrastructure fields
@@ -2336,6 +2345,8 @@ _showModalWithData(record) {
       
     this._setupClickToEdit();
   } else {
+    console.log('[ANYGRID PATCH MODAL] READ-ONLY BRANCH');
+
     // Read-only version - filter out hidden + infrastructure fields
     modalBody.innerHTML = Object.entries(record)
       .filter(isVisible)
@@ -3455,13 +3466,15 @@ async _handleDeleteRecord() {
 
 
 // Reuse your existing API method with DELETE method
+// Reuse your existing API method with DELETE method
 async _deleteRecordApi(recordId) {
   if (!this.dataApiEndPoint) {
     throw new Error('API endpoint not configured');
   }
 
   const response = await fetch(`${this.dataApiEndPoint}/${recordId}`, {
-    method: 'DELETE'
+    method: 'DELETE',
+    credentials: 'include'
   });
 
   if (!response.ok) {
