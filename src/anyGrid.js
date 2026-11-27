@@ -1331,6 +1331,11 @@ class AnyGrid {
     this.dataApiEndPoint = options.dataApiEndPoint || null;
     this.totalRecords = data.length;
     this.columns = columns;
+    // Optional additional fields to include in global search.
+    // When omitted, existing column-based search is preserved.
+    this.searchableFields = Array.isArray(options.searchableFields)
+      ? options.searchableFields
+      : null;
     this.itemsPerPage = options.initialItemsPerPage || 10;
     this.currentPage = 1;
     this.tbody = null;
@@ -1338,6 +1343,7 @@ class AnyGrid {
     this.paginationContainer = null;
     this.filteredData = this.data;
     this.sortingOrder = {};
+    this.activeSort = null;
     this.dataTableId = this.generateUniqueId('anygrid-datatable');
     this.paginationContainerId = this.generateUniqueId('anygrid-pagination');
     this.searchInputId = this.generateUniqueId('search-input');
@@ -1387,25 +1393,13 @@ class AnyGrid {
     // Initialize the data grid FIRST (creates HTML elements)
     this.initializeDataGrid();
 
-    // THEN set up search input (only if search is enabled) - MOVED AFTER initializeDataGrid()
-    if (this.features.search) {
-      this.searchInput = document.getElementById(`${this.searchInputId}`);
-      // Add null check for safety
-      if (this.searchInput) {
-        this.searchInput.addEventListener('input', this.searchTable.bind(this));
-      } else {
-        console.warn('Search input element not found');
-      }
-    }
-
-    // Apply theme (updated - no longer fetches external CSS)
+    // Respect disableStyles: do not apply a static theme
+    // when the AnyGrid stylesheet has intentionally been disabled.
     if (options.themeColor) {
       this.applyDynamicTheme(options.themeColor, this.gridContainerId);
-    } else if (this.features.theme) {
-      let theme = this.features.theme;
-      //if (theme === 'light') theme = 'default';
-      this.applyTheme(theme, this.gridContainerId);
-    } else {
+    } else if (!this.disableStyles && this.features.theme) {
+      this.applyTheme(this.features.theme, this.gridContainerId);
+    } else if (!this.disableStyles) {
       this.applyTheme('default', this.gridContainerId);
     }
 
@@ -2750,8 +2744,14 @@ _hideModal() {
   let startIndex, endIndex;
   
   if (this.features.pagination) {
-    const itemsPerPage = Math.max(1, parseInt(this.itemsPerPage) || 10);
-    startIndex = (Math.max(1, this.currentPage) - 1) * itemsPerPage;
+    const itemsPerPage = Math.max(1, parseInt(this.itemsPerPage, 10) || 10);
+    const totalPages = Math.ceil(this.filteredData.length / itemsPerPage);
+
+    this.currentPage = totalPages > 0
+      ? Math.min(Math.max(1, Number(this.currentPage) || 1), totalPages)
+      : 1;
+
+    startIndex = (this.currentPage - 1) * itemsPerPage;
     endIndex = Math.min(startIndex + itemsPerPage, this.filteredData.length);
   } else {
     startIndex = 0;
@@ -2826,8 +2826,14 @@ _hideModal() {
 
   updatePagination() {
   if (this.features.pagination) {
-    const itemsPerPage = this.itemsPerPage;
-    const totalPages = Math.ceil(this.filteredData.length / itemsPerPage);
+    const itemsPerPage = Math.max(1, parseInt(this.itemsPerPage, 10) || 10);
+    const totalRecords = this.filteredData.length;
+    const totalPages = Math.ceil(totalRecords / itemsPerPage);
+
+    this.currentPage = totalPages > 0
+      ? Math.min(Math.max(1, Number(this.currentPage) || 1), totalPages)
+      : 1;
+
     const startPage = Math.max(1, this.currentPage - 5);
     const endPage = Math.min(startPage + 9, totalPages);
 
@@ -2839,9 +2845,13 @@ _hideModal() {
     paginationWrapper.classList.add('pagination-wrapper');
 
     // Add the "Showing X to Y of Z records" text
-    const startIndex = (this.currentPage - 1) * itemsPerPage + 1;
-    const endIndex = Math.min(this.currentPage * itemsPerPage, this.totalRecords);
-    const totalRecords = this.totalRecords;
+    const startIndex = totalRecords === 0
+      ? 0
+      : (this.currentPage - 1) * itemsPerPage + 1;
+
+    const endIndex = totalRecords === 0
+      ? 0
+      : Math.min(this.currentPage * itemsPerPage, totalRecords);
 
     const paginationInfo = document.createElement('div');
     paginationInfo.classList.add('pagination-info');
@@ -2877,74 +2887,105 @@ _hideModal() {
   }
 }
 
-  // Implement sorting functionality (only if sorting is enabled)
-  sortTable(index) {
-  if (this.features.sort) {
-    const column = this.columns[index];
-    const isAsc = this.sortingOrder[column.name] !== 'asc';
-    
-    const sortedData = [...this.filteredData].sort((a, b) => {
-      let valueA = a[column.name];
-      let valueB = b[column.name];
-      
-      // Handle null/undefined values
+  // Apply sorting without mutating the source dataset.
+  _sortRows(rows, columnName, direction) {
+    const column = this.columns.find(item => item && item.name === columnName);
+    if (!column) return [...rows];
+
+    const multiplier = direction === 'asc' ? 1 : -1;
+
+    return [...rows].sort((a, b) => {
+      let valueA = a[columnName];
+      let valueB = b[columnName];
+
       if (valueA == null) valueA = '';
       if (valueB == null) valueB = '';
-      
-      // Convert to numbers if column is numeric
-      if (column.type === 'number') {
-        valueA = parseFloat(valueA) || 0;
-        valueB = parseFloat(valueB) || 0;
-        return isAsc ? valueA - valueB : valueB - valueA;
-      }
-      
-      // For strings, use localeCompare for proper alphabetical sorting
-      if (typeof valueA === 'string' && typeof valueB === 'string') {
-        return isAsc ? 
-          valueA.localeCompare(valueB, undefined, { sensitivity: 'base' }) : 
-          valueB.localeCompare(valueA, undefined, { sensitivity: 'base' });
-      }
-      
-      // Fallback for mixed types
-      const strA = String(valueA);
-      const strB = String(valueB);
-      return isAsc ? 
-        strA.localeCompare(strB, undefined, { sensitivity: 'base' }) : 
-        strB.localeCompare(strA, undefined, { sensitivity: 'base' });
-    });
 
-    this.filteredData = sortedData;
-    this.sortingOrder[column.name] = isAsc ? 'asc' : 'desc';
+      if (column.type === 'number') {
+        const numberA = parseFloat(valueA) || 0;
+        const numberB = parseFloat(valueB) || 0;
+        return (numberA - numberB) * multiplier;
+      }
+
+      return String(valueA).localeCompare(
+        String(valueB),
+        undefined,
+        { sensitivity: 'base' }
+      ) * multiplier;
+    });
+  }
+
+  // Implement sorting functionality (only if sorting is enabled)
+  sortTable(index) {
+    if (!this.features.sort) return;
+
+    const column = this.columns[index];
+    if (!column || !column.name) return;
+
+    const isAsc = this.sortingOrder[column.name] !== 'asc';
+    const direction = isAsc ? 'asc' : 'desc';
+
+    this.sortingOrder[column.name] = direction;
+    this.activeSort = {
+      columnName: column.name,
+      direction
+    };
+
+    this.filteredData = this._sortRows(
+      this.filteredData,
+      column.name,
+      direction
+    );
+
     this.renderData();
   }
-}
 
-  // Implement search functionality (only if search is enabled)
-searchTable() {
-  const query = this.searchInput.value.toLowerCase();  // Get search query and make it lowercase
+  // Search supports configured fields or the existing column definitions.
+  // searchableFields is an optional array of row property names.
+  searchTable() {
+    if (!this.searchInput) return;
 
-  // Filter the data based on the query
-  this.filteredData = this.data.filter((row) =>
-    this.columns.some((column) => {
-      // Retrieve the column value to search through
-      let value = column.joinedColumns ? 
-        column.joinedColumns.map(col => row[col]).join(' ') : 
-        row[column.name];
+    const query = String(this.searchInput.value || '')
+      .trim()
+      .toLocaleLowerCase();
 
-      // Ensure the value is a string and make it lowercase
-      if (value == null) value = '';  // Handle null or undefined
-      if (typeof value !== 'string') value = String(value);  // Convert non-strings to strings
+    const fields = this.searchableFields || this.columns;
 
-      return value.toLowerCase().includes(query);  // Return true if query is found in the column value
-    })
-  );
+    const matches = !query
+      ? [...this.data]
+      : this.data.filter(row =>
+          fields.some(field => {
+            if (!field) return false;
 
-  // Reset to first page on new search to avoid displaying empty pages
-  this.currentPage = 1;
+            let value;
 
-  // Re-render the table with filtered data
-  this.renderData();
-}
+            if (typeof field === 'string') {
+              value = row[field];
+            } else if (Array.isArray(field.joinedColumns)) {
+              value = field.joinedColumns
+                .map(name => row[name])
+                .join(' ');
+            } else {
+              value = row[field.name];
+            }
+
+            return String(value ?? '')
+              .toLocaleLowerCase()
+              .includes(query);
+          })
+        );
+
+    this.filteredData = this.activeSort
+      ? this._sortRows(
+          matches,
+          this.activeSort.columnName,
+          this.activeSort.direction
+        )
+      : matches;
+
+    this.currentPage = 1;
+    this.renderData();
+  }
 
 
 
@@ -3255,12 +3296,20 @@ _updateDataObject() {
 
 
 _deleteFromDataObject() {
-  const index = this.data.findIndex(item => item.id === this.currentRecord.id);
+  const recordId = this.currentRecord?.id;
+  if (recordId == null) return;
+
+  const index = this.data.findIndex(item => item.id === recordId);
   if (index !== -1) {
-    this.data.splice(index, 1); // Removes the item at the found index
+    this.data.splice(index, 1);
   }
 
-  // console.log("DO Updated (After Delete)", JSON.stringify(this.data, null, 2));
+  // Keep the displayed dataset in sync with the source dataset.
+  this.filteredData = this.filteredData.filter(
+    item => item.id !== recordId
+  );
+
+  this.totalRecords = this.data.length;
 }
 
 
